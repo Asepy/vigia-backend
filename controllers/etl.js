@@ -15,6 +15,7 @@ try{
     // Set tracesSampleRate to 1.0 to capture 100%
     // of transactions for performance monitoring.
     // We recommend adjusting this value in production
+    environment: process.env.NODE_ENV,
     tracesSampleRate: 1.0,
   });
 }catch(e){
@@ -26,7 +27,8 @@ try{
 
 module.exports.ETLValidProcesses =async (event) => {
     let insertions=[];
-    let etlTransaction = Sentry.startTransaction({
+    try{
+      let etlTransaction = Sentry.startTransaction({
         name: "Proceso de ETL de Procesos Vigentes",
         op: 'etl_process'
       });
@@ -50,7 +52,11 @@ module.exports.ETLValidProcesses =async (event) => {
             return result;
         }
     }
-   etlTransaction.finish();
+    etlTransaction.finish();
+    }catch(e){
+      console.log(e)
+    }
+    
    return insertions;
 }
 async function getDNCPValidProcesses(){

@@ -91,7 +91,7 @@ module.exports.testService = async (event) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: "Go Serverless v1.0! Your function executed successfully!2",
+        message: "Go Serverless v1.0! Your function executed successfully!3",
         bdTest:result,
         bdError:bdError,
         input: event
