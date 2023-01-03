@@ -1,0 +1,41 @@
+name: CD Produccion VigiA - Backend
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16 
+      - name: Instalar Serverlesss
+        run: npm install serverless -g
+      - name: Instalar dependencias
+        run: npm install
+      - name: 'Crear archivo .env'
+        run: |
+          touch .env
+          echo NODE_ENV="prod" >> .env
+          echo TWITTER_API_KEY=${{ secrets.PROD_TWITTER_API_KEY}} >> .env
+          echo TWITTER_API_KEY_SECRET=${{ secrets.PROD_TWITTER_API_KEY_SECRET }} >> .env
+          echo TWITTER_ACCESS_TOKEN=${{ secrets.PROD_TWITTER_ACCESS_TOKEN }} >> .env
+          echo TWITTER_ACCESS_TOKEN_SECRET=${{ secrets.PROD_TWITTER_ACCESS_TOKEN_SECRET }} >> .env
+          echo FRONTEND_URL=${{ secrets.PROD_FRONTEND_URL }} >> .env
+          echo PGDATABASE=${{ secrets.PROD_PGDATABASE }} >> .env
+          echo PGHOST=${{ secrets.PROD_PGHOST }} >> .env
+          echo PGPASSWORD=${{ secrets.PROD_PGPASSWORD }} >> .env
+          echo PGPORT=${{ secrets.PROD_PGPORT }} >> .env
+          echo PGUSER=${{ secrets.PROD_PGUSER }} >> .env
+          echo REQUEST_TOKEN_API_DNCP=${{ secrets.REQUEST_TOKEN_API_DNCP}} >> .env
+          echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
+          echo EMAIL_FROM=${{ secrets.EMAIL_FROM }} >> .env
+          echo EMAIL_PASS=${{ secrets.EMAIL_PASS }} >> .env
+          cat .env
+      - name: Deployando con Serverless
+        run: sls deploy --stage prod --region sa-east-1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
