@@ -1,0 +1,18 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# env variables
+config.dev.json
+config.test.json
+config.prod.json
+
+# git profile file
+.gitconfig
+
+# env files
+.env*
+!.env.example

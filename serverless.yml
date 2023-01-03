@@ -1,0 +1,493 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: vigiabackend
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+#sls deploy --stage dev
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+  region: sa-east-1
+  timeout: 25
+  versionFunctions: false
+functions:
+  testService:
+    handler: handler.testService
+    events:
+      - http:
+          method: get
+          path: /testService
+  ETLValidProcesses:
+    handler: handler.ETLValidProcesses
+    timeout: 900
+    events:
+      - schedule:
+          rate: rate(1 hour)
+          enabled: true
+  signUpUser:
+    handler: handler.signUpUser
+  signUpUserConfirm:
+    handler: handler.signUpUserConfirm
+  getProcessDNCP:
+    handler: handler.getProcessDNCP
+    events:
+      - http:
+          method: post
+          path: /getProcessDNCP
+          cors:
+            origin: "*"
+            headers: "*"
+  getProcessDNCPOCID:
+    handler: handler.getProcessDNCPOCID
+    events:
+      - http:
+          method: post
+          path: /getProcessDNCPOCID
+          cors:
+            origin: "*"
+            headers: "*"
+  checkProcessDNCP:
+    handler: handler.checkProcessDNCP
+    events:
+      - http:
+          method: post
+          path: /checkProcessDNCP
+          cors:
+            origin: "*"
+            headers: "*"
+
+  getProcuringEntities:
+    handler: handler.getProcuringEntities
+    events:
+      - http:
+          method: post
+          path: /getProcuringEntities
+          cors:
+            origin: "*"
+            headers: "*"
+  searchProcessDNCP:
+    handler: handler.searchProcessDNCP
+    events:
+      - http:
+          method: post
+          path: /searchProcessDNCP
+          cors:
+            origin: "*"
+            headers: "*"
+  getPartyProcessesDNCP:
+    handler: handler.getPartyProcessesDNCP
+    events:
+      - http:
+          method: post
+          path: /getPartyProcessesDNCP
+          cors:
+            origin: "*"
+            headers: "*"
+
+  newQuestion:
+    handler: handler.addQuestion
+    events:
+      - http:
+          method: post
+          path: /newQuestion
+          cors:
+            origin: "*"
+            headers: "*"
+  getLike:
+    handler: handler.getLike
+    events:
+      - http:
+          method: post
+          path: /getLike
+          cors:
+            origin: "*"
+            headers: "*"
+  addLike:
+    handler: handler.addLike
+    events:
+      - http:
+          method: post
+          path: /addLike
+          cors:
+            origin: "*"
+            headers: "*"
+  getMyLikes:
+    handler: handler.getMyLikes
+    events:
+      - http:
+          method: post
+          path: /getMyLikes
+          cors:
+            origin: "*"
+            headers: "*"
+  getMyProcesses:
+    handler: handler.getMyProcesses
+    events:
+      - http:
+          method: post
+          path: /getMyProcesses
+          cors:
+            origin: "*"
+            headers: "*"
+  addQuestion:
+    handler: handler.addQuestion
+    events:
+      - http:
+          method: put
+          path: /addQuestion
+          cors:
+            origin: "*"
+            headers: "*"
+  getQuestion:
+    handler: handler.getQuestion
+    events:
+      - http:
+          method: post
+          path: /getQuestion
+          cors:
+            origin: "*"
+            headers: "*"
+  getMyQuestions:
+    handler: handler.getMyQuestions
+    events:
+      - http:
+          method: post
+          path: /getMyQuestions
+          cors:
+            origin: "*"
+            headers: "*"
+  addOpportunitiesConfig:
+    handler: handler.addOpportunitiesConfig
+    events:
+      - http:
+          method: post
+          path: /addOpportunitiesConfig
+          cors:
+            origin: "*"
+            headers: "*"
+  getOpportunitiesConfig:
+    handler: handler.getOpportunitiesConfig
+    events:
+      - http:
+          method: post
+          path: /getOpportunitiesConfig
+          cors:
+            origin: "*"
+            headers: "*"
+  getOpportunities:
+    handler: handler.getOpportunities
+    events:
+      - http:
+          method: post
+          path: /getOpportunities
+          cors:
+            origin: "*"
+            headers: "*"
+  getClaimsExtraFields:
+    handler: handler.getClaimsExtraFields
+    events:
+      - http:
+          method: post
+          path: /getClaimsExtraFields
+          cors:
+            origin: "*"
+            headers: "*"
+  getClaimsAgent:
+    handler: handler.getClaimsAgent
+    events:
+      - http:
+          method: post
+          path: /getClaimsAgent
+          cors:
+            origin: "*"
+            headers: "*"
+  getCountClaimsAgent:
+    handler: handler.getCountClaimsAgent
+    events:
+      - http:
+          method: post
+          path: /getCountClaimsAgent
+          cors:
+            origin: "*"
+            headers: "*"
+  getTasksQuestions:
+    handler: handler.getTasksQuestions
+    events:
+      - http:
+          method: post
+          path: /getTasksQuestions
+          cors:
+            origin: "*"
+            headers: "*"            
+  getQuestionsAgent:
+    handler: handler.getQuestionsAgent
+    events:
+      - http:
+          method: post
+          path: /getQuestionsAgent
+          cors:
+            origin: "*"
+            headers: "*"
+  getCountQuestionsAgent:
+    handler: handler.getCountQuestionsAgent
+    events:
+      - http:
+          method: post
+          path: /getCountQuestionsAgent
+          cors:
+            origin: "*"
+            headers: "*"
+  getClaim:
+    handler: handler.getClaim
+    events:
+      - http:
+          method: post
+          path: /getClaim
+          cors:
+            origin: "*"
+            headers: "*"
+  addClaim:
+    handler: handler.addClaim
+    events:
+      - http:
+          method: put
+          path: /addClaim
+          cors:
+            origin: "*"
+            headers: "*"
+  addQuestionStatus:
+    handler: handler.addQuestionStatus
+    events:
+      - http:
+          method: put
+          path: /addQuestionStatus
+          cors:
+            origin: "*"
+            headers: "*"
+  addClaimStatus:
+    handler: handler.addClaimStatus
+    events:
+      - http:
+          method: put
+          path: /addClaimStatus
+          cors:
+            origin: "*"
+            headers: "*"
+  getMyClaims:
+    handler: handler.getMyClaims
+    events:
+      - http:
+          method: post
+          path: /getMyClaims
+          cors:
+            origin: "*"
+            headers: "*"
+  getTasksClaims:
+    handler: handler.getTasksClaims
+    events:
+      - http:
+          method: post
+          path: /getTasksClaims
+          cors:
+            origin: "*"
+            headers: "*"     
+  getCountRequestIndex:
+    handler: handler.getCountRequestIndex
+    events:
+      - http:
+          method: post
+          path: /getCountRequestIndex
+          cors:
+            origin: "*"
+            headers: "*"
+  getUserRoles:
+    handler: handler.getUserRoles
+    events:
+      - http:
+          method: post
+          path: /getUserRoles
+          cors:
+            origin: "*"
+            headers: "*"
+  getProcuringEntitiesRequests:
+    handler: handler.getProcuringEntitiesRequests
+    events:
+      - http:
+          method: post
+          path: /getProcuringEntitiesRequests
+          cors:
+            origin: "*"
+            headers: "*"
+  getUOCTasksInfo:
+    handler: handler.getUOCTasksInfo
+    events:
+      - http:
+          method: post
+          path: /getUOCTasksInfo
+          cors:
+            origin: "*"
+            headers: "*"
+  getUOCRequests:
+    handler: handler.getUOCRequests
+    events:
+      - http:
+          method: post
+          path: /getUOCRequests
+          cors:
+            origin: "*"
+            headers: "*"
+  getUOCContactPoint:
+    handler: handler.getUOCContactPoint
+    events:
+      - http:
+          method: post
+          path: /getUOCContactPoint
+          cors:
+            origin: "*"
+            headers: "*"
+  getRequestsReport:
+    handler: handler.getRequestsReport
+    timeout: 30
+    events:
+      - http:
+          method: post
+          path: /getRequestsReport
+          cors:
+            origin: "*"
+            headers: "*"
+  getCountRequestReport:
+    handler: handler.getCountRequestReport
+    events:
+      - http:
+          method: post
+          path: /getCountRequestReport
+          cors:
+            origin: "*"
+            headers: "*"
+
+  createTweet:
+    handler: handler.createTweet
+    events:
+      - http:
+          method: post
+          path: /createTweet
+          cors:
+            origin: "*"
+            headers: "*"
+  deleteTweet:
+    handler: handler.deleteTweet
+    events:
+      - http:
+          method: post
+          path: /deleteTweet
+          cors:
+            origin: "*"
+            headers: "*"
+  getUsersTweets:
+    handler: handler.getUsersTweets
+    events:
+      - http:
+          method: post
+          path: /getUsersTweets
+          cors:
+            origin: "*"
+            headers: "*"
+  updateRoles:
+      handler: handler.updateRoles 
+      events:
+        - http:
+            method: post
+            path: /updateRoles 
+            cors:
+              origin: "*"
+              headers: "*"
+  getUsers:
+      handler: handler.getUsers
+      events:
+        - http:
+            method: post
+            path: /getUsers
+            cors:
+              origin: "*"
+              headers: "*"
+  getRoles:
+      handler: handler.getRoles
+      events:
+        - http:
+            method: post
+            path: /getRoles
+            cors:
+              origin: "*"
+              headers: "*"
+#    The following are a few example events you can configure
+#    NOTE: Please make sure to change your handler code to work with those events
+#    Check the event documentation for details
+#    events:
+#      - httpApi:
+#          path: /users/create
+#          method: get
+#      - websocket: $connect
+#      - s3: ${env:BUCKET}
+#      - schedule: rate(10 minutes)
+#      - sns: greeter-topic
+#      - stream: arn:aws:dynamodb:region:XXXXXX:table/foo/stream/1970-01-01T00:00:00.000
+#      - alexaSkill: amzn1.ask.skill.xx-xx-xx-xx
+#      - alexaSmartHome: amzn1.ask.skill.xx-xx-xx-xx
+#      - iot:
+#          sql: "SELECT * FROM 'some_topic'"
+#      - cloudwatchEvent:
+#          event:
+#            source:
+#              - "aws.ec2"
+#            detail-type:
+#              - "EC2 Instance State-change Notification"
+#            detail:
+#              state:
+#                - pending
+#      - cloudwatchLog: '/aws/lambda/hello'
+#      - cognitoUserPool:
+#          pool: MyUserPool
+#          trigger: PreSignUp
+#      - alb:
+#          listenerArn: arn:aws:elasticloadbalancing:us-east-1:XXXXXX:listener/app/my-load-balancer/50dc6c495c0c9188/
+#          priority: 1
+#          conditions:
+#            host: example.com
+#            path: /hello
+
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"
+
+#dependencies:
+#  - pg

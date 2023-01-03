@@ -1,0 +1,22 @@
+{
+  "name": "vigia-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sls deploy --stage dev --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sentry/node": "^7.23.0",
+    "@sentry/tracing": "^7.23.0",
+    "aws-jwt-verify": "^3.2.0",
+    "axios": "^1.1.2",
+    "dotenv": "^16.0.3",
+    "nodemailer": "^6.8.0",
+    "pg": "^8.8.0",
+    "twitter-api-v2": "^1.13.0"
+  }
+}
