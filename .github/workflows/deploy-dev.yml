@@ -23,21 +23,21 @@ jobs:
       - name: 'Crear archivo .env'
         run: |
           touch .env
-          echo NODE_ENV="dev" > .env
-          echo TWITTER_API_KEY=${{ secrets.DEV_TWITTER_API_KEY}} > .env
-          echo TWITTER_API_KEY_SECRET=${{ secrets.DEV_TWITTER_API_KEY_SECRET }} > .env
-          echo TWITTER_ACCESS_TOKEN=${{ secrets.DEV_TWITTER_ACCESS_TOKEN }} > .env
-          echo TWITTER_ACCESS_TOKEN_SECRET=${{ secrets.DEV_TWITTER_ACCESS_TOKEN_SECRET }} > .env
-          echo FRONTEND_URL=${{ secrets.DEV_FRONTEND_URL }} > .env
-          echo PGDATABASE=${{ secrets.DEV_PGDATABASE }} > .env
-          echo PGHOST=${{ secrets.DEV_PGHOST }} > .env
-          echo PGPASSWORD=${{ secrets.DEV_PGPASSWORD }} > .env
-          echo PGPORT=${{ secrets.DEV_PGPORT }} > .env
-          echo PGUSER=${{ secrets.DEV_PGUSER }} > .env
-          echo REQUEST_TOKEN_API_DNCP=${{ secrets.REQUEST_TOKEN_API_DNCP}} > .env
-          echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} > .env
-          echo EMAIL_FROM=${{ secrets.EMAIL_FROM }} > .env
-          echo EMAIL_PASS=${{ secrets.EMAIL_PASS }} > .env
+          echo NODE_ENV="dev" >> .env
+          echo TWITTER_API_KEY=${{ secrets.DEV_TWITTER_API_KEY}} >> .env
+          echo TWITTER_API_KEY_SECRET=${{ secrets.DEV_TWITTER_API_KEY_SECRET }} >> .env
+          echo TWITTER_ACCESS_TOKEN=${{ secrets.DEV_TWITTER_ACCESS_TOKEN }} >> .env
+          echo TWITTER_ACCESS_TOKEN_SECRET=${{ secrets.DEV_TWITTER_ACCESS_TOKEN_SECRET }} >> .env
+          echo FRONTEND_URL=${{ secrets.DEV_FRONTEND_URL }} >> .env
+          echo PGDATABASE=${{ secrets.DEV_PGDATABASE }} >> .env
+          echo PGHOST=${{ secrets.DEV_PGHOST }} >> .env
+          echo PGPASSWORD=${{ secrets.DEV_PGPASSWORD }} >> .env
+          echo PGPORT=${{ secrets.DEV_PGPORT }} >> .env
+          echo PGUSER=${{ secrets.DEV_PGUSER }} >> .env
+          echo REQUEST_TOKEN_API_DNCP=${{ secrets.REQUEST_TOKEN_API_DNCP}} >> .env
+          echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
+          echo EMAIL_FROM=${{ secrets.EMAIL_FROM }} >> .env
+          echo EMAIL_PASS=${{ secrets.EMAIL_PASS }} >> .env
           cat .env
       - name: Deployando con Serverless
         run: sls deploy --stage dev --region sa-east-1
