@@ -19,6 +19,8 @@ jobs:
         run: |
           touch .env
           echo NODE_ENV="prod" >> .env
+          echo COGNITO_CLIENT_ID=${{ secrets.COGNITO_CLIENT_ID}} >> .env
+          echo COGNITO_USER_POOL_ID=${{ secrets.COGNITO_USER_POOL_ID}} >> .env
           echo TWITTER_API_KEY=${{ secrets.PROD_TWITTER_API_KEY}} >> .env
           echo TWITTER_API_KEY_SECRET=${{ secrets.PROD_TWITTER_API_KEY_SECRET }} >> .env
           echo TWITTER_ACCESS_TOKEN=${{ secrets.PROD_TWITTER_ACCESS_TOKEN }} >> .env
