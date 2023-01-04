@@ -88,7 +88,7 @@ exports.signUpUser = async (event, context, callback) => {
     }catch (e){
       return {
           error:true,
-          token:"Token invalido",
+          token:"Fallo al obtener los roles",
           message:e.message
         }
       
