@@ -137,11 +137,6 @@ exports.getUserData=async (event,checkRoles)=>{
     userData['accessTokenData'] = await verifierAccessToken.verify(
       event?.headers?.["c-access-token"]
     );
-    const client = new Client();
-    await client.connect();
-    result = await client.query(`select u.* from usuarios u where (u.correo = $1 or u.usuario = $2) limit 1;`,
-    [userData['idTokenData'].email,userData['idTokenData'].sub]);
-    await client.end();
     userData['attributes']={
       family_name:userData['idTokenData'].family_name,
       given_name:userData['idTokenData'].given_name,
@@ -149,55 +144,115 @@ exports.getUserData=async (event,checkRoles)=>{
       sub:userData['idTokenData'].sub,
       id:0
     }
-    if((result?.rows?.length)&&(result?.rows?.length>0)){
-      let userDB=result.rows[0];
-      userData['attributes']['id']=userDB.id;
-      if(
-        (userDB.nombres != userData['attributes'].given_name) ||
-        (userDB.apellidos != userData['attributes'].family_name) ||
-        (userDB.correo != userData['attributes'].email) ||
-        (userDB.usuario != userData['attributes'].sub)
-      ){
-        console.log("el usuario cambio")
-        const clientUpdate = new Client();
-        await clientUpdate.connect();
-        let resultUpdate = await clientUpdate.query(`UPDATE public.usuarios
-        SET nombres=$2, apellidos=$3, correo=$4, usuario=$5, fecha_modificacion=NOW(), confirmacion=TRUE
-        WHERE id=$1;
-        `,
-        [userData['attributes'].id,userData['attributes'].given_name,userData['attributes'].family_name,userData['attributes'].email,userData['attributes'].sub]);
-        await clientUpdate.end();
+  } catch (e){
+    return {
+        error:true,
+        token:"Token invalido",
+        message:e.message
       }
-    }else{
+    
+  }
 
+
+
+  let result={};
+  try{
+    const client = new Client();
+    await client.connect();
+    result = await client.query(`select u.* from usuarios u where (u.correo = $1 or u.usuario = $2) limit 1;`,
+    [userData?.attributes?.email,userData?.attributes?.sub]);
+    await client.end();
+  }
+  catch(e){
+    return {
+      error:true,
+      message:e,
+      description:"error al obtener el usuario"
+    }
+  }
+
+  
+  
+  let userDB={}
+    if((result?.rows?.length)&&(result?.rows?.length>0)){
+      try{
+        userDB=result.rows[0];
+        userData['attributes']['id']=userDB.id;
+        if(
+          (userDB.nombres != userData?.attributes?.given_name) ||
+          (userDB.apellidos != userData?.attributes?.family_name) ||
+          (userDB.correo != userData?.attributes?.email) ||
+          (userDB.usuario != userData?.attributes?.sub)
+        ){
+          console.log("el usuario cambio")
+          const clientUpdate = new Client();
+          await clientUpdate.connect();
+          let resultUpdate = await clientUpdate.query(`UPDATE public.usuarios
+          SET nombres=$2, apellidos=$3, correo=$4, usuario=$5, fecha_modificacion=NOW(), confirmacion=TRUE
+          WHERE id=$1;
+          `,
+          [userData?.attributes?.id,userData?.attributes?.given_name,userData?.attributes?.family_name,userData?.attributes?.email,userData?.attributes?.sub]);
+          await clientUpdate.end();
+        }
+      }
+      catch(e){
+        return {
+          error:true,
+          message:e,
+          description:"error al actualizar el usuario"
+        }
+      }
+      
+    }else{
+      try{
       console.log("usuario no encontrado")
       const clientInsert = new Client();
       await clientInsert.connect();
       
       let resultInsert = await clientInsert.query(`INSERT INTO public.usuarios
       (nombres, apellidos, correo, usuario, contrasena, confirmacion, fecha_confirmacion, estado, fecha_modificacion, fecha_creacion)
-      VALUES($1, $2, $3, $4, $5, TRUE, NOW(), 1, NULL, NOW()) RETURNING id;`,[userData['attributes'].given_name,userData['attributes'].family_name,userData['attributes'].email,userData['attributes'].sub,null]);
+      VALUES($1, $2, $3, $4, NULL, TRUE, NOW(), 1, NULL, NOW()) RETURNING id;`,[userData?.attributes?.given_name,userData?.attributes?.family_name,userData?.attributes?.email,userData?.attributes?.sub]);
       await clientInsert.end();
-      userData['attributes']['id']=resultInsert.rows[0].id;
-      console.log(userData['attributes']['id']);
+      userData['attributes']['id']=resultInsert?.rows?.[0]?.id;
+      console.log(userData?.attributes?.id);
+      }
+      catch(e){
+        return {
+          error:true,
+          message:e,
+          description:"error al insertar el usuario"
+        }
+      }
+      
       //insert
     }
 
-    const clientRoles = new Client();
-    await clientRoles.connect();
-    let resultRoles = await clientRoles.query(`
-    select ru.rol from usuarios u 
-    inner join roles_usuarios ru on u.id = ru.usuario  and u.id = $1 and u.estado = '1' and ru.estado = '1';`,
-    [userData.attributes.id]);
-    await clientRoles.end();
-    let roles=resultRoles.rows.map((value) => {
-      return value?.rol;
-    })
-    userData['attributes']['roles']=roles?roles:[];
+
+    try{
+      const clientRoles = new Client();
+      await clientRoles.connect();
+      let resultRoles = await clientRoles.query(`
+      select ru.rol from usuarios u 
+      inner join roles_usuarios ru on u.id = ru.usuario  and u.id = $1 and u.estado = '1' and ru.estado = '1';`,
+      [userData?.attributes?.id]);
+      await clientRoles.end();
+      let roles=resultRoles.rows.map((value) => {
+        return value?.rol;
+      });
+      userData['attributes']['roles']=roles?roles:[];
+    }
+    catch(e){
+      return {
+        error:true,
+        message:e,
+        description:"error al obtener los roles"
+      }
+    }
+    
 
     if(checkRoles){
       if(
-        checkRoles.length == 0 ||
+        checkRoles?.length == 0 ||
         checkRoles.some((rol) => {
           if((!userData['attributes']['roles']?.includes)){
             return false;
@@ -217,14 +272,7 @@ exports.getUserData=async (event,checkRoles)=>{
 
     
     return userData;
-  } catch (e){
-    return {
-        error:true,
-        token:"Token invalido",
-        message:e.message
-      }
-    
-  }
+  
   };
 
 
