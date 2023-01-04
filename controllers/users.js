@@ -80,10 +80,7 @@ exports.signUpUser = async (event, context, callback) => {
     try{
       event['user']=await exports.getUserData(event);
       if(event?.user?.error){
-        return globals.sendResponse({
-          message: event?.user?.message,
-          error:true
-          },404);
+        return globals.sendResponse(event?.user,404);
       }
       
       return globals.sendResponse(event.user.attributes.roles);
