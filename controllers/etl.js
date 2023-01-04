@@ -28,10 +28,11 @@ try{
 module.exports.ETLValidProcesses =async (event) => {
     let insertions=[];
     try{
-      let etlTransaction = Sentry.startTransaction({
+
+      /*let etlTransaction = Sentry.startTransaction({
         name: "Proceso de ETL de Procesos Vigentes",
         op: 'etl_process'
-      });
+      });*/
     let files=fs.readdirSync(queriesDir).filter((file)=>{return /\.sql$/g.test(file);}).sort();
 
     let firstFile=files[0];
@@ -52,7 +53,7 @@ module.exports.ETLValidProcesses =async (event) => {
             return result;
         }
     }
-    etlTransaction.finish();
+    /*etlTransaction.finish();*/
     }catch(e){
       console.log(e)
     }
@@ -96,7 +97,7 @@ async function getDNCPValidProcesses(){
         access_token= response_access_token.data.access_token;
     }
     catch(e){
-        Sentry.captureException(e);
+        Sentry?.captureException(e);
     }
     
     try{
@@ -177,7 +178,7 @@ async function getDNCPValidProcesses(){
         
       }
       catch(e){
-        Sentry.captureException(e);
+        Sentry?.captureException(e);
           return {
             message: e.message,
             error:true
@@ -209,7 +210,7 @@ async function getProcessFullData(data){
         response=response_processes.data.records[0].compiledRelease;
         }
         catch(e){
-            Sentry.captureException(e);
+            Sentry?.captureException(e);
           return {
             error:true,
             message: e.message,
@@ -243,7 +244,7 @@ async function insertProcessData(data){
             message: e.message,
             error:true
         }
-        Sentry.captureException(e);
+        Sentry?.captureException(e);
       } 
     
 
@@ -288,7 +289,7 @@ async function executeQuery(query,fileName,params){
             error:true,
             query:query
         }
-        Sentry.captureException(e);
+        Sentry?.captureException(e);
     } finally {
         //childTransaction?.finish();
     }
