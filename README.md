@@ -79,3 +79,12 @@ env AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCE
 ```sh
 set AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>&&set AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>&& sls deploy --stage dev --region sa-east-1
 ```
+
+## 2.1 Obtener la API-KEY
+A la hora de iniciar el despliege por primera vez se creara la API KEY apareciendo en la consola, configurada con los parametros del plan de uso asociados en el archivo serverless.yml, la cual debemos anotar o verificar posteriormente en el servicio API Gateway en la consola de AWS, para agregarla como parametro en la variable de entorno NEXT_PUBLIC_API_KEY en el frontend
+
+```sh
+AddApiKey: ApiKeyVigiA - <API_KEY>
+```
+
+

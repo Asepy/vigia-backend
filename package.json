@@ -18,5 +18,8 @@
     "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
     "twitter-api-v2": "^1.13.0"
+  },
+  "devDependencies": {
+    "serverless-add-api-key": "^4.2.1"
   }
 }

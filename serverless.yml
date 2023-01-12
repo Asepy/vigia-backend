@@ -28,6 +28,18 @@ provider:
   region: sa-east-1
   timeout: 25
   versionFunctions: false
+custom:	
+  apiKeys:	
+    - name: ApiKeyVigiA	
+      usagePlan:	
+        name: "usage-plan-vigia"	
+        description: "Plan de uso de la api"	
+        quota:	
+          limit: 20000	
+          period: DAY	
+        throttle:	
+          rateLimit: 1000	
+          burstLimit: 500
 functions:
   testService:
     handler: handler.testService
@@ -35,6 +47,8 @@ functions:
       - http:
           method: get
           path: /testService
+          #requiere uso de la API KEY
+          private: true
   ETLValidProcesses:
     handler: handler.ETLValidProcesses
     timeout: 900
@@ -52,6 +66,8 @@ functions:
       - http:
           method: post
           path: /getProcessDNCP
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -61,6 +77,8 @@ functions:
       - http:
           method: post
           path: /getProcessDNCPOCID
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -70,6 +88,8 @@ functions:
       - http:
           method: post
           path: /checkProcessDNCP
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -80,6 +100,8 @@ functions:
       - http:
           method: post
           path: /getProcuringEntities
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -89,6 +111,8 @@ functions:
       - http:
           method: post
           path: /searchProcessDNCP
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -98,6 +122,8 @@ functions:
       - http:
           method: post
           path: /getPartyProcessesDNCP
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -108,6 +134,8 @@ functions:
       - http:
           method: post
           path: /newQuestion
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -117,6 +145,8 @@ functions:
       - http:
           method: post
           path: /getLike
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -126,6 +156,8 @@ functions:
       - http:
           method: post
           path: /addLike
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -135,6 +167,8 @@ functions:
       - http:
           method: post
           path: /getMyLikes
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -144,6 +178,8 @@ functions:
       - http:
           method: post
           path: /getMyProcesses
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -153,6 +189,8 @@ functions:
       - http:
           method: put
           path: /addQuestion
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -162,6 +200,8 @@ functions:
       - http:
           method: post
           path: /getQuestion
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -171,6 +211,8 @@ functions:
       - http:
           method: post
           path: /getMyQuestions
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -180,6 +222,8 @@ functions:
       - http:
           method: post
           path: /addOpportunitiesConfig
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -189,6 +233,8 @@ functions:
       - http:
           method: post
           path: /getOpportunitiesConfig
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -198,6 +244,8 @@ functions:
       - http:
           method: post
           path: /getOpportunities
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -207,6 +255,8 @@ functions:
       - http:
           method: post
           path: /getClaimsExtraFields
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -216,6 +266,8 @@ functions:
       - http:
           method: post
           path: /getClaimsAgent
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -225,6 +277,8 @@ functions:
       - http:
           method: post
           path: /getCountClaimsAgent
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -234,6 +288,8 @@ functions:
       - http:
           method: post
           path: /getTasksQuestions
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"            
@@ -243,6 +299,8 @@ functions:
       - http:
           method: post
           path: /getQuestionsAgent
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -252,6 +310,8 @@ functions:
       - http:
           method: post
           path: /getCountQuestionsAgent
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -261,6 +321,8 @@ functions:
       - http:
           method: post
           path: /getClaim
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -270,6 +332,8 @@ functions:
       - http:
           method: put
           path: /addClaim
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -279,6 +343,8 @@ functions:
       - http:
           method: put
           path: /addQuestionStatus
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -288,6 +354,8 @@ functions:
       - http:
           method: put
           path: /addClaimStatus
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -297,6 +365,8 @@ functions:
       - http:
           method: post
           path: /getMyClaims
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -306,6 +376,8 @@ functions:
       - http:
           method: post
           path: /getTasksClaims
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"     
@@ -315,6 +387,8 @@ functions:
       - http:
           method: post
           path: /getCountRequestIndex
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -324,6 +398,8 @@ functions:
       - http:
           method: post
           path: /getUserRoles
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -333,6 +409,8 @@ functions:
       - http:
           method: post
           path: /getProcuringEntitiesRequests
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -342,6 +420,8 @@ functions:
       - http:
           method: post
           path: /getUOCTasksInfo
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -351,6 +431,8 @@ functions:
       - http:
           method: post
           path: /getUOCRequests
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -360,6 +442,8 @@ functions:
       - http:
           method: post
           path: /getUOCContactPoint
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -370,6 +454,8 @@ functions:
       - http:
           method: post
           path: /getRequestsReport
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -379,6 +465,8 @@ functions:
       - http:
           method: post
           path: /getCountRequestReport
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -389,6 +477,8 @@ functions:
       - http:
           method: post
           path: /createTweet
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -398,6 +488,8 @@ functions:
       - http:
           method: post
           path: /deleteTweet
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -407,6 +499,8 @@ functions:
       - http:
           method: post
           path: /getUsersTweets
+          #requiere uso de la API KEY
+          private: true
           cors:
             origin: "*"
             headers: "*"
@@ -415,7 +509,9 @@ functions:
       events:
         - http:
             method: post
-            path: /updateRoles 
+            path: /updateRoles
+            #requiere uso de la API KEY
+            private: true
             cors:
               origin: "*"
               headers: "*"
@@ -425,6 +521,8 @@ functions:
         - http:
             method: post
             path: /getUsers
+            #requiere uso de la API KEY
+            private: true
             cors:
               origin: "*"
               headers: "*"
@@ -434,6 +532,8 @@ functions:
         - http:
             method: post
             path: /getRoles
+            #requiere uso de la API KEY
+            private: true
             cors:
               origin: "*"
               headers: "*"
@@ -491,3 +591,6 @@ functions:
 
 #dependencies:
 #  - pg
+
+plugins:
+  - serverless-add-api-key
