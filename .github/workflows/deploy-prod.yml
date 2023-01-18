@@ -33,8 +33,11 @@ jobs:
           echo PGUSER=${{ secrets.PROD_PGUSER }} >> .env
           echo REQUEST_TOKEN_API_DNCP=${{ secrets.REQUEST_TOKEN_API_DNCP}} >> .env
           echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
-          echo EMAIL_FROM=${{ secrets.EMAIL_FROM }} >> .env
-          echo EMAIL_PASS=${{ secrets.EMAIL_PASS }} >> .env
+          echo SMTP_USER=${{ secrets.SMTP_USER }} >> .env
+          echo SMTP_PASS=${{ secrets.SMTP_PASS }} >> .env
+          echo SMTP_HOST=${{ secrets.SMTP_HOST }} >> .env
+          echo SMTP_PORT=${{ secrets.SMTP_PORT }} >> .env
+          echo SMTP_FROM_EMAIL=${{ secrets.SMTP_FROM_EMAIL }} >> .env
           cat .env
       - name: Deployando con Serverless
         run: sls deploy --stage prod --region sa-east-1

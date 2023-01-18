@@ -182,12 +182,12 @@ from reclamos r
   
   result['input']=event;
   return globals.sendResponse({
-    data:{
+
       ...result.rows[0],
       ...{
         "extraQuestions":resultExtra.rows
       }
-    }
+    
   });
 };
 

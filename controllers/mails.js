@@ -7,23 +7,20 @@ var templatesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env
 
 exports.sendMail=async (data)=>{
     let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
         secure: true, // true for 465, false for other ports
         auth:{
-                /*type:'OAuth2',
-                user:process.env.EMAIL_FROM,
-                serviceClient: process.env.EMAIL_SERVICE_CLIENT,
-                privateKey:process.env.EMAIL_PRIVATE_KEY,*/
-                user: process.env.EMAIL_FROM, // generated ethereal user
-                pass: process.env.EMAIL_PASS, // generated ethereal password
+          
+                user: process.env.SMTP_USER, 
+                pass: process.env.SMTP_PASS,
         },
         tls: { rejectUnauthorized: false }
       });
       try{
         let response=await transporter.sendMail(
             {
-                from: `"VigiA" <${process.env.EMAIL_FROM}>`,
+                from: `"VigiA" <${process.env.SMTP_FROM_EMAIL}>`,
                 to: data.to, 
                 subject: data.subject, 
                 html: data.html

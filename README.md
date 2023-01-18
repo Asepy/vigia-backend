@@ -60,9 +60,12 @@ SENTRY_DSN=""
 COGNITO_CLIENT_ID=""
 COGNITO_USER_POOL_ID=""
 
-# Credenciales de Usuario para envio de correos
-EMAIL_FROM=""
-EMAIL_PASS=""
+# Credenciales de Usuario SMTP para envio de correos
+SMTP_USER=""
+SMTP_PASS=""
+SMTP_HOST=""
+SMTP_PORT=""
+SMTP_FROM_EMAIL=""
 
 # Url del Frontend
 FRONTEND_URL=""
