@@ -646,7 +646,7 @@ exports.addClaimStatus =async (event) => {
       (id_reclamo, tarea,justificacion, grupo_encargado, usuario_encargado, estado, fecha_visualizacion, fecha_modificacion,fecha_finalizacion, fecha_creacion)
       (select (select r.id from reclamos r where r.enlace =  $1 limit 1), $2,$4, NULL, NULL, '1',NULL,NULL,NULL, NOW() 
       where exists  (select ru.rol from usuarios u 
-        inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $1 and ru.rol in ('SUPER','ASEPY','SUPERASEPY') and u.estado = '1' and ru.estado='1'
+        inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $3 and ru.rol in ('SUPER','ASEPY','SUPERASEPY') and u.estado = '1' and ru.estado='1'
         )
       )
       RETURNING id;`,[consulta.enlace,consulta.tarea,consulta.usuario,consulta.justificacion]);
