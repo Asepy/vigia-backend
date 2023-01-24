@@ -5,6 +5,16 @@ const axios = require('axios');
 const {getUserData} = require('./users');
 exports.getProcessDNCP = async (event) => {
     const payload=JSON.parse(event.body);
+
+    let checkParams=globals.validateParams(["id"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
+
     let access_token=''
     
     try{
@@ -88,6 +98,14 @@ exports.getProcessDNCP = async (event) => {
   
   exports.getProcessDNCPOCID = async (event) => {
     const payload=JSON.parse(event.body);
+    let checkParams=globals.validateParams(["ocid"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
     let access_token=''
     
     try{
@@ -144,7 +162,14 @@ exports.getProcessDNCP = async (event) => {
 
   exports.checkProcessDNCP = async (event) => {
     const payload=JSON.parse(event.body);
-    
+    let checkParams=globals.validateParams(["id"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
     let access_token=''
     
     try{
@@ -403,6 +428,14 @@ async function getProcessFullData(data){
 
 exports.getPartyProcessesDNCP = async (event) => {
   const payload=JSON.parse(event.body);
+  let checkParams=globals.validateParams(["ruc"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
   let access_token='';
   let filters={
     "parties.id":payload.ruc

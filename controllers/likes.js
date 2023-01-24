@@ -16,6 +16,15 @@ module.exports.addLike =async (event) => {
     }
     try{
       payload=JSON.parse(event.body);
+
+      let checkParams=globals.validateParams(["call","ocid","status","title"],payload);
+      if(checkParams.error){
+        return globals.sendResponse({
+          message: checkParams.message,
+          error:true,
+          input:event
+          },404);
+      }
       if(!globals.validateString(payload.call)){
         return globals.sendResponse({
             message: "Llamado no enviado",

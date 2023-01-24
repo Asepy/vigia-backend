@@ -11,6 +11,14 @@ module.exports.createTweet = async (event) => {
   let data = {};
   try {
     const { tweet, enlace, tipo } = JSON.parse(event.body);
+    let checkParams=globals.validateParams(["tweet","enlace","tipo"],JSON.parse(event.body));
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
     const user = await getUserData(event,['ASEPY','SUPERASEPY','SUPER']);
     if (user.error) {
       return globals.sendResponse(
@@ -22,6 +30,8 @@ module.exports.createTweet = async (event) => {
         403
       );
     }
+
+
 
 
     const obj =
@@ -56,6 +66,14 @@ module.exports.deleteTweet = async (event) => {
   let data = {};
   try {
     const { tweet_id } = JSON.parse(event.body);
+    let checkParams=globals.validateParams(["tweet_id"],JSON.parse(event.body));
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
     const user = await getUserData(event,['ASEPY','SUPERASEPY','SUPER']);
     if (user.error) {
       return globals.sendResponse(

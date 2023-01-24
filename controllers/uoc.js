@@ -10,6 +10,14 @@ module.exports.getUOCTasksInfo =async (event) => {
     let consulta={};
     try{
       payload=JSON.parse(event.body);
+      let checkParams=globals.validateParams(["entity"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
       consulta={
         entidad:payload.entity
     };
@@ -139,6 +147,14 @@ await client.end();
 
     try{
       payload=JSON.parse(event.body);
+      let checkParams=globals.validateParams(["entity"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
       consulta={
         entidad:payload.entity
       };
@@ -316,6 +332,14 @@ select * from join_task_questions
     let consulta={};
     try{
       payload=JSON.parse(event.body);
+      let checkParams=globals.validateParams(["entity"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
       consulta={
         entidad:payload.entity
     };

@@ -26,6 +26,7 @@ module.exports.getClaimsAgent = claims.getClaimsAgent;
 module.exports.getCountClaimsAgent = claims.getCountClaimsAgent;
 module.exports.addClaimStatus = claims.addClaimStatus;
 module.exports.getTasksClaims = claims.getTasksClaims;
+module.exports.updateClaimStatusVisualization = claims.updateClaimStatusVisualization;
 /**Consultas */
 module.exports.addQuestion = questions.addQuestion;
 module.exports.getMyQuestions = questions.getMyQuestions;
@@ -34,6 +35,7 @@ module.exports.getQuestionsAgent = questions.getQuestionsAgent;
 module.exports.getCountQuestionsAgent = questions.getCountQuestionsAgent;
 module.exports.addQuestionStatus = questions.addQuestionStatus;
 module.exports.getTasksQuestions = questions.getTasksQuestions;
+module.exports.updateQuestionStatusVisualization = questions.updateQuestionStatusVisualization;
 /**Oportunidades */
 module.exports.addOpportunitiesConfig = opportunities.addOpportunitiesConfig;
 module.exports.getOpportunitiesConfig = opportunities.getOpportunitiesConfig;

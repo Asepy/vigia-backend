@@ -16,6 +16,14 @@ module.exports.addOpportunitiesConfig =async (event) => {
     try{
       payload=JSON.parse(event.body);
 
+      let checkParams=globals.validateParams(["categories_lvl1","keywords","formalization","experience"],payload);
+      if(checkParams.error){
+        return globals.sendResponse({
+          message: checkParams.message,
+          error:true,
+          input:event
+          },404);
+      }
       
       consulta={
      

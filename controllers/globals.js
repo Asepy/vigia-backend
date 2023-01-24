@@ -71,3 +71,16 @@ exports.getTextKeyword=(text)=>{
     textKeyword=textKeyword.replace(/ú/,'u');
     return textKeyword;
   }
+
+
+  exports.validateParams=(params,object)=>{
+    for(let param of params){
+        if(!exports.validateString(object[param])){
+            return {
+                error:true,
+                message:`no se recibio el parámetro ${param}`
+            }
+        }
+    }
+    return {ok:true};
+  }

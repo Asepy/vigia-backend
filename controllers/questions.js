@@ -217,6 +217,14 @@ from consultas c
   
     try{
       payload=JSON.parse(event.body);
+      let checkParams=globals.validateParams(["question","better","stage","email","call","ocid","entity"],payload);
+      if(checkParams.error){
+        return globals.sendResponse({
+          message: checkParams.message,
+          error:true,
+          input:event
+          },404);
+      }
       consulta={
       enlace:"E"+(new Date().getTime())+"C"+payload.call.trim(),
       consulta:payload.question,
@@ -642,3 +650,80 @@ from consultas c
     result['input']=event;
     return globals.sendResponse(result.rows);
   };
+
+
+  
+exports.updateQuestionStatusVisualization =async (event) => {
+  //const { Pool, Client } = require('pg');crypto.createHash('SHA256').update((new Date().getTime())+"CLAIM"+payload.call).digest("hex")
+  let payload={};
+  let consulta={};
+
+
+  event['user']=await getUserData(event,['ASEPY','SUPERASEPY']);
+    if(event?.user?.error){
+      return globals.sendResponse({
+        message: event?.user?.message,
+        error:true
+        },404);
+    }
+  try{
+
+    payload=JSON.parse(event.body);
+    let checkParams=globals.validateParams(["link"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
+    consulta={
+    enlace:payload.link,
+    usuario:(event?.user?.attributes?.id)?(event?.user?.attributes?.id):null
+  };
+  }catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+  } 
+  
+
+  
+  let result={};
+  
+    try{
+      const client = new Client();
+      await client.connect();
+      
+      result = await client.query(`UPDATE public.bitacora_consultas_estados
+      SET fecha_visualizacion=NOW()
+      WHERE id_consulta=(select c.id from consultas c where c.enlace =  $1 limit 1)
+      and estado = '1'
+      and exists  (select ru.rol from usuarios u 
+        inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $2 and ru.rol in ('SUPER','ASEPY','SUPERASEPY') and u.estado = '1' and ru.estado = '1'
+       );`,[consulta.enlace,consulta.usuario]);
+              
+
+      await client.end();
+      
+      }
+      
+      catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+    }
+  
+
+  
+  result['input']=event;
+  
+
+  return globals.sendResponse(
+    {ok:true, result:result.rows}
+  );
+};

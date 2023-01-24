@@ -348,12 +348,34 @@ functions:
           cors:
             origin: "*"
             headers: "*"
+  updateQuestionStatusVisualization:
+    handler: handler.updateQuestionStatusVisualization
+    events:
+      - http:
+          method: post
+          path: /updateQuestionStatusVisualization
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
   addClaimStatus:
     handler: handler.addClaimStatus
     events:
       - http:
           method: put
           path: /addClaimStatus
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
+  updateClaimStatusVisualization:
+    handler: handler.updateClaimStatusVisualization
+    events:
+      - http:
+          method: post
+          path: /updateClaimStatusVisualization
           #requiere uso de la API KEY
           private: true
           cors:
