@@ -192,7 +192,14 @@ from reclamos r
       where 
 	  r.enlace = $1;`,[consulta.enlace]);
 
-
+      if(result.rows.length===0){
+        return globals.sendResponse({
+          message: "reclamo no disponible",
+          code:"NOTFOUND",
+          error:true,
+          input:event
+          },404);
+      }
       resultExtra = await client.query(`SELECT campos.*,respuestas.respuesta, respuestas.id id_respuesta FROM public.respuestas_campos respuestas INNER JOIN
       public.campos campos ON campos.nombre = respuestas.nombre_campo
       WHERE respuestas.id_reclamo = $1 AND respuestas.estado = '1';`,[result.rows[0].id]);
@@ -320,6 +327,7 @@ module.exports.getMyClaims =async (event) => {
     on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
     inner join tareas t on b.tarea=t.nombre
      WHERE r.usuario = $1
+     and r.estado = '1'
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')}
@@ -341,6 +349,7 @@ from reclamos r
     on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
     inner join tareas t on b.tarea=t.nombre
         WHERE r.usuario = $1
+        and r.estado = '1'
         ${filterArray.map((filter)=>{
           return filter.query;
         }).join('\n')}
@@ -500,6 +509,7 @@ module.exports.getClaimsAgent =async (event) => {
     where exists  (select ru.rol from usuarios u 
       inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $1 and ru.rol in ('SUPER','ASEPY','SUPERASEPY') and u.estado = '1' and ru.estado='1'
       )
+      and r.estado = '1'
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')}
@@ -523,6 +533,7 @@ module.exports.getClaimsAgent =async (event) => {
     where exists  (select ru.rol from usuarios u 
       inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $1 and ru.rol in ('SUPER','ASEPY','SUPERASEPY') and u.estado = '1' and ru.estado='1'
       )
+      and r.estado = '1'
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')}
@@ -604,6 +615,7 @@ module.exports.getCountClaimsAgent =async (event) => {
         )
       and b.fecha_visualizacion is null
       and t.nombre in ('ENVIADO')
+      and r.estado = '1'
       and t.encargado like '%ASEPY%';
       `,[...[consulta.usuario]
         ]);
@@ -760,7 +772,7 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
     inner join tareas t on b.tarea=t.nombre 
-    where t.nombre like '%RESUELTO%') as reclamos_resueltos,
+    where t.nombre like '%RESUELTO%'  and r.estado = '1') as reclamos_resueltos,
     
     (select COUNT(*) 
       from consultas c
@@ -771,7 +783,7 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
     inner join tareas t on b.tarea=t.nombre 
-    where t.nombre like '%RESUELTO%') as consultas_resueltas,
+    where t.nombre like '%RESUELTO%'  and c.estado = '1') as consultas_resueltas,
     
     ((select COUNT(*) as consultas_en_proceso
       from consultas c
@@ -782,7 +794,7 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
     inner join tareas t on b.tarea=t.nombre 
-    where t.encargado not in ('Usuario'))
+    where t.encargado not in ('Usuario')  and c.estado = '1')
     +
        (select COUNT(*) as reclamos_en_proceso
       from reclamos r
@@ -793,7 +805,7 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
     inner join tareas t on b.tarea=t.nombre 
-    where t.encargado not in ('Usuario'))) as solicitudes_en_proceso
+    where t.encargado not in ('Usuario')  and r.estado = '1')) as solicitudes_en_proceso
 
       `,[...[]
         ]);

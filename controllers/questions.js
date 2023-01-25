@@ -99,6 +99,7 @@ module.exports.getMyQuestions =async (event) => {
     on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
     inner join tareas t on b.tarea=t.nombre 
      WHERE c.usuario = $1
+     and c.estado = '1'
      
           ${filterArray.map((filter)=>{
             return filter.query;
@@ -121,6 +122,7 @@ module.exports.getMyQuestions =async (event) => {
     on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
     inner join tareas t on b.tarea=t.nombre 
                   WHERE c.usuario = $1
+                  and c.estado = '1'
             ${filterArray.map((filter)=>{
               return filter.query;
             }).join('\n')}
@@ -205,6 +207,14 @@ from consultas c
       } 
     
     result['input']=event;
+    if(result.rows.length===0){
+      return globals.sendResponse({
+        message: "consulta no disponible",
+        code:"NOTFOUND",
+        error:true,
+        input:event
+        },404);
+    }
     return globals.sendResponse(result.rows[0]);
   };
   
@@ -412,6 +422,7 @@ from consultas c
         where exists  (select ru.rol from usuarios u 
         inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $1 and ru.rol in ('SUPER','ASEPY','SUPERASEPY','SUPERASEPY') and u.estado = '1' and ru.estado = '1'
         )
+        and c.estado = '1'
           ${filterArray.map((filter)=>{
             return filter.query;
           }).join('\n')}
@@ -435,7 +446,7 @@ from consultas c
           where exists  (select ru.rol from usuarios u 
           inner join roles_usuarios ru on u.id =ru.usuario  and u.id = $1 and ru.rol in ('SUPER','ASEPY','SUPERASEPY','SUPERASEPY') and u.estado = '1' and ru.estado = '1'
           )
-          
+          and c.estado = '1'
             ${filterArray.map((filter)=>{
               return filter.query;
             }).join('\n')}
@@ -514,6 +525,7 @@ from consultas c
         )
         and b.fecha_visualizacion is null
         and t.nombre in ('ENVIADO')
+        and c.estado = '1'
         and t.encargado like '%ASEPY%';
         `,[...[consulta.usuario]
           ]);

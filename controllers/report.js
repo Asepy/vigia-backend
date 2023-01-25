@@ -114,6 +114,7 @@ const {getUserData} = require('./users');
             ) bm
             on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
             inner join tareas t on b.tarea=t.nombre
+            where r.estado = '1'
             ),
             join_task_questions as (
             select 
@@ -137,6 +138,7 @@ const {getUserData} = require('./users');
             ) bm
             on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
             inner join tareas t on b.tarea=t.nombre 
+            where c.estado = '1'
             ),
             requests as (
             select * from join_task_claims union
@@ -431,6 +433,7 @@ module.exports.getCountRequestReport =async (event) => {
             ) bm
             on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
             inner join tareas t on b.tarea=t.nombre
+            where r.estado = '1'
             ),
             join_task_questions as (
             select 
@@ -454,6 +457,7 @@ module.exports.getCountRequestReport =async (event) => {
             ) bm
             on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
             inner join tareas t on b.tarea=t.nombre 
+            where c.estado = '1'
             ),
             pre_requests as (
             select * from join_task_claims union

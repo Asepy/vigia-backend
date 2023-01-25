@@ -37,11 +37,11 @@ module.exports.getUOCTasksInfo =async (event) => {
         await client.connect();
         result = await client.query(`
 with claims as (
-            select r.* from reclamos r where r.entidad = $1
+            select r.* from reclamos r where r.entidad = $1  and r.estado = '1'
 ),
 
 questions as (
-            select c.* from consultas c where c.entidad = $1
+            select c.* from consultas c where c.entidad = $1 and c.estado = '1'
 ),
 
 join_task_claims as (
@@ -232,11 +232,11 @@ await client.end();
         await client.connect();
         result = await client.query(`
         with claims as (
-          select r.* from reclamos r where r.entidad = $1
+          select r.* from reclamos r where r.entidad = $1 and r.estado = '1'
 ),
 
 questions as (
-          select c.* from consultas c where c.entidad = $1
+          select c.* from consultas c where c.entidad = $1 and c.estado = '1'
 ),
 
 join_task_claims as (
