@@ -847,8 +847,8 @@ exports.getProcuringEntitiesRequests = async (event) => {
         
         const client = new Client();
         await client.connect();
-        result = await client.query(`select distinct entidad as entidad  from consultas c union
-        (select distinct entidad as entidad from reclamos r)
+        result = await client.query(`select distinct entidad as entidad  from consultas c where c.estado = '1' union
+        (select distinct entidad as entidad from reclamos r where r.estado = '1')
         order by entidad asc;`,[]);
         await client.end();
         let IDs=result.rows.map((data)=>{return data.entidad;})
