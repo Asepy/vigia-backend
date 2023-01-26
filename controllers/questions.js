@@ -195,7 +195,8 @@ from consultas c
     inner join tareas t on b.tarea=t.nombre
     left join usuarios u on u.id = c.usuario
       where 
-	  c.enlace = $1;`,[consulta.enlace]);
+	  c.enlace = $1
+    and c.estado = '1';`,[consulta.enlace]);
         await client.end();
         }
         catch(e){

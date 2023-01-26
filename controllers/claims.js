@@ -190,7 +190,8 @@ from reclamos r
     inner join tareas t on b.tarea=t.nombre
     left join usuarios u on u.id = r.usuario
       where 
-	  r.enlace = $1;`,[consulta.enlace]);
+	  r.enlace = $1
+    and r.estado = '1';`,[consulta.enlace]);
 
       if(result.rows.length===0){
         return globals.sendResponse({
