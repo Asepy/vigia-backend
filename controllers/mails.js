@@ -5,7 +5,7 @@ const globals = require('./globals');
 const { Pool, Client } = require('pg');
 const { parseUrl } = require("@sentry/utils");
 var templatesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env.LAMBDA_TASK_ROOT:".."}/mail_templates/`;
-
+const {getUserData} = require('./users');
 exports.sendMail=async (data)=>{
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -171,7 +171,7 @@ exports.sendStatusTask=async (data)=>{
       payload=JSON.parse(event.body);
 
       
-    event['user']=await exports.getUserData(event,['ASEPY','SUPERASEPY','SUPER']);
+    event['user']=await getUserData(event,['ASEPY','SUPERASEPY','SUPER']);
       if(event?.user?.error){
         return globals.sendResponse({
           message: event?.user?.message,
