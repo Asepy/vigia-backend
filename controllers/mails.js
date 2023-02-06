@@ -185,8 +185,8 @@ exports.sendStatusTask=async (data)=>{
         asunto:payload.subject,
         de:process.env.SMTP_FROM_EMAIL,
         para:payload.to,
-        cc:payload.cc?payload.cc:null,
-        cco:payload.cco?payload.cco:null,
+        cc:(payload.cc&&payload.cc.length>0)?payload.cc.join(','):null,
+        cco:(payload.cco&&payload.cco.length>0)?payload.cco.join(','):null,
         
         id_reclamo_consulta:payload.id,
         tipo_solicitud:payload.type_request,
