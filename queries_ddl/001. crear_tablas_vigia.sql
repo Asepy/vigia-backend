@@ -376,3 +376,40 @@ ALTER TABLE IF EXISTS public.bitacora_consultas_estados
 
 COMMENT ON TABLE public.bitacora_consultas_estados
     IS 'Tabla donde se almacena la bitacora y asignacion de tareas por las que puede pasar una consulta';
+
+
+
+-- ****************************************************
+-- CREACION DE TABLA DE CORREOS
+-- ****************************************************
+
+    CREATE TABLE IF NOT EXISTS public.correos
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+
+    mensaje text NOT NULL,
+    asunto text NOT NULL,
+    de text NOT NULL,
+    para text NOT NULL,
+    cc text NOT NULL,
+    cco text NOT NULL,
+    id_reclamo_consulta character varying(255) NULL,
+    tipo_solicitud character varying(255) NULL,
+    usuario bigint  NULL,
+    tipo_correo character varying(255)  NOT NULL,
+    llamado character varying(255),
+    ocid character varying(255),
+    estado character varying(255)  NOT NULL,
+    fecha_modificacion timestamptz,
+    fecha_creacion timestamptz NOT NULL,
+    CONSTRAINT correos_pk PRIMARY KEY (id),
+    CONSTRAINT correos_usuario_fk FOREIGN KEY (usuario) REFERENCES usuarios(id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.correos
+    OWNER to postgres;
+
+COMMENT ON TABLE public.correos
+    IS 'Tabla donde se almacenan los correos enviados sobre los llamados';

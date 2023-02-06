@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const fs = require('fs');
 const globals = require('./globals');
 const { Pool, Client } = require('pg');
+const { parseUrl } = require("@sentry/utils");
 var templatesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env.LAMBDA_TASK_ROOT:".."}/mail_templates/`;
 
 exports.sendMail=async (data)=>{
@@ -23,7 +24,9 @@ exports.sendMail=async (data)=>{
                 from: `"VigiA" <${process.env.SMTP_FROM_EMAIL}>`,
                 to: data.to, 
                 subject: data.subject, 
-                html: data.html
+                html: data.html,
+                cc:data.cc?data.cc:undefined,
+                bcc:data.cco?data.cco:undefined
             }
           )
           console.log(response)
@@ -149,3 +152,131 @@ exports.sendStatusTask=async (data)=>{
     }
     
   }
+
+  exports.sendDirectMail=async (event)=>{
+    
+     let payload={};
+     let consulta={};
+     
+     let checkParams=globals.validateParams(["call","ocid","to","message","subject","type_request","id","type_mail"],JSON.parse(event.body));
+     if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
+
+     try{
+      payload=JSON.parse(event.body);
+
+      
+    event['user']=await exports.getUserData(event,['ASEPY','SUPERASEPY','SUPER']);
+      if(event?.user?.error){
+        return globals.sendResponse({
+          message: event?.user?.message,
+          error:true
+          },404);
+      }
+
+
+      consulta={
+        mensaje:payload.message,
+        asunto:payload.subject,
+        de:process.env.SMTP_FROM_EMAIL,
+        para:payload.to,
+        cc:payload.cc?payload.cc:null,
+        cco:payload.cco?payload.cco:null,
+        
+        id_reclamo_consulta:payload.id,
+        tipo_solicitud:payload.type_request,
+
+        usuario:(event?.user?.attributes?.id)?(event?.user?.attributes?.id):null,
+
+
+        
+        tipo_correo:payload.type_mail, 
+        llamado:payload.call,
+        ocid:payload.ocid,
+        
+        
+        estado:1, 
+        fecha_modificacion:null, 
+        fecha_creacion:''
+      };
+
+
+     }catch(e){
+      return globals.sendResponse( {
+        message: e.message,
+        error:true,
+        input:event
+      },404);
+    }
+       
+       
+       let result={};
+    try{
+
+      let transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: true, // true for 465, false for other ports
+        auth:{
+          
+                user: process.env.SMTP_USER, 
+                pass: process.env.SMTP_PASS,
+        },
+        tls: { rejectUnauthorized: false }
+      });
+     
+        let response=await transporter.sendMail(
+            {
+                from: `"VigiA" <${process.env.SMTP_FROM_EMAIL}>`,
+                to: consulta.para, 
+                subject: consulta.asunto, 
+                html: consulta.mensaje,
+                cc:consulta.cc,
+                bcc:consulta.cco
+            }
+          );
+          console.log(response)
+          const client = new Client();
+      await client.connect();
+      //const res = await client.query//await pool.query
+      result = await client.query(`INSERT INTO public.correos
+      (mensaje,asunto,de, para, cc, cco, id_reclamo_consulta, tipo_solicitud, usuario, tipo_correo,llamado,ocid, estado, fecha_modificacion, fecha_creacion)
+      VALUES($1, $2, $3, $4, $5, $6, $7,$8, $9, $10, $11, NULL, NOW());
+       RETURNING id;`,[consulta.mensaje,consulta.asunto,consulta.de,consulta.para, consulta.cc,consulta.cco,consulta.id_reclamo_consulta,consulta.tipo_solicitud,consulta.usuario,
+        consulta.tipo_correo,consulta.llamado,consulta.ocid,consulta.estado]);
+        
+      await client.end();
+
+
+
+
+
+      }
+      catch(e){
+        console.log(e)
+        return globals.sendResponse( {
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+      }
+
+      
+      
+      
+    
+    return globals.sendResponse({
+      data:result.rows[0]
+    });
+     
+
+  }
+
+
+
+

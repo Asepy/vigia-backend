@@ -10,6 +10,7 @@ const likes = require("./controllers/likes");
 const uoc = require("./controllers/uoc");
 const twitter = require("./controllers/twitter");
 const report = require("./controllers/report");
+const mails = require("./controllers/mails");
 /**Usuarios */
 module.exports.signUpUser = users.signUpUser;
 module.exports.signUpUserConfirm = users.signUpUserConfirm;
@@ -73,6 +74,9 @@ module.exports.getUsersTweets = twitter.getUsersTweets;
 
 module.exports.getRequestsReport = report.getRequestsReport;
 module.exports.getCountRequestReport = report.getCountRequestReport;
+
+/*Correos */
+module.exports.sendDirectMail = mails.sendDirectMail;
 /*TEST*/
 const { Client } = require("pg");
 module.exports.testService = async (event) => {
