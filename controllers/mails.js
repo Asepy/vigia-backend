@@ -184,7 +184,7 @@ exports.sendStatusTask=async (data)=>{
         mensaje:payload.message,
         asunto:payload.subject,
         de:process.env.SMTP_FROM_EMAIL,
-        para:payload.to,
+        para:payload.to.join(','),
         cc:(payload.cc&&payload.cc.length>0)?payload.cc.join(','):null,
         cco:(payload.cco&&payload.cco.length>0)?payload.cco.join(','):null,
         
