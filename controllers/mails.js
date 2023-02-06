@@ -245,8 +245,8 @@ exports.sendStatusTask=async (data)=>{
       await client.connect();
       //const res = await client.query//await pool.query
       result = await client.query(`INSERT INTO public.correos
-      (mensaje,asunto,de, para, cc, cco, id_reclamo_consulta, tipo_solicitud, usuario, tipo_correo,llamado,ocid, estado, fecha_modificacion, fecha_creacion)
-      VALUES($1, $2, $3, $4, $5, $6, $7,$8, $9, $10, $11, NULL, NOW())
+      mensaje, asunto, de, para, cc, cco, id_reclamo_consulta, tipo_solicitud, usuario, tipo_correo, llamado, ocid, estado, fecha_modificacion, fecha_creacion)
+      VALUES($1, $2, $3, $4, $5, $6, $7,$8, $9, $10, $11,$12,$13, NULL, NOW())
        RETURNING id;`,[consulta.mensaje,consulta.asunto,consulta.de,consulta.para, consulta.cc,consulta.cco,consulta.id_reclamo_consulta,consulta.tipo_solicitud,consulta.usuario,
         consulta.tipo_correo,consulta.llamado,consulta.ocid,consulta.estado]);
         
