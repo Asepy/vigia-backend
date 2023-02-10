@@ -773,7 +773,7 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
     inner join tareas t on b.tarea=t.nombre 
-    where t.nombre like '%RESUELTO%'  and r.estado = '1') as reclamos_resueltos,
+    where t.nombre like '%RESUELTO_SATISFACTORIAMENTE%'  and r.estado = '1') as reclamos_resueltos,
     
     (select COUNT(*) 
       from consultas c
@@ -784,7 +784,7 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
     inner join tareas t on b.tarea=t.nombre 
-    where t.nombre like '%RESUELTO%'  and c.estado = '1') as consultas_resueltas,
+    where t.nombre like '%RESUELTO_RESPUESTA%'  and c.estado = '1') as consultas_resueltas,
     
     ((select COUNT(*) as consultas_en_proceso
       from consultas c
