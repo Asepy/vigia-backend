@@ -663,7 +663,7 @@ module.exports.setLogout =async (event) => {
       const client = new Client();
       await client.connect();
       result = await client.query(`
-      UPDATE public.usuarios
+      UPDATE public.logeos
       SET fecha_finalizacion = NOW()
       WHERE usuario = $1 AND id = $2 AND fecha_finalizacion IS NOT NULL;`,[consulta.usuario,consulta.logeo]);
       await client.end();
