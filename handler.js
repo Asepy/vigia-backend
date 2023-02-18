@@ -18,6 +18,8 @@ module.exports.getUserRoles = users.getUserRoles;
 module.exports.getUsers = users.getUsers;
 module.exports.updateRoles = users.updateRoles;
 module.exports.getRoles = users.getRoles;
+module.exports.setLogin = users.setLogin;
+module.exports.setLogout = users.setLogout;
 /**Reclamos */
 module.exports.getClaimsExtraFields = claims.getClaimsExtraFields;
 module.exports.addClaim = claims.addClaim;

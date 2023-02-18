@@ -559,6 +559,28 @@ functions:
             cors:
               origin: "*"
               headers: "*"
+  setLogin:
+      handler: handler.setLogin
+      events:
+        - http:
+            method: post
+            path: /setLogin
+            #requiere uso de la API KEY
+            private: true
+            cors:
+              origin: "*"
+              headers: "*"
+  setLogout:
+      handler: handler.setLogout
+      events:
+        - http:
+            method: post
+            path: /setLogout
+            #requiere uso de la API KEY
+            private: true
+            cors:
+              origin: "*"
+              headers: "*"
   sendDirectMail:
       handler: handler.sendDirectMail
       events:

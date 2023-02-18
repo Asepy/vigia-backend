@@ -82,6 +82,7 @@ exports.signUpUser = async (event, context, callback) => {
       if(event?.user?.error){
         return globals.sendResponse(event?.user,404);
       }
+
       
       return globals.sendResponse(event.user.attributes.roles);
 
@@ -573,4 +574,108 @@ module.exports.getRoles =async (event) => {
   
   result['input']=event;
   return globals.sendResponse(result.rows);
+};
+
+module.exports.setLogin =async (event) => {
+  let payload={};
+  let consulta={};
+  event['user']=await exports.getUserData(event);
+  if(event?.user?.error){
+    return globals.sendResponse({
+      message: event?.user?.message,
+      error:true
+      },404);
+  }
+
+  try{
+    payload=JSON.parse(event.body);
+    consulta={
+      usuario:(event?.user?.attributes?.id)?(event?.user?.attributes?.id):null
+    };
+  }catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+  } 
+  
+  let result={};
+    try{
+      const client = new Client();
+      await client.connect();
+      result = await client.query(`
+      INSERT INTO public.logeos
+      (usuario, fecha_inicio, fecha_finalizacion)
+      VALUES($1, NOW(),NULL) RETURNING id;`,[consulta.usuario]);
+      await client.end();
+      }
+      catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+    } 
+  
+ 
+  return globals.sendResponse({id:result.rows[0].id});
+};
+
+
+module.exports.setLogout =async (event) => {
+  let payload={};
+  let consulta={};
+  
+
+  event['user']=await exports.getUserData(event);
+  if(event?.user?.error){
+    return globals.sendResponse({
+      message: event?.user?.message,
+      error:true
+      },404);
+  }
+  
+  try{
+    payload=JSON.parse(event.body);
+    let checkParams=globals.validateParams(["login"],payload);
+    if(checkParams.error){
+      return globals.sendResponse({
+        message: checkParams.message,
+        error:true,
+        input:event
+        },404);
+    }
+    consulta={
+      usuario:(event?.user?.attributes?.id)?(event?.user?.attributes?.id):null,
+      logeo:payload.login?payload.login:null
+    };
+  }catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+  } 
+  
+  let result={};
+    try{
+      const client = new Client();
+      await client.connect();
+      result = await client.query(`
+      UPDATE public.usuarios
+      SET fecha_finalizacion = NOW()
+      WHERE usuario = $1 AND id = $2 AND fecha_finalizacion IS NOT NULL;`,[consulta.usuario,consulta.logeo]);
+      await client.end();
+      }
+      catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+    } 
+  
+ 
+  return globals.sendResponse({ok:true,result:result.rows});
 };

@@ -413,3 +413,26 @@ ALTER TABLE IF EXISTS public.correos
 
 COMMENT ON TABLE public.correos
     IS 'Tabla donde se almacenan los correos enviados sobre los llamados';
+
+
+
+-- ****************************************************
+-- CREACION DE TABLA DE LOGEOS
+-- ****************************************************
+
+    CREATE TABLE IF NOT EXISTS public.logeos
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    usuario bigint  NOT NULL,
+    fecha_inicio timestamptz NOT NULL,
+    fecha_finalizacion timestamptz NULL,
+    CONSTRAINT logeos_usuario_fk FOREIGN KEY (usuario) REFERENCES usuarios(id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.logeos
+    OWNER to postgres;
+
+COMMENT ON TABLE public.logeos
+    IS 'Tabla donde se almacenan los logeos de los usuarios';
