@@ -11,8 +11,11 @@ module.exports.getCountData  =async (event) => {
     try{
         
         let user = basicAuth(event);
+
+
         if(!user){
             return globals.sendResponse( {
+                t:user,
                 message: 'Unauthorized',
                 error:true
                 },401);
@@ -20,6 +23,7 @@ module.exports.getCountData  =async (event) => {
 
         if(!(user.name==='test'&&user.pass==='secret2')){
             return globals.sendResponse( {
+                t:user,
                 message: 'Unauthorized',
                 error:true
                 },401);
