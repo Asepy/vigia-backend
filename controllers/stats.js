@@ -33,7 +33,7 @@ module.exports.getCountData  =async (event) => {
             return {
                 body: 'Unauthorized',
                 headers: {
-                  'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
+                 // 'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
                 },
                 status: '401',
                 statusDescription: 'Unauthorized',
