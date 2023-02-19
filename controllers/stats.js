@@ -5,7 +5,45 @@ const {getUserData} = require('./users');
 
 module.exports.getCountData  =async (event) => {
     //const { Pool, Client } = require('pg');
+
+    
+
+    try{
+        let authorizationHeader = event.headers.Authorization;
+
+
+        if (!authorizationHeader){
+            return globals.sendResponse( {
+                message: 'Unauthorized',
+                error:true
+                },401);
+        }
+
+        let encodedCreds = authorizationHeader.split(' ')[1];
+        let plainCreds = (Buffer.from(encodedCreds, 'base64')).toString().split(':');
+        let username = plainCreds[0];
+        let password = plainCreds[1];
+
+        if (!(username === 'test' && password === 'secret')){
+            return globals.sendResponse( {
+                message: e.message,
+                error:true,
+                input:event
+                },404);
+        } 
+    }catch(e){
+  
+        return globals.sendResponse( {
+            message: e.message,
+            error:true,
+            input:event
+            },404);
+    }
+
+
     let payload={};
+
+
 
  
     
@@ -78,6 +116,14 @@ module.exports.getCountData  =async (event) => {
         "total_me_gusta":{
             "count":0,
             "description":"Total de llamados a los que se les ha dado me gusta"
+        },
+        "total_logins":{
+            "count":0,
+            "description":"Total de Inicios de Sesión"
+        },
+        "total_usuarios":{
+            "count":0,
+            "description":"Total de Usuarios Registrados en el Sistema"
         }
      };
 
@@ -209,7 +255,9 @@ module.exports.getCountData  =async (event) => {
             (select total from finalizados) as finalizados,
             (select total from pendientes) as pendientes,
             (select total from devueltos) as devueltos,
-            (select  count(*) as total_likes from me_gusta where estado= '1') as likes
+            (select  count(*) as total_likes from me_gusta where estado= '1') as likes,
+            (select  count(*) as total_logeos from logeos ) as logins,
+            (select  count(*) as total_usuarios from usuarios u) as usuarios
             
             )
             
@@ -230,7 +278,10 @@ module.exports.getCountData  =async (event) => {
          c.pendientes as total_solicitudes_en_gestion, 
         c.devueltos as total_solicitudes_devueltas,
         c.likes as total_me_gusta,
+        c.logins as total_logins,
+        c.usuarios as total_usuarios,
        (c.finalizados+ c.pendientes+ c.devueltos) as total_solicitudes_enviadas  from calculados c;
+            
         `,[]);
         await client.end();
 
