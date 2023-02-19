@@ -11,6 +11,9 @@ const uoc = require("./controllers/uoc");
 const twitter = require("./controllers/twitter");
 const report = require("./controllers/report");
 const mails = require("./controllers/mails");
+const stats=require("./controllers/stats")
+
+
 /**Usuarios */
 module.exports.signUpUser = users.signUpUser;
 module.exports.signUpUserConfirm = users.signUpUserConfirm;
@@ -79,6 +82,11 @@ module.exports.getCountRequestReport = report.getCountRequestReport;
 
 /*Correos */
 module.exports.sendDirectMail = mails.sendDirectMail;
+
+/*Stats*/
+module.exports.getCountData = stats.getCountData;
+
+
 /*TEST*/
 const { Client } = require("pg");
 module.exports.testService = async (event) => {

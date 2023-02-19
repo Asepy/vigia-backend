@@ -592,6 +592,20 @@ functions:
             cors:
               origin: "*"
               headers: "*"
+  getCountData:
+      handler: handler.getCountData
+      events:
+        - http:
+            method: get
+            path: /getCountData
+            #requiere uso de la API KEY
+            private: false
+            cors:
+              origin: "*"
+              headers: "*"
+
+
+              
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
