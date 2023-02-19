@@ -18,9 +18,9 @@ module.exports.getCountData  =async (event) => {
                 headers: {
                   'Access-Control-Allow-Origin': '*',
                   'Access-Control-Allow-Credentials': true,
-                  'WWW-Authenticate': 'Basic'
+                  'WWW-Authenticate': 'Basic realm="Ingresa un Usuario y contraseña", charset="UTF-8"'
                 },
-                status: '401'
+                statusCode: 401
               };
         }
 
@@ -40,7 +40,7 @@ module.exports.getCountData  =async (event) => {
                   'Access-Control-Allow-Credentials': true,
                   'WWW-Authenticate': 'Basic'
                 },
-                status: '401'
+                statusCode: 401
               };
         } 
     }catch(e){
