@@ -1,7 +1,6 @@
 const { Pool, Client } = require('pg');
 const globals = require('./globals');
 const {getUserData} = require('./users');
-const basicAuth = require('basic-auth');
 
 module.exports.getCountData  =async (event) => {
     //const { Pool, Client } = require('pg');
@@ -10,30 +9,19 @@ module.exports.getCountData  =async (event) => {
 
     try{
         
-        let user = basicAuth(event);
-
-
-        if(!user){
-            return globals.sendResponse( {
-                t:user,
-                message: 'Unauthorized',
-                error:true
-                },401);
-        }
-
-        if(!(user.name==='test'&&user.pass==='secret2')){
-            return globals.sendResponse( {
-                t:user,
-                message: 'Unauthorized',
-                error:true
-                },401);
-        }
-        /*let authorizationHeader = event.headers.Authorization;
+        
+        
+      
+        let authorizationHeader = event.headers.Authorization;
         if (!authorizationHeader){
-            return globals.sendResponse( {
-                message: 'Unauthorized',
-                error:true
-                },401);
+            return {
+                body: 'Unauthorized',
+                headers: {
+                  'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
+                },
+                status: '401',
+                statusDescription: 'Unauthorized',
+              };
         }
 
         let encodedCreds = authorizationHeader.split(' ')[1];
@@ -42,12 +30,15 @@ module.exports.getCountData  =async (event) => {
         let password = plainCreds[1];
 
         if (!(username === 'test' && password === 'secret')){
-            return globals.sendResponse( {
-                message: e.message,
-                error:true,
-                input:event
-                },404);
-        } */
+            return {
+                body: 'Unauthorized',
+                headers: {
+                  'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
+                },
+                status: '401',
+                statusDescription: 'Unauthorized',
+              };
+        } 
     }catch(e){
   
         return globals.sendResponse( {
