@@ -11,9 +11,75 @@ module.exports.getCountData  =async (event) => {
     
     let result={};
     let response={
-
-        
-    };
+        "reclamos_en_gestion":{
+            "count":0,
+            "description":"Reclamos actualmente en gestion, que todavia no han sido devueltos o tenido algun tipo de resolucion"
+        },
+        "consultas_en_gestion":{
+            "count":0,
+            "description":"Consultas actualmente en gestion, que todavia no han sido devueltas o tenido algun tipo de resolucion o respuesta"
+        },
+        "reclamos_enviados":{
+            "count":0,
+            "description":"Total de reclamos enviados por los usuarios"
+        },
+        "consultas_enviadas":{
+            "count":0,
+            "description":"Total de consultas enviadas por los usuarios"
+        },
+        "consultas_devueltas":{
+            "count":0,
+            "description":"Total de consultas devueltas por no ser claras u otros motivos"
+        },
+        "reclamos_devueltos":{
+            "count":0,
+            "description":"Total de reclamos devueltos por no tener fundamentos u otros motivos"
+        },
+        "reclamos_finalizados_satisfactoriamente":{
+            "count":0,
+            "description":"Total de reclamos resueltos satisfactoriamente"
+        },
+        "consultas_finalizadas_satisfactoriamente":{
+            "count":0,
+            "description":"Total de consultas resueltas satisfactoriamente"
+        },
+        "reclamos_finalizados_insatisfactoriamente":{
+            "count":0,
+            "description":"Total de reclamos resueltos de forma no satisfactoria"
+        },
+        "consultas_finalizadas_insatisfactoriamente":{
+            "count":0,
+            "description":"Total de consultas resueltas de forma no satisfactoria"
+        },
+        "reclamos_finalizados":{
+            "count":0,
+            "description":"Total de reclamos resueltos independientemente del resultado"
+        },
+        "consultas_finalizadas":{
+            "count":0,
+            "description":"Total de consultas resueltas independientemente del resultado"
+        },
+        "total_solicitudes_finalizadas":{
+            "count":0,
+            "description":"Total de consultas y reclamos resueltos independientemente del resultado"
+        },
+        "total_solicitudes_en_gestion":{
+            "count":0,
+            "description":"Total de consultas y reclamos actualmente en gestion"
+        },
+        "total_solicitudes_devueltas":{
+            "count":0,
+            "description":"Total de consultas y reclamos devueltos"
+        },
+        "total_solicitudes_enviadas":{
+            "count":0,
+            "description":"Total de consultas y reclamos enviados"
+        },
+        "total_me_gusta":{
+            "count":0,
+            "description":"Total de llamados a los que se les ha dado me gusta"
+        }
+     };
 
 
   
@@ -160,7 +226,7 @@ module.exports.getCountData  =async (event) => {
            c.consultas_finalizadas_insatisfactoriamente,
             c.reclamos_finalizados,
            c.consultas_finalizadas,
-          c.finalizados, 
+          c.finalizados as total_solicitudes_finalizadas, 
          c.pendientes as total_solicitudes_en_gestion, 
         c.devueltos as total_solicitudes_devueltas,
         c.likes as total_me_gusta,
@@ -169,7 +235,11 @@ module.exports.getCountData  =async (event) => {
         await client.end();
 
 
-        result.rows[0]
+        let resultBD=result.rows[0];
+        
+        for (const property in resultBD) {
+            response[property]['count']=resultBD[property];
+        }
         }
         catch(e){
   
@@ -183,6 +253,6 @@ module.exports.getCountData  =async (event) => {
     
   
     return globals.sendResponse(
-      result.rows[0]
+      response
     );
   };
