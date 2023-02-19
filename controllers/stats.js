@@ -8,19 +8,22 @@ module.exports.getCountData  =async (event) => {
     
 
     try{
+
         
-        
-        
-      
         let authorizationHeader = event.headers.Authorization;
         if (!authorizationHeader){
             return {
-                body: 'Unauthorized',
+                body: {
+                    message: 'Unauthorized',
+                    error:true
+                },
                 headers: {
-                  'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Credentials': true,
+                  'WWW-Authenticate': 'Basic'
                 },
                 status: '401',
-                statusDescription: 'Unauthorized',
+                statusDescription: 'Unauthorized'
               };
         }
 
@@ -33,12 +36,15 @@ module.exports.getCountData  =async (event) => {
             return {
                 body: {
                     message: 'Unauthorized',
-                    error:true,},
+                    error:true
+                },
                 headers: {
-                  'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Credentials': true,
+                  'WWW-Authenticate': 'Basic'
                 },
                 status: '401',
-                statusDescription: 'Unauthorized',
+                statusDescription: 'Unauthorized'
               };
         } 
     }catch(e){
