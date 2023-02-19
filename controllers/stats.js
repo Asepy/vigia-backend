@@ -6,8 +6,18 @@ module.exports.getCountData  =async (event) => {
     //const { Pool, Client } = require('pg');
 
     try{
+        let allowedRoles=['1'];
+        //el formato de usuarios es user1~~passuser1~~roluser1~~~user2~~passsuser2~~roluser2
+        let stringUsers=(process.env.BASIC_AUTH_USERS?process.env.BASIC_AUTH_USERS:'').split('~~~');
+        let users=stringUsers.map((value)=>{
+            let values=value.split('~~');
+            return {
+                user:values[0],
+                pass:values[1],
+                role:values[2]
+            }
+        });
 
-        
         let authorizationHeader = event.headers.Authorization;
         if (!authorizationHeader){
             return {
@@ -29,7 +39,11 @@ module.exports.getCountData  =async (event) => {
         let username = plainCreds[0];
         let password = plainCreds[1];
 
-        if (!(username === 'test' && password === 'secret')){
+        let user = users.filter((userData)=>{
+            return userData.user===username&&userData.pass===password;
+        })[0];
+
+        if((!user)||(user&&(!allowedRoles.includes(user?.role)))){
             return {
                 body: JSON.stringify({
                     message: 'Unauthorized',
@@ -42,7 +56,7 @@ module.exports.getCountData  =async (event) => {
                 },
                 statusCode: 401
               };
-        } 
+        }
     }catch(e){
   
         return globals.sendResponse( {
