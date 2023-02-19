@@ -31,9 +31,11 @@ module.exports.getCountData  =async (event) => {
 
         if (!(username === 'test' && password === 'secret')){
             return {
-                body: 'Unauthorized',
+                body: {
+                    message: 'Unauthorized',
+                    error:true,},
                 headers: {
-                 // 'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
+                  'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }]
                 },
                 status: '401',
                 statusDescription: 'Unauthorized',
