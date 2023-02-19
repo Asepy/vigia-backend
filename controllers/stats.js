@@ -1,7 +1,7 @@
 const { Pool, Client } = require('pg');
 const globals = require('./globals');
 const {getUserData} = require('./users');
-
+const basicAuth = require('basic-auth');
 
 module.exports.getCountData  =async (event) => {
     //const { Pool, Client } = require('pg');
@@ -9,9 +9,22 @@ module.exports.getCountData  =async (event) => {
     
 
     try{
-        let authorizationHeader = event.headers.Authorization;
+        
+        let user = basicAuth(event);
+        if(!user){
+            return globals.sendResponse( {
+                message: 'Unauthorized',
+                error:true
+                },401);
+        }
 
-
+        if(!(user.name==='test'&&user.pass==='secret2')){
+            return globals.sendResponse( {
+                message: 'Unauthorized',
+                error:true
+                },401);
+        }
+        /*let authorizationHeader = event.headers.Authorization;
         if (!authorizationHeader){
             return globals.sendResponse( {
                 message: 'Unauthorized',
@@ -30,7 +43,7 @@ module.exports.getCountData  =async (event) => {
                 error:true,
                 input:event
                 },404);
-        } 
+        } */
     }catch(e){
   
         return globals.sendResponse( {
