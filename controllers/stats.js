@@ -5,8 +5,6 @@ const {getUserData} = require('./users');
 module.exports.getCountData  =async (event) => {
     //const { Pool, Client } = require('pg');
 
-    
-
     try{
 
         
@@ -22,8 +20,7 @@ module.exports.getCountData  =async (event) => {
                   'Access-Control-Allow-Credentials': true,
                   'WWW-Authenticate': 'Basic'
                 },
-                status: '401',
-                statusDescription: 'Unauthorized'
+                status: '401'
               };
         }
 
@@ -43,8 +40,7 @@ module.exports.getCountData  =async (event) => {
                   'Access-Control-Allow-Credentials': true,
                   'WWW-Authenticate': 'Basic'
                 },
-                status: '401',
-                statusDescription: 'Unauthorized'
+                status: '401'
               };
         } 
     }catch(e){
