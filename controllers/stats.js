@@ -11,10 +11,10 @@ module.exports.getCountData  =async (event) => {
         let authorizationHeader = event.headers.Authorization;
         if (!authorizationHeader){
             return {
-                body: {
+                body: JSON.stringify({
                     message: 'Unauthorized',
                     error:true
-                },
+                }),
                 headers: {
                   'Access-Control-Allow-Origin': '*',
                   'Access-Control-Allow-Credentials': true,
@@ -31,10 +31,10 @@ module.exports.getCountData  =async (event) => {
 
         if (!(username === 'test' && password === 'secret')){
             return {
-                body: {
+                body: JSON.stringify({
                     message: 'Unauthorized',
                     error:true
-                },
+                }),
                 headers: {
                   'Access-Control-Allow-Origin': '*',
                   'Access-Control-Allow-Credentials': true,
