@@ -6,8 +6,8 @@ const { Pool, Client } = require('pg');
 const { parseUrl } = require("@sentry/utils");
 var templatesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env.LAMBDA_TASK_ROOT:".."}/mail_templates/`;
 const {getUserData} = require('./users');
-const {addQuestionStatus} = require('./questions');
-const {addClaimStatus} = require('./claims');
+const questions = require('./questions');
+const claims = require('./claims');
 exports.sendMail=async (data)=>{
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -319,10 +319,10 @@ exports.sendStatusTask=async (data)=>{
 
           switch(consulta.tipo_solicitud){
             case 'RECLAMO':
-              await addClaimStatus(event)
+              await claims.addClaimStatus(event)
               break;
             default:
-              await addQuestionStatus(event);
+              await questions.addQuestionStatus(event);
               break
 
           }
