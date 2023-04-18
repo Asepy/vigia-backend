@@ -722,6 +722,41 @@ exports.updateQuestionStatusVisualization =async (event) => {
               
 
       await client.end();
+
+
+      const client_get = new Client();
+      await client_get.connect();      
+      result_get = await client_get.query(`
+      select c.*,
+      
+    b.fecha_creacion as tarea_fecha_asignacion,
+    t.nombre as tarea_estado,
+    t.descripcion as tarea_descripcion,
+    b.justificacion as justificacion
+    from consultas c
+        inner join bitacora_consultas_estados b on b.id_consulta::bigint = c.id
+        inner join (
+        select bse.id_consulta, MAX(bse.fecha_creacion) as  fecha_creacion from bitacora_consultas_estados bse
+        group by bse.id_consulta
+        ) bm
+        on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
+        inner join tareas t on b.tarea=t.nombre
+          where 
+      c.enlace = $1;`,[consulta.enlace]);
+      if(result_get?.rows[0]?.id){
+        let info=result_get?.rows[0];
+        if ((info.tarea_estado == 'ENVIADO')){
+          payload['link']=info.enlace;
+          payload['task'] ='REVISION'
+          payload['justify'] = 'La consulta se encuentra en revisión por el equipo de ASEPY para su posterior canalización a la UOC correspondiente.'
+          event['body'] = JSON.stringify(payload)
+          return await exports.addQuestionStatus(event);
+        }
+      }
+
+
+
+
       
       }
       

@@ -921,6 +921,38 @@ exports.updateClaimStatusVisualization =async (event) => {
               
 
       await client.end();
+
+      const client_get = new Client();
+      await client_get.connect();      
+      result_get = await client_get.query(`
+      select r.*,
+    --b.fecha_visualizacion as tarea_fecha_visualizacion, 
+    b.fecha_creacion as tarea_fecha_asignacion,
+    t.nombre as tarea_estado,
+    t.descripcion as tarea_descripcion,
+    --,t.grupo as grupo_tarea,
+    --t.encargado as tarea_encargado,
+    b.justificacion as justificacion
+    from reclamos r
+        inner join bitacora_reclamos_estados b on b.id_reclamo::bigint = r.id
+        inner join (
+        select bse.id_reclamo, MAX(bse.fecha_creacion) as  fecha_creacion from bitacora_reclamos_estados bse
+        group by bse.id_reclamo
+        ) bm
+        on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
+        inner join tareas t on b.tarea=t.nombre
+          where 
+        r.enlace = $1;`,[consulta.enlace]);
+      if(result_get?.rows[0]?.id){
+        let info=result_get?.rows[0];
+        if ((info.tarea_estado == 'ENVIADO')){
+          payload['link']=info.enlace;
+          payload['task'] ='REVISION'
+          payload['justify'] = 'El reclamo se encuentra en revisión por el equipo de ASEPY para su posterior canalización a la UOC correspondiente.'
+          event['body'] = JSON.stringify(payload)
+          return await exports.addClaimStatus(event);
+        }
+      }
       
       }
       
