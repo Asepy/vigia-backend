@@ -254,7 +254,7 @@ module.exports.getRequestsAdmin =async (event) => {
         await client.connect();
         let query="";
       switch(payload.type){
-        case 'claim':
+        case 'RECLAMO':
           query=`
           UPDATE public.reclamos
             SET fecha_modificacion=NOW(), estado=$1
