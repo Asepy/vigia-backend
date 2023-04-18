@@ -319,10 +319,10 @@ exports.sendStatusTask=async (data)=>{
 
           switch(consulta.tipo_solicitud){
             case 'RECLAMO':
-              await claims.addClaimStatus(event)
+              return await claims.addClaimStatus(event)
               break;
             default:
-              await questions.addQuestionStatus(event);
+              return await questions.addQuestionStatus(event);
               break
 
           }
