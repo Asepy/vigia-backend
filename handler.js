@@ -10,6 +10,7 @@ const likes = require("./controllers/likes");
 const uoc = require("./controllers/uoc");
 const twitter = require("./controllers/twitter");
 const report = require("./controllers/report");
+const admin = require("./controllers/admin");
 const mails = require("./controllers/mails");
 const stats=require("./controllers/stats")
 
@@ -79,6 +80,10 @@ module.exports.getUsersTweets = twitter.getUsersTweets;
 
 module.exports.getRequestsReport = report.getRequestsReport;
 module.exports.getCountRequestReport = report.getCountRequestReport;
+
+/*Admin */
+module.exports.getRequestsAdmin = admin.getRequestsAdmin;
+module.exports.updateEnabledRequest = admin.updateEnabledRequest;
 
 /*Correos */
 module.exports.sendDirectMail = mails.sendDirectMail;

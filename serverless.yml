@@ -548,6 +548,28 @@ functions:
             cors:
               origin: "*"
               headers: "*"
+  getRequestsAdmin:
+      handler: handler.getRequestsAdmin
+      events:
+        - http:
+            method: post
+            path: /getRequestsAdmin
+            #requiere uso de la API KEY
+            private: true
+            cors:
+              origin: "*"
+              headers: "*"
+  updateEnabledRequest:
+      handler: handler.updateEnabledRequest
+      events:
+        - http:
+            method: post
+            path: /updateEnabledRequest
+            #requiere uso de la API KEY
+            private: true
+            cors:
+              origin: "*"
+              headers: "*"
   getRoles:
       handler: handler.getRoles
       events:
@@ -603,6 +625,8 @@ functions:
             cors:
               origin: "*"
               headers: "*"
+
+
 
 
               
