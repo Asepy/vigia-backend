@@ -287,12 +287,10 @@ exports.sendStatusTask=async (data)=>{
         default:
           query_get=`
       select c.*,
-    --b.fecha_visualizacion as tarea_fecha_visualizacion, 
+      
     b.fecha_creacion as tarea_fecha_asignacion,
     t.nombre as tarea_estado,
     t.descripcion as tarea_descripcion,
-    --,t.grupo as grupo_tarea,
-    --t.encargado as tarea_encargado,
     b.justificacion as justificacion
     from consultas c
         inner join bitacora_consultas_estados b on b.id_consulta::bigint = c.id
@@ -308,9 +306,9 @@ exports.sendStatusTask=async (data)=>{
           break;
       }
       
-      result_get = await client_get.query(query_get,[consulta.id_reclamo_consulta]);
+      result_get = await client_get.query(query_get,[payload.id]);
       if(result_get?.rows[0]?.id){
-        let info=result?.rows[0];
+        let info=result_get?.rows[0];
         if (!(info.tarea_estado == 'COMUNICACION')){
           payload['link']=info.enlace;
           payload['task'] ='COMUNICACION'
