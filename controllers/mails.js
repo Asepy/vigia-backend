@@ -6,6 +6,8 @@ const { Pool, Client } = require('pg');
 const { parseUrl } = require("@sentry/utils");
 var templatesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env.LAMBDA_TASK_ROOT:".."}/mail_templates/`;
 const {getUserData} = require('./users');
+const {addQuestionStatus} = require('./questions');
+const {addClaimStatus} = require('./claims');
 exports.sendMail=async (data)=>{
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -143,6 +145,7 @@ exports.sendStatusTask=async (data)=>{
             subject:mail_params.subject,
             html:mailContent
           });
+
       }else{
         console.log('no hay id')
       }
@@ -204,6 +207,7 @@ exports.sendStatusTask=async (data)=>{
         fecha_modificacion:null, 
         fecha_creacion:''
       };
+ 
 
 
      }catch(e){
@@ -251,6 +255,82 @@ exports.sendStatusTask=async (data)=>{
         consulta.tipo_correo,consulta.llamado,consulta.ocid,consulta.estado]);
         
       await client.end();
+
+
+
+
+      const client_get = new Client();
+      await client_get.connect();
+      let query_get="";
+      switch(consulta.tipo_solicitud){
+        case 'RECLAMO':
+          query_get=`
+      select r.*,
+    --b.fecha_visualizacion as tarea_fecha_visualizacion, 
+    b.fecha_creacion as tarea_fecha_asignacion,
+    t.nombre as tarea_estado,
+    t.descripcion as tarea_descripcion,
+    --,t.grupo as grupo_tarea,
+    --t.encargado as tarea_encargado,
+    b.justificacion as justificacion
+    from reclamos r
+        inner join bitacora_reclamos_estados b on b.id_reclamo::bigint = r.id
+        inner join (
+        select bse.id_reclamo, MAX(bse.fecha_creacion) as  fecha_creacion from bitacora_reclamos_estados bse
+        group by bse.id_reclamo
+        ) bm
+        on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
+        inner join tareas t on b.tarea=t.nombre
+          where 
+        r.id = $1;`
+          break;
+        default:
+          query_get=`
+      select c.*,
+    --b.fecha_visualizacion as tarea_fecha_visualizacion, 
+    b.fecha_creacion as tarea_fecha_asignacion,
+    t.nombre as tarea_estado,
+    t.descripcion as tarea_descripcion,
+    --,t.grupo as grupo_tarea,
+    --t.encargado as tarea_encargado,
+    b.justificacion as justificacion
+    from consultas c
+        inner join bitacora_consultas_estados b on b.id_consulta::bigint = c.id
+        inner join (
+        select bse.id_consulta, MAX(bse.fecha_creacion) as  fecha_creacion from bitacora_consultas_estados bse
+        group by bse.id_consulta
+        ) bm
+        on bm.fecha_creacion = b.fecha_creacion and bm.id_consulta = b.id_consulta
+        inner join tareas t on b.tarea=t.nombre
+          where 
+      c.id = $1;`
+          
+          break;
+      }
+      
+      result_get = await client_get.query(query_get,[consulta.id_reclamo_consulta]);
+      if(result_get?.rows[0]?.id){
+        let info=result?.rows[0];
+        if (!(info.tarea_estado == 'COMUNICACION')){
+          payload['link']=info.enlace;
+          payload['task'] ='COMUNICACION'
+          payload['justify'] = 'Se a procedido a contactar a la UOC para tratar de resolver tu solicitud'
+          event['body'] = JSON.stringify(payload)
+
+          switch(consulta.tipo_solicitud){
+            case 'RECLAMO':
+              await addClaimStatus(event)
+              break;
+            default:
+              await addQuestionStatus(event);
+              break
+
+          }
+        }
+      }
+
+
+
 
 
 
