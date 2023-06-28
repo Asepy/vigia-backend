@@ -436,3 +436,88 @@ ALTER TABLE IF EXISTS public.logeos
 
 COMMENT ON TABLE public.logeos
     IS 'Tabla donde se almacenan los logeos de los usuarios';
+
+
+-- ****************************************************
+-- CREACION DE TABLA DE BUSQUEDA
+-- ****************************************************
+
+    CREATE TABLE IF NOT EXISTS public.busquedas
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+
+    busqueda text  NULL,
+    categoria text NULL,
+    contratante text NULL,
+    procedimiento text NULL,
+    usuario bigint  NULL,
+    estado character varying(255)  NOT NULL,
+    fecha_modificacion timestamptz,
+    fecha_creacion timestamptz NOT NULL,
+    CONSTRAINT busquedas_pk PRIMARY KEY (id),
+    CONSTRAINT busquedas_usuario_fk FOREIGN KEY (usuario) REFERENCES usuarios(id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.busquedas
+    OWNER to postgres;
+
+COMMENT ON TABLE public.busquedas
+    IS 'Tabla donde se almacenan las busquedas realizadas por los usuarios';
+
+
+-- ****************************************************
+-- CREACION DE TABLA DE BUSQUEDA OPORTUNIDADES
+-- ****************************************************
+
+    CREATE TABLE IF NOT EXISTS public.busquedas_oportunidades
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    categorias_nivel1 text NULL,
+    palabras_clave text NULL,
+    usuario bigint  NULL,
+    estado character varying(255)  NOT NULL,
+    fecha_modificacion timestamptz,
+    fecha_creacion timestamptz NOT NULL,
+    CONSTRAINT busquedas_oportunidades_pk PRIMARY KEY (id),
+    CONSTRAINT busquedas_oportunidades_usuario_fk FOREIGN KEY (usuario) REFERENCES usuarios(id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.busquedas_oportunidades
+    OWNER to postgres;
+
+COMMENT ON TABLE public.busquedas_oportunidades
+    IS 'Tabla donde se almacenan las busquedas de oportunidades realizadas por los usuarios';
+
+
+-- ****************************************************
+-- CREACION DE TABLA DE VISUALIZACION DE OFERTAS
+-- ****************************************************
+
+    CREATE TABLE IF NOT EXISTS public.visualizacion_ofertas
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+
+    llamado character varying(255) NOT NULL,
+    ocid character varying(255) NOT NULL,
+    origen character varying(255) NOT NULL,
+    interaccion boolean NOT NULL DEFAULT FALSE,
+    titulo text NOT NULL,
+    usuario bigint  NULL,
+    estado character varying(255)  NOT NULL,
+    fecha_modificacion timestamptz,
+    fecha_creacion timestamptz NOT NULL,
+    CONSTRAINT visualizacion_ofertas_pk PRIMARY KEY (id),
+    CONSTRAINT visualizacion_ofertas_usuario_fk FOREIGN KEY (usuario) REFERENCES usuarios(id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.visualizacion_ofertas
+    OWNER to postgres;
+
+COMMENT ON TABLE public.visualizacion_ofertas
+    IS 'Tabla donde se almacenan las visualizaciones de ofertas realizadas por los usuarios';
