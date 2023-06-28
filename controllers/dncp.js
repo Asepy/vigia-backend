@@ -943,7 +943,6 @@ module.exports.saveProcessView =async (event) => {
       "search":"BUSQUEDA"
     }
     let consulta={
-        usuario:((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null),
         llamado:payload.call,
         origen:payload.from,
         ocid:payload.ocid, 
@@ -979,7 +978,7 @@ module.exports.saveProcessView =async (event) => {
             consulta.origen,
             consulta.interaccion,
             consulta.titulo,
-            consulta.usuario
+            ((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null)
           ]
        
     ]);
