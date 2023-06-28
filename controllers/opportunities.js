@@ -274,7 +274,7 @@ module.exports.addOpportunitiesConfig =async (event) => {
         VALUES($1, $2, $3, 1, NULL, NOW()) RETURNING id;
   
         `,[
-            ...[categories_lvl1,keywords,((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null)]
+            ...[categories_lvl1.join("|"),keywords.join("|"),((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null)]
          
       ]);
         await client.end();
