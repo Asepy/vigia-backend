@@ -936,8 +936,13 @@ module.exports.saveProcessView =async (event) => {
       input:event
     },404);
   } 
-    
-     let consulta={
+    let fromValues= {
+      "claim":"RECLAMO",
+      "question":"CONSULTA",
+      "opportunity":"OPORTUNIDAD",
+      "search":"BUSQUEDA"
+    }
+    let consulta={
         usuario:((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null),
         llamado:payload.call,
         origen:payload.from,
@@ -947,7 +952,7 @@ module.exports.saveProcessView =async (event) => {
     };
 
     if(
-    (!['CONSULTA','RECLAMO','OPORTUNIDAD','BUSQUEDA'].includes(consulta.origen))
+    (!['question','claim','opportunity','search'].includes(consulta.origen))
     ||
     (!(globals.validateString(consulta.llamado)&&globals.validateString(consulta.ocid)&& globals.validateString(consulta.titulo)))
     ||
@@ -957,6 +962,7 @@ module.exports.saveProcessView =async (event) => {
         {id:0}
       );
     }
+    consulta.origen = fromValues[consulta.origen];
 
     try{
       event['user']=await getUserData(event);

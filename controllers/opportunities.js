@@ -234,7 +234,6 @@ module.exports.addOpportunitiesConfig =async (event) => {
     let payload={};
 
     let result={};
-    let filterArray=[];
 
     let categories_lvl1=[];
     let keywords=[];
