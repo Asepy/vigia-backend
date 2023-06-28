@@ -213,7 +213,7 @@ module.exports.addOpportunitiesConfig =async (event) => {
          
       ]);
         await client.end();
-        saveSearchOpportunities(keywords.map((text)=>{return globals.getTextKeyword(text);}).join("|"),`^(${categories_lvl1.join("|")})`,event);
+        await saveSearchOpportunities(keywords.map((text)=>{return globals.getTextKeyword(text);}).join("|"),`^(${categories_lvl1.join("|")})`,event);
 
 
 
