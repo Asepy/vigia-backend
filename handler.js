@@ -47,6 +47,7 @@ module.exports.updateQuestionStatusVisualization = questions.updateQuestionStatu
 module.exports.addOpportunitiesConfig = opportunities.addOpportunitiesConfig;
 module.exports.getOpportunitiesConfig = opportunities.getOpportunitiesConfig;
 module.exports.getOpportunities = opportunities.getOpportunities;
+module.exports.saveSearchOpportunities = opportunities.saveSearchOpportunities;
 /*DNCP */
 module.exports.getProcessDNCP = dncp.getProcessDNCP;
 module.exports.getProcessDNCPOCID = dncp.getProcessDNCPOCID;
@@ -55,6 +56,8 @@ module.exports.getProcuringEntities = dncp.getProcuringEntities;
 module.exports.searchProcessDNCP = dncp.searchProcessDNCP;
 module.exports.getPartyProcessesDNCP = dncp.getPartyProcessesDNCP;
 module.exports.getProcuringEntitiesRequests = dncp.getProcuringEntitiesRequests;
+module.exports.saveSearch = dncp.saveSearch;
+module.exports.saveProcessView = dncp.saveProcessView;
 
 /*Likes */
 module.exports.addLike = likes.addLike;

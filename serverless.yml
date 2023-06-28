@@ -625,6 +625,39 @@ functions:
             cors:
               origin: "*"
               headers: "*"
+  saveSearch:
+    handler: handler.saveSearch
+    events:
+      - http:
+          method: post
+          path: /saveSearch
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
+  saveProcessView:
+    handler: handler.saveProcessView
+    events:
+      - http:
+          method: post
+          path: /saveProcessView
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
+  saveSearchOpportunities:
+    handler: handler.saveSearchOpportunities
+    events:
+      - http:
+          method: post
+          path: /saveSearchOpportunities
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
 
 
 

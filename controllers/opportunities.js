@@ -213,12 +213,6 @@ module.exports.addOpportunitiesConfig =async (event) => {
          
       ]);
         await client.end();
-        await saveSearchOpportunities(keywords.map((text)=>{return globals.getTextKeyword(text);}).join("|"),`^(${categories_lvl1.join("|")})`,event);
-
-
-
-
-
         }
         catch(e){
   
@@ -236,30 +230,65 @@ module.exports.addOpportunitiesConfig =async (event) => {
     );
   };
 
+  module.exports.saveSearchOpportunities =async (event) => {
+    let payload={};
 
-  async function saveSearchOpportunities(categories_lvl1,keywords,event){
-    try{
-      event['user']=await getUserData(event);
-      const client = new Client();
-      await client.connect();
-      result = await client.query(`
-      INSERT INTO public.busquedas_oportunidades
-      (categorias_nivel1, palabras_clave, usuario, estado, fecha_modificacion, fecha_creacion)
-      VALUES($1, $2, $3, 1, NULL, NOW());
+    let result={};
+    let filterArray=[];
 
-      `,[
-          ...[categories_lvl1,keywords,((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null)]
-       
-    ]);
-      await client.end();
-      }
-      catch(e){
-
-      return globals.sendResponse( {
-          message: e.message,
-          error:true,
-          input:event
-          },404);
-    } 
-  }
+    let categories_lvl1=[];
+    let keywords=[];
   
+    try{
+      payload=JSON.parse(event.body);
+    }catch(e){
+      return globals.sendResponse( {
+        message: e.message,
+        error:true,
+        input:event
+      },404);
+    }
+    if((globals.getNumber(payload.page) ?globals.getNumber(payload.page):1) !==1){
+      return globals.sendResponse(
+        {id:0}
+      );
+    }
+    if(payload.categories_lvl1){
+      categories_lvl1=payload.categories_lvl1.split("|").map(
+          (data)=>{
+              return data.slice(0, 2);
+              }
+              );
+      }
+      if(payload.keywords){
+          keywords=payload.keywords.split("|");
+      }
+
+      try{
+        event['user']=await getUserData(event);
+        const client = new Client();
+        await client.connect();
+        result = await client.query(`
+        INSERT INTO public.busquedas_oportunidades
+        (categorias_nivel1, palabras_clave, usuario, estado, fecha_modificacion, fecha_creacion)
+        VALUES($1, $2, $3, 1, NULL, NOW()) RETURNING id;
+  
+        `,[
+            ...[categories_lvl1,keywords,((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null)]
+         
+      ]);
+        await client.end();
+        return globals.sendResponse(
+          result.rows[0]
+        );
+
+        }
+        catch(e){
+          return globals.sendResponse( {
+            message: e.message,
+            error:true,
+            input:event
+            },404);
+        } 
+
+  }

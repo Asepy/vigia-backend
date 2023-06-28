@@ -867,3 +867,128 @@ exports.getProcuringEntitiesRequests = async (event) => {
   return globals.sendResponse(entities);
   
 };
+
+module.exports.saveSearch =async (event) => {
+  let payload={};
+
+  let result={};
+  
+  try{
+    payload=JSON.parse(event.body);
+  }catch(e){
+    return globals.sendResponse( {
+      message: e.message,
+      error:true,
+      input:event
+    },404);
+  } 
+    if((globals.getNumber(payload.page) ?globals.getNumber(payload.page):1) !==1){
+      return globals.sendResponse(
+        {id:0}
+      );
+    }
+
+    try{
+      event['user']=await getUserData(event);
+      const client = new Client();
+      await client.connect();
+      result = await client.query(`
+      INSERT INTO public.busquedas
+      (busqueda, categoria, contratante, procedimiento, usuario, estado, fecha_modificacion, fecha_creacion)
+      VALUES($1, $2, $3, $4, $5, 1, NULL, NOW()) RETURNING id;
+
+      `,[
+          ...[globals.validateString(payload['search'])?payload['search']:null,
+            globals.validateString(payload['category'])?payload['category']:null,
+            globals.validateString(payload['entity'])?payload['entity']:null,
+            globals.validateString(payload['method'])?payload['method']:null,
+            ((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null)
+          ]
+       
+    ]);
+      await client.end();
+      return globals.sendResponse(
+        result.rows[0]
+      );
+
+      }
+      catch(e){
+        return globals.sendResponse( {
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+      } 
+
+}
+
+module.exports.saveProcessView =async (event) => {
+  let payload={};
+
+  let result={};
+  
+  try{
+    payload=JSON.parse(event.body);
+  }catch(e){
+    return globals.sendResponse( {
+      message: e.message,
+      error:true,
+      input:event
+    },404);
+  } 
+    
+     let consulta={
+        usuario:((event?.user?.attributes?.id)?(event?.user?.attributes?.id):null),
+        llamado:payload.call,
+        origen:payload.from,
+        ocid:payload.ocid, 
+        titulo:payload.title,
+        interaccion:(globals.getNumber(payload.click)==1? true:false)
+    };
+
+    if(
+    (!['CONSULTA','RECLAMO','OPORTUNIDAD','BUSQUEDA'].includes(consulta.origen))
+    ||
+    (!(globals.validateString(consulta.llamado)&&globals.validateString(consulta.ocid)&& globals.validateString(consulta.titulo)))
+    ||
+    (globals.getNumber(consulta.llamado)==0)
+    ){
+      return globals.sendResponse(
+        {id:0}
+      );
+    }
+
+    try{
+      event['user']=await getUserData(event);
+      const client = new Client();
+      await client.connect();
+      result = await client.query(`
+      INSERT INTO public.visualizacion_ofertas
+      (llamado, ocid, origen, interaccion, titulo, usuario, estado, fecha_modificacion, fecha_creacion)
+      VALUES($1, $2, $3, $4, $5, $6, 1,NULL, NOW()) RETURNING id;
+
+      `,[
+          ...[consulta.llamado,
+            consulta.ocid,
+            consulta.origen,
+            consulta.interaccion,
+            consulta.titulo,
+            consulta.usuario
+          ]
+       
+    ]);
+      await client.end();
+      return globals.sendResponse(
+        result.rows[0]
+      );
+
+      }
+      catch(e){
+        return globals.sendResponse( {
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+      } 
+
+}
