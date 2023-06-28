@@ -54,14 +54,22 @@ module.exports.addLike =async (event) => {
             },404);
       }
 
-      
+      let fromValues= {
+        "claim":"RECLAMO",
+        "question":"CONSULTA",
+        "opportunity":"OPORTUNIDAD",
+        "search":"BUSQUEDA"
+      }
+
       consulta={
         usuario:payload.user,
         llamado:payload.call,
         ocid:payload.ocid, 
         estado:payload.status,
-        titulo:payload.title
+        titulo:payload.title,
+        origen:(['question','claim','opportunity','search'].includes(payload.from)?fromValues[payload.from]:null)
     };
+
     }catch(e){
         return globals.sendResponse({
             message: e.message,
@@ -77,11 +85,11 @@ module.exports.addLike =async (event) => {
         const client = new Client();
         await client.connect();
         result = await client.query(`INSERT INTO public.me_gusta
-        (llamado, ocid, usuario, estado,titulo, fecha_modificacion, fecha_creacion)
-        VALUES($1,$2,$3,$4,$5,NULL,NOW())
+        (llamado, ocid, usuario, estado,titulo,origen, fecha_modificacion, fecha_creacion)
+        VALUES($1,$2,$3,$4,$5,$6,NULL,NOW())
         ON CONFLICT ON CONSTRAINT usuario_llamado_me_gusta
         DO UPDATE SET ocid=$2, estado=$4, fecha_modificacion=NOW()
-        RETURNING id;`,[consulta.llamado,consulta.ocid,event.user.attributes.id,consulta.estado,consulta.titulo]);
+        RETURNING id;`,[consulta.llamado,consulta.ocid,event.user.attributes.id,consulta.estado,consulta.titulo,consulta.origen]);
         await client.end();
         }
         catch(e){

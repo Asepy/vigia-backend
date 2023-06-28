@@ -193,6 +193,7 @@ COMMENT ON TABLE public.oportunidades
     usuario bigint NOT NULL,
     estado character varying(255)  NOT NULL,
     titulo text NOT NULL,
+    origen character varying(255) NULL,
     fecha_modificacion timestamptz,
     fecha_creacion timestamptz NOT NULL,
     CONSTRAINT me_gusta_pk PRIMARY KEY (id),
@@ -208,7 +209,7 @@ ALTER TABLE IF EXISTS public.me_gusta
 COMMENT ON TABLE public.me_gusta
     IS 'Tabla donde se almacena la informacion de los me gusta a los procesos de contratacion';
 
-
+---ALTER TABLE public.me_gusta ADD COLUMN origen character varying(255) NULL;
 -- ****************************************************
 -- CREACION DE TABLA DE ESTADOS DE SOLICITUDES
 -- ****************************************************
