@@ -806,7 +806,16 @@ module.exports.getCountRequestIndex =async (event) => {
     ) bm
     on bm.fecha_creacion = b.fecha_creacion and bm.id_reclamo = b.id_reclamo
     inner join tareas t on b.tarea=t.nombre 
-    where t.encargado not in ('Usuario')  and r.estado = '1')) as solicitudes_en_proceso
+    where t.encargado not in ('Usuario')  and r.estado = '1')) as solicitudes_en_proceso,
+    
+    (
+     (select count(*) from visualizacion_ofertas vo where vo.interaccion = true and vo.usuario is null and vo.estado = '1' and vo.origen in ('OPORTUNIDAD','BUSQUEDA') )
+     +
+     (
+     select count(*) from (select distinct vo.llamado, vo.usuario from visualizacion_ofertas vo where vo.interaccion = true and vo.usuario is not null and vo.estado = '1'and vo.origen in ('OPORTUNIDAD','BUSQUEDA') ) interacciones_usuario
+     ) 
+     )
+     as oportunidades_encontradas
 
       `,[...[]
         ]);
