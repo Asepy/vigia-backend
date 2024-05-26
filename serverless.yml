@@ -23,7 +23,7 @@ frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs18.x
   stage: dev
   region: sa-east-1
   timeout: 25
@@ -127,7 +127,17 @@ functions:
           cors:
             origin: "*"
             headers: "*"
-
+  checkProcessMIPYME:
+    handler: handler.checkProcessMIPYME
+    events:
+      - http:
+          method: post
+          path: /checkProcessMIPYME
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
   newQuestion:
     handler: handler.addQuestion
     events:

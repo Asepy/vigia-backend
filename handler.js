@@ -58,6 +58,7 @@ module.exports.getPartyProcessesDNCP = dncp.getPartyProcessesDNCP;
 module.exports.getProcuringEntitiesRequests = dncp.getProcuringEntitiesRequests;
 module.exports.saveSearch = dncp.saveSearch;
 module.exports.saveProcessView = dncp.saveProcessView;
+module.exports.checkProcessMIPYME = dncp.checkProcessMIPYME;
 
 /*Likes */
 module.exports.addLike = likes.addLike;

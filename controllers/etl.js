@@ -4,6 +4,10 @@ var api_url='https://www.contrataciones.gov.py/datos/api/v3/doc';
 var queriesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env.LAMBDA_TASK_ROOT:".."}/queries/`;
 //var queriesDir=`${__dirname}/queries/`;
 const axios = require('axios');
+const axiosRetry = require('axios-retry');
+axiosRetry(axios, {
+  retries: 5
+});
 const path = require('path');
 const fs = require('fs');
 
@@ -84,6 +88,7 @@ async function getDNCPValidProcesses(){
     try{
         let response_access_token= await axios(
             {
+            timeout: 20000,
             method: 'post',
             url: `${api_url}/oauth/token`,
             headers: { 
@@ -106,6 +111,7 @@ async function getDNCPValidProcesses(){
       
         let response_processes=await axios(
           {
+            timeout: 20000,
             method: 'get',
             url: `${api_url}/search/processes`,
             headers: { 
@@ -144,6 +150,7 @@ async function getDNCPValidProcesses(){
     
             let response_processes=await axios(
                 {
+                  timeout: 20000,
                   method: 'get',
                   url: `${api_url}/search/processes`,
                   headers: { 
@@ -196,6 +203,7 @@ async function getProcessFullData(data){
       try{
         let response_processes=await axios(
           {
+            timeout: 20000,
             method: 'get',
             url: `${api_url}/ocds/record/${data.ocid}`,
             headers: { 

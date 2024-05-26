@@ -997,3 +997,49 @@ module.exports.saveProcessView =async (event) => {
       } 
 
 }
+
+
+exports.checkProcessMIPYME = async (event) => {
+  const payload=JSON.parse(event.body);
+  let checkParams=globals.validateParams(["tenderId"],payload);
+  if(checkParams.error){
+    return globals.sendResponse({
+      message: checkParams.message,
+      error:true,
+      input:event
+      },404);
+  }
+  
+
+  let response={
+    MIPYME:false
+  };
+  try{
+       let request= await axios(
+        {
+          method: 'get',
+          url: `https://www.contrataciones.gov.py/licitaciones/convocatoria/${payload.tenderId}.html`,
+          headers: { 
+            'Content-Type': 'text/html'
+          }
+        }
+       );
+
+       if(request.status==200 &&request.data && /Accesible para MIPYMES/gi.test(request.data)){
+        response={
+          MIPYME:true
+        }
+       }
+  }
+  catch(e){
+      //e.message;
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+  }
+    
+
+  return globals.sendResponse(response);
+};
