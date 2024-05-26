@@ -3,7 +3,7 @@
 
 ## 2. Instalar Serverless Framework
 ```sh
-npm install serverless -g
+npm install serverless@3.38.0 -g
 ```
 ## 3. Instalar las dependencias
 ```sh
