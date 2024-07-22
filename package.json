@@ -15,7 +15,10 @@
     "aws-jwt-verify": "^3.2.0",
     "axios": "^1.1.2",
     "axios-retry": "^3.8.0",
+    "csvtojson": "^2.0.10",
     "dotenv": "^16.0.3",
+    "jsdom": "^24.1.1",
+    "moment-timezone": "^0.5.45",
     "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
     "twitter-api-v2": "^1.13.0"

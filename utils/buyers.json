@@ -1,0 +1,1936 @@
+{
+    "DNCP-SICP-CODE-20": {
+        "id": "DNCP-SICP-CODE-20",
+        "name": "Ministerio de Obras Públicas y Comunicaciones (MOPC)"
+    },
+    "DNCP-SICP-CODE-1024": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-185": {
+        "id": "DNCP-SICP-CODE-185",
+        "name": "Municipalidad de Gral. Francisco Caballero Alvarez"
+    },
+    "DNCP-SICP-CODE-1364": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1361": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-11": {
+        "id": "DNCP-SICP-CODE-11",
+        "name": "Ministerio de Justicia  (MJ)"
+    },
+    "DNCP-SICP-CODE-306": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-1369": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1834": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-300": {
+        "id": "DNCP-SICP-CODE-300",
+        "name": "Honorable Cámara de Diputados (DIPUTADOS)"
+    },
+    "DNCP-SICP-CODE-24": {
+        "id": "DNCP-SICP-CODE-24",
+        "name": "Tribunal Superior de Justicia Electoral (TSJE)"
+    },
+    "DNCP-SICP-CODE-157": {
+        "id": "DNCP-SICP-CODE-157",
+        "name": "Instituto de Previsión Social (IPS)"
+    },
+    "DNCP-SICP-CODE-51": {
+        "id": "DNCP-SICP-CODE-51",
+        "name": "Gobierno Departamental de Cordillera (CORDILLERA)"
+    },
+    "DNCP-SICP-CODE-140": {
+        "id": "DNCP-SICP-CODE-140",
+        "name": "Municipalidad de Encarnación"
+    },
+    "DNCP-SICP-CODE-18": {
+        "id": "DNCP-SICP-CODE-18",
+        "name": "Empresa de Servicios Sanitarios del Paraguay (ESSAP)"
+    },
+    "DNCP-SICP-CODE-172": {
+        "id": "DNCP-SICP-CODE-172",
+        "name": "Municipalidad de la Paz"
+    },
+    "DNCP-SICP-CODE-105": {
+        "id": "DNCP-SICP-CODE-105",
+        "name": "Ministerio de Urbanismo, Vivienda y Habitat (MUVH)"
+    },
+    "DNCP-SICP-CODE-37": {
+        "id": "DNCP-SICP-CODE-37",
+        "name": "Municipalidad de Villarrica"
+    },
+    "DNCP-SICP-CODE-316": {
+        "id": "DNCP-SICP-CODE-316",
+        "name": "Agencia Financiera de Desarrollo (AFD)"
+    },
+    "DNCP-SICP-CODE-360": {
+        "id": "DNCP-SICP-CODE-360",
+        "name": "Consejo Nacional de Educación Superior (CONES)"
+    },
+    "DNCP-SICP-CODE-91": {
+        "id": "DNCP-SICP-CODE-91",
+        "name": "Gobierno Departamental de Presidente Hayes (PTE.HAYES)"
+    },
+    "DNCP-SICP-CODE-220": {
+        "id": "DNCP-SICP-CODE-220",
+        "name": "Crédito Agrícola de Habilitación (CAH)"
+    },
+    "DNCP-SICP-CODE-372": {
+        "id": "DNCP-SICP-CODE-372",
+        "name": "Ministerio de Desarrollo Social (MDS)"
+    },
+    "DNCP-SICP-CODE-136": {
+        "id": "DNCP-SICP-CODE-136",
+        "name": "Comisión Nacional de Valores (CNV)"
+    },
+    "DNCP-SICP-CODE-1": {
+        "id": "DNCP-SICP-CODE-1",
+        "name": "Ministerio de Educación y Ciencias (MEC)"
+    },
+    "DNCP-SICP-CODE-326": {
+        "id": "DNCP-SICP-CODE-326",
+        "name": "Dirección Nacional de Contrataciones Públicas (DNCP)"
+    },
+    "DNCP-SICP-CODE-307": {
+        "id": "DNCP-SICP-CODE-307",
+        "name": "Servicio Nacional de Calidad y Salud Animal (SENACSA)"
+    },
+    "DNCP-SICP-CODE-371": {
+        "id": "DNCP-SICP-CODE-371",
+        "name": "Ministerio de la Niñez y la Adolescencia (MINNA)"
+    },
+    "DNCP-SICP-CODE-221": {
+        "id": "DNCP-SICP-CODE-221",
+        "name": "Fondo Ganadero (FG.)"
+    },
+    "DNCP-SICP-CODE-233": {
+        "id": "DNCP-SICP-CODE-233",
+        "name": "Municipalidad de Minga Guazú"
+    },
+    "DNCP-SICP-CODE-1050": {
+        "id": "DNCP-SICP-CODE-299",
+        "name": "Ministerio del Interior (M.I.)"
+    },
+    "DNCP-SICP-CODE-100": {
+        "id": "DNCP-SICP-CODE-100",
+        "name": "Municipalidad de Limpio"
+    },
+    "DNCP-SICP-CODE-167": {
+        "id": "DNCP-SICP-CODE-167",
+        "name": "Administración Nacional de Electricidad (ANDE)"
+    },
+    "DNCP-SICP-CODE-67": {
+        "id": "DNCP-SICP-CODE-67",
+        "name": "Municipalidad de Guarambaré"
+    },
+    "DNCP-SICP-CODE-184": {
+        "id": "DNCP-SICP-CODE-184",
+        "name": "Municipalidad de Corpus Christi"
+    },
+    "DNCP-SICP-CODE-108": {
+        "id": "DNCP-SICP-CODE-108",
+        "name": "Municipalidad de Asunción"
+    },
+    "DNCP-SICP-CODE-194": {
+        "id": "DNCP-SICP-CODE-194",
+        "name": "Municipalidad de Ybycui"
+    },
+    "DNCP-SICP-CODE-234": {
+        "id": "DNCP-SICP-CODE-234",
+        "name": "Municipalidad de Minga Porá"
+    },
+    "DNCP-SICP-CODE-104": {
+        "id": "DNCP-SICP-CODE-104",
+        "name": "Instituto Nacional de Tecnología, Normalización y Metrología (INTN)"
+    },
+    "DNCP-SICP-CODE-246": {
+        "id": "DNCP-SICP-CODE-246",
+        "name": "Municipalidad de 25 de Diciembre"
+    },
+    "DNCP-SICP-CODE-69": {
+        "id": "DNCP-SICP-CODE-69",
+        "name": "Gobierno Departamental de Itapua (ITAPÚA)"
+    },
+    "DNCP-SICP-CODE-189": {
+        "id": "DNCP-SICP-CODE-189",
+        "name": "Industria Nacional del Cemento (INC)"
+    },
+    "DNCP-SICP-CODE-57": {
+        "id": "DNCP-SICP-CODE-57",
+        "name": "Municipalidad de Juan Eulogio Estigarribia"
+    },
+    "DNCP-SICP-CODE-207": {
+        "id": "DNCP-SICP-CODE-207",
+        "name": "Municipalidad de San Rafael del Paraná"
+    },
+    "DNCP-SICP-CODE-297": {
+        "id": "DNCP-SICP-CODE-297",
+        "name": "Honorable Cámara de Senadores"
+    },
+    "DNCP-SICP-CODE-31": {
+        "id": "DNCP-SICP-CODE-31",
+        "name": "Contraloría General de la República (C.G.R.)"
+    },
+    "DNCP-SICP-CODE-303": {
+        "id": "DNCP-SICP-CODE-303",
+        "name": "Ministerio de Relaciones Exteriores (MRE)"
+    },
+    "DNCP-SICP-CODE-1360": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-276": {
+        "id": "DNCP-SICP-CODE-276",
+        "name": "Municipalidad de Loma Grande"
+    },
+    "DNCP-SICP-CODE-298": {
+        "id": "DNCP-SICP-CODE-298",
+        "name": "Congreso Nacional (C.N.)"
+    },
+    "DNCP-SICP-CODE-1001": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-342": {
+        "id": "DNCP-SICP-CODE-342",
+        "name": "Ministerio de la Defensa Pública - Defensoría (MDP)"
+    },
+    "DNCP-SICP-CODE-1667": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-88": {
+        "id": "DNCP-SICP-CODE-88",
+        "name": "Municipalidad de Itaugua"
+    },
+    "DNCP-SICP-CODE-101": {
+        "id": "DNCP-SICP-CODE-101",
+        "name": "Municipalidad de Luque"
+    },
+    "DNCP-SICP-CODE-196": {
+        "id": "DNCP-SICP-CODE-196",
+        "name": "Municipalidad de Ciudad del Este"
+    },
+    "DNCP-SICP-CODE-137": {
+        "id": "DNCP-SICP-CODE-137",
+        "name": "Comisión Nacional de Telecomunicaciones (CONATEL)"
+    },
+    "DNCP-SICP-CODE-309": {
+        "id": "DNCP-SICP-CODE-309",
+        "name": "Compañía Paraguaya de Comunicaciones (COPACO)"
+    },
+    "DNCP-SICP-CODE-1641": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1895": {
+        "id": "DNCP-SICP-CODE-11",
+        "name": "Ministerio de Justicia  (MJ)"
+    },
+    "DNCP-SICP-CODE-1017": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1612": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1027": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-12": {
+        "id": "DNCP-SICP-CODE-12",
+        "name": "Ministerio de Agricultura y Ganadería (MAG)"
+    },
+    "DNCP-SICP-CODE-159": {
+        "id": "DNCP-SICP-CODE-159",
+        "name": "Caja de Jubilaciones y Pensiones del Personal de la Ande (CAJA ANDE)"
+    },
+    "DNCP-SICP-CODE-284": {
+        "id": "DNCP-SICP-CODE-284",
+        "name": "Municipalidad de Tobatí"
+    },
+    "DNCP-SICP-CODE-183": {
+        "id": "DNCP-SICP-CODE-183",
+        "name": "Municipalidad de Pedro Juan Caballero"
+    },
+    "DNCP-SICP-CODE-66": {
+        "id": "DNCP-SICP-CODE-66",
+        "name": "Municipalidad de Fernando de la Mora"
+    },
+    "DNCP-SICP-CODE-21": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-364": {
+        "id": "DNCP-SICP-CODE-364",
+        "name": "Municipalidad de Karapai"
+    },
+    "DNCP-SICP-CODE-214": {
+        "id": "DNCP-SICP-CODE-214",
+        "name": "Municipalidad de San Miguel"
+    },
+    "DNCP-SICP-CODE-179": {
+        "id": "DNCP-SICP-CODE-179",
+        "name": "Petróleos Paraguayos (PETROPAR)"
+    },
+    "DNCP-SICP-CODE-191": {
+        "id": "DNCP-SICP-CODE-191",
+        "name": "Banco Nacional de Fomento (BNF)"
+    },
+    "DNCP-SICP-CODE-237": {
+        "id": "DNCP-SICP-CODE-237",
+        "name": "Universidad Nacional de Itapúa (UNI)"
+    },
+    "DNCP-SICP-CODE-50": {
+        "id": "DNCP-SICP-CODE-50",
+        "name": "Gobierno Departamental de San Pedro (S.PEDRO)"
+    },
+    "DNCP-SICP-CODE-322": {
+        "id": "DNCP-SICP-CODE-322",
+        "name": "Universidad Nacional de Concepción (UNC)"
+    },
+    "DNCP-SICP-CODE-190": {
+        "id": "DNCP-SICP-CODE-190",
+        "name": "Municipalidad de Nueva Esperanza"
+    },
+    "DNCP-SICP-CODE-1353": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-1573": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-129": {
+        "id": "DNCP-SICP-CODE-129",
+        "name": "Municipalidad de Cambyretá"
+    },
+    "DNCP-SICP-CODE-187": {
+        "id": "DNCP-SICP-CODE-187",
+        "name": "Municipalidad de Katuete"
+    },
+    "DNCP-SICP-CODE-1600": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-271": {
+        "id": "DNCP-SICP-CODE-271",
+        "name": "Municipalidad de Emboscada"
+    },
+    "DNCP-SICP-CODE-305": {
+        "id": "DNCP-SICP-CODE-305",
+        "name": "Ministerio de Hacienda"
+    },
+    "DNCP-SICP-CODE-1382": {
+        "id": "DNCP-SICP-CODE-299",
+        "name": "Ministerio del Interior (M.I.)"
+    },
+    "DNCP-SICP-CODE-208": {
+        "id": "DNCP-SICP-CODE-208",
+        "name": "Municipalidad de Tomás Romero Pereira"
+    },
+    "DNCP-SICP-CODE-1431": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-186": {
+        "id": "DNCP-SICP-CODE-186",
+        "name": "Municipalidad de Itanará"
+    },
+    "DNCP-SICP-CODE-5": {
+        "id": "DNCP-SICP-CODE-5",
+        "name": "Municipalidad de Yasy Cañy"
+    },
+    "DNCP-SICP-CODE-70": {
+        "id": "DNCP-SICP-CODE-70",
+        "name": "Municipalidad de Mcal. Francisco Solano López"
+    },
+    "DNCP-SICP-CODE-96": {
+        "id": "DNCP-SICP-CODE-96",
+        "name": "Municipalidad de Caazapá"
+    },
+    "DNCP-SICP-CODE-58": {
+        "id": "DNCP-SICP-CODE-58",
+        "name": "Municipalidad de Juan Manuel Frutos"
+    },
+    "DNCP-SICP-CODE-274": {
+        "id": "DNCP-SICP-CODE-274",
+        "name": "Municipalidad de Itacurubí de las Cordilleras"
+    },
+    "DNCP-SICP-CODE-2": {
+        "id": "DNCP-SICP-CODE-2",
+        "name": "Municipalidad de Salto del Guairá"
+    },
+    "DNCP-SICP-CODE-99": {
+        "id": "DNCP-SICP-CODE-99",
+        "name": "Municipalidad de Lambaré"
+    },
+    "DNCP-SICP-CODE-1365": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-55": {
+        "id": "DNCP-SICP-CODE-55",
+        "name": "Municipalidad de Coronel Oviedo"
+    },
+    "DNCP-SICP-CODE-65": {
+        "id": "DNCP-SICP-CODE-65",
+        "name": "Municipalidad de Capiatá"
+    },
+    "DNCP-SICP-CODE-1362": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-348": {
+        "id": "DNCP-SICP-CODE-348",
+        "name": "Comisión Nac. de Prevención contra la Tortura y Otros Tratos"
+    },
+    "DNCP-SICP-CODE-1004": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1519": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1368": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-80": {
+        "id": "DNCP-SICP-CODE-80",
+        "name": "Gobierno Departamental de Alto Paraná (A.PARANÁ)"
+    },
+    "DNCP-SICP-CODE-299": {
+        "id": "DNCP-SICP-CODE-299",
+        "name": "Ministerio del Interior (M.I.)"
+    },
+    "DNCP-SICP-CODE-1012": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-335": {
+        "id": "DNCP-SICP-CODE-335",
+        "name": "Instituto Forestal Nacional (INFONA)"
+    },
+    "DNCP-SICP-CODE-30": {
+        "id": "DNCP-SICP-CODE-30",
+        "name": "Consejo de la Magistratura (C.M.)"
+    },
+    "DNCP-SICP-CODE-212": {
+        "id": "DNCP-SICP-CODE-212",
+        "name": "Municipalidad de San Ignacio"
+    },
+    "DNCP-SICP-CODE-325": {
+        "id": "DNCP-SICP-CODE-325",
+        "name": "Universidad Nacional de Villarrica del Espiritu Santo (UNVES)"
+    },
+    "DNCP-SICP-CODE-347": {
+        "id": "DNCP-SICP-CODE-347",
+        "name": "Ministerio de la Mujer (MM)"
+    },
+    "DNCP-SICP-CODE-62": {
+        "id": "DNCP-SICP-CODE-62",
+        "name": "Gobierno Departamental de Caaguazú (CAAGUAZÚ)"
+    },
+    "DNCP-SICP-CODE-61": {
+        "id": "DNCP-SICP-CODE-61",
+        "name": "Gobierno Departamental de Guairá (GUAIRÁ)"
+    },
+    "DNCP-SICP-CODE-352": {
+        "id": "DNCP-SICP-CODE-352",
+        "name": "Direccion Nacional de Propiedad Intelectual (DINAPI)"
+    },
+    "DNCP-SICP-CODE-1008": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1411": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-1412": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-1808": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-169": {
+        "id": "DNCP-SICP-CODE-169",
+        "name": "Administración Nacional de Navegación y Puertos (ANNP)"
+    },
+    "DNCP-SICP-CODE-302": {
+        "id": "DNCP-SICP-CODE-302",
+        "name": "Vicepresidencia de la República (VP)"
+    },
+    "DNCP-SICP-CODE-337": {
+        "id": "DNCP-SICP-CODE-337",
+        "name": "Instituto Paraguayo de Tecnologia Agraria (IPTA)"
+    },
+    "DNCP-SICP-CODE-362": {
+        "id": "DNCP-SICP-CODE-362",
+        "name": "Comisión Nacional de Competencia (CONACOM)"
+    },
+    "DNCP-SICP-CODE-358": {
+        "id": "DNCP-SICP-CODE-358",
+        "name": "Ag. Nac. de Eval. y Acreditación de la Educación Superior (ANEAES)"
+    },
+    "DNCP-SICP-CODE-1377": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-1485": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-144": {
+        "id": "DNCP-SICP-CODE-144",
+        "name": "Ente Regulador de Servicios Sanitarios (ERSSAN)"
+    },
+    "DNCP-SICP-CODE-1018": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-311": {
+        "id": "DNCP-SICP-CODE-311",
+        "name": "Instituto Paraguayo de Artesania (IPA)"
+    },
+    "DNCP-SICP-CODE-32": {
+        "id": "DNCP-SICP-CODE-32",
+        "name": "Defensoría del Pueblo"
+    },
+    "DNCP-SICP-CODE-377": {
+        "id": "DNCP-SICP-CODE-377",
+        "name": "Dirección Nacional de Defensa, Salud y Bienestar Animal (DNDSBA)"
+    },
+    "DNCP-SICP-CODE-188": {
+        "id": "DNCP-SICP-CODE-188",
+        "name": "Municipalidad de la Paloma del Espiritu Santo"
+    },
+    "DNCP-SICP-CODE-317": {
+        "id": "DNCP-SICP-CODE-317",
+        "name": "Servicio Nacional de Calidad y Sanidad Vegetal y de Semillas (SENAVE)"
+    },
+    "DNCP-SICP-CODE-13": {
+        "id": "DNCP-SICP-CODE-13",
+        "name": "Ministerio de Industria y Comercio (MIC)"
+    },
+    "DNCP-SICP-CODE-1002": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1343": {
+        "id": "DNCP-SICP-CODE-355",
+        "name": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)"
+    },
+    "DNCP-SICP-CODE-145": {
+        "id": "DNCP-SICP-CODE-145",
+        "name": "Instituto Nacional de Cooperativismo (INCOOP)"
+    },
+    "DNCP-SICP-CODE-279": {
+        "id": "DNCP-SICP-CODE-279",
+        "name": "Municipalidad de Piribebuy"
+    },
+    "DNCP-SICP-CODE-1379": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-178": {
+        "id": "DNCP-SICP-CODE-178",
+        "name": "Dirección Nacional de Aeronáutica Civil (DINAC)"
+    },
+    "DNCP-SICP-CODE-378": {
+        "id": "DNCP-SICP-CODE-378",
+        "name": "Universidad Politécnica Taiwán – Paraguay (UPTP)"
+    },
+    "DNCP-SICP-CODE-223": {
+        "id": "DNCP-SICP-CODE-223",
+        "name": "Municipalidad de Juan E. O'Leary"
+    },
+    "DNCP-SICP-CODE-92": {
+        "id": "DNCP-SICP-CODE-92",
+        "name": "Gobierno Departamental de Alto Paraguay (GOBALTOPY)"
+    },
+    "DNCP-SICP-CODE-379": {
+        "id": "DNCP-SICP-CODE-379",
+        "name": "Instituto Nacional de Estadística (INE)"
+    },
+    "DNCP-SICP-CODE-1042": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-308": {
+        "id": "DNCP-SICP-CODE-308",
+        "name": "Dirección Nacional de Aduanas (DNA)"
+    },
+    "DNCP-SICP-CODE-63": {
+        "id": "DNCP-SICP-CODE-63",
+        "name": "Municipalidad de Yguazú"
+    },
+    "DNCP-SICP-CODE-4": {
+        "id": "DNCP-SICP-CODE-4",
+        "name": "Municipalidad de Villa Ygatimí"
+    },
+    "DNCP-SICP-CODE-56": {
+        "id": "DNCP-SICP-CODE-56",
+        "name": "Municipalidad de Dr. Cecilio Báez"
+    },
+    "DNCP-SICP-CODE-273": {
+        "id": "DNCP-SICP-CODE-273",
+        "name": "Municipalidad de Isla Pucú"
+    },
+    "DNCP-SICP-CODE-359": {
+        "id": "DNCP-SICP-CODE-359",
+        "name": "Agencia Nacional de Transito y Seguridad Vial (ANTSV)"
+    },
+    "DNCP-SICP-CODE-162": {
+        "id": "DNCP-SICP-CODE-162",
+        "name": "Caja de Jubilaciones y Pensiones de Empleados de Bancarios (CAJ.BANC.)"
+    },
+    "DNCP-SICP-CODE-163": {
+        "id": "DNCP-SICP-CODE-163",
+        "name": "Caja de Jubilaciones y Pensiones del Personal Municipal (CAJ.MUNIC.)"
+    },
+    "DNCP-SICP-CODE-68": {
+        "id": "DNCP-SICP-CODE-68",
+        "name": "Gobierno Departamental de Caazapá (CAAZAPÁ)"
+    },
+    "DNCP-SICP-CODE-1367": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-340": {
+        "id": "DNCP-SICP-CODE-340",
+        "name": "Universidad Nacional de Canindeyu (UNICAN)"
+    },
+    "DNCP-SICP-CODE-107": {
+        "id": "DNCP-SICP-CODE-107",
+        "name": "Dirección de Beneficencia (DIBEN)"
+    },
+    "DNCP-SICP-CODE-1037": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-76": {
+        "id": "DNCP-SICP-CODE-76",
+        "name": "Municipalidad de San José de los Arroyos"
+    },
+    "DNCP-SICP-CODE-15": {
+        "id": "DNCP-SICP-CODE-15",
+        "name": "Municipalidad de Fuerte Olimpo"
+    },
+    "DNCP-SICP-CODE-269": {
+        "id": "DNCP-SICP-CODE-269",
+        "name": "Municipalidad de Caacupé"
+    },
+    "DNCP-SICP-CODE-1407": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-1856": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1366": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-201": {
+        "id": "DNCP-SICP-CODE-201",
+        "name": "Municipalidad de Itakyry"
+    },
+    "DNCP-SICP-CODE-1870": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-1023": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-1500": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-355": {
+        "id": "DNCP-SICP-CODE-355",
+        "name": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)"
+    },
+    "DNCP-SICP-CODE-77": {
+        "id": "DNCP-SICP-CODE-77",
+        "name": "Gobierno Departamental de Misiones (MISIONES)"
+    },
+    "DNCP-SICP-CODE-1409": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-304": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-374": {
+        "id": "DNCP-SICP-CODE-374",
+        "name": "Instituto Superior de Bellas Artes (ISBA)"
+    },
+    "DNCP-SICP-CODE-1025": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-320": {
+        "id": "DNCP-SICP-CODE-320",
+        "name": "Municipalidad de Filadelfia"
+    },
+    "DNCP-SICP-CODE-1673": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-128": {
+        "id": "DNCP-SICP-CODE-128",
+        "name": "Municipalidad de Bella Vista - Itapúa"
+    },
+    "DNCP-SICP-CODE-272": {
+        "id": "DNCP-SICP-CODE-272",
+        "name": "Municipalidad de Eusebio Ayala"
+    },
+    "DNCP-SICP-CODE-266": {
+        "id": "DNCP-SICP-CODE-266",
+        "name": "Municipalidad de Altos"
+    },
+    "DNCP-SICP-CODE-49": {
+        "id": "DNCP-SICP-CODE-49",
+        "name": "Municipalidad de Santa Rosa del Monday"
+    },
+    "DNCP-SICP-CODE-1026": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-241": {
+        "id": "DNCP-SICP-CODE-241",
+        "name": "Municipalidad de Concepción"
+    },
+    "DNCP-SICP-CODE-368": {
+        "id": "DNCP-SICP-CODE-368",
+        "name": "Sindicatura General de Quiebras"
+    },
+    "DNCP-SICP-CODE-1602": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-86": {
+        "id": "DNCP-SICP-CODE-86",
+        "name": "Municipalidad de Yhú"
+    },
+    "DNCP-SICP-CODE-25": {
+        "id": "DNCP-SICP-CODE-25",
+        "name": "Ministerio Público - Fiscalía (FGE)"
+    },
+    "DNCP-SICP-CODE-353": {
+        "id": "DNCP-SICP-CODE-353",
+        "name": "Secretaria de Defensa del Consumidor y el Usuario (SEDECO)"
+    },
+    "DNCP-SICP-CODE-81": {
+        "id": "DNCP-SICP-CODE-81",
+        "name": "Gobierno Departamental de Central (CENTRAL)"
+    },
+    "DNCP-SICP-CODE-41": {
+        "id": "DNCP-SICP-CODE-41",
+        "name": "Municipalidad de Ñemby"
+    },
+    "DNCP-SICP-CODE-238": {
+        "id": "DNCP-SICP-CODE-238",
+        "name": "Municipalidad de Gral. Bernardino Caballero"
+    },
+    "DNCP-SICP-CODE-142": {
+        "id": "DNCP-SICP-CODE-142",
+        "name": "Municipalidad de General Artigas"
+    },
+    "DNCP-SICP-CODE-1005": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1805": {
+        "id": "DNCP-SICP-CODE-305",
+        "name": "Ministerio de Hacienda"
+    },
+    "DNCP-SICP-CODE-1030": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-363": {
+        "id": "DNCP-SICP-CODE-363",
+        "name": "Autoridad Reguladora Radiologica y Nuclear (ARRN)"
+    },
+    "DNCP-SICP-CODE-85": {
+        "id": "DNCP-SICP-CODE-85",
+        "name": "Municipalidad de Vaquería"
+    },
+    "DNCP-SICP-CODE-165": {
+        "id": "DNCP-SICP-CODE-165",
+        "name": "Municipalidad de Villa Franca"
+    },
+    "DNCP-SICP-CODE-87": {
+        "id": "DNCP-SICP-CODE-87",
+        "name": "Gobierno Departamental de Amambay (AMAMBAY)"
+    },
+    "DNCP-SICP-CODE-1684": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-216": {
+        "id": "DNCP-SICP-CODE-216",
+        "name": "Municipalidad de Santa María"
+    },
+    "DNCP-SICP-CODE-73": {
+        "id": "DNCP-SICP-CODE-73",
+        "name": "Municipalidad de Raúl Arsenio Oviedo"
+    },
+    "DNCP-SICP-CODE-270": {
+        "id": "DNCP-SICP-CODE-270",
+        "name": "Municipalidad de Caraguatay"
+    },
+    "DNCP-SICP-CODE-43": {
+        "id": "DNCP-SICP-CODE-43",
+        "name": "Cañas Paraguayas S.A. (CAPASA)"
+    },
+    "DNCP-SICP-CODE-285": {
+        "id": "DNCP-SICP-CODE-285",
+        "name": "Municipalidad de Valenzuela"
+    },
+    "DNCP-SICP-CODE-268": {
+        "id": "DNCP-SICP-CODE-268",
+        "name": "Municipalidad de Atyra"
+    },
+    "DNCP-SICP-CODE-155": {
+        "id": "DNCP-SICP-CODE-155",
+        "name": "Municipalidad de Pilar"
+    },
+    "DNCP-SICP-CODE-44": {
+        "id": "DNCP-SICP-CODE-44",
+        "name": "Municipalidad de Presidente Franco"
+    },
+    "DNCP-SICP-CODE-1918": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-224": {
+        "id": "DNCP-SICP-CODE-224",
+        "name": "Municipalidad de los Cedrales"
+    },
+    "DNCP-SICP-CODE-14": {
+        "id": "DNCP-SICP-CODE-14",
+        "name": "Municipalidad de Villa Hayes"
+    },
+    "DNCP-SICP-CODE-106": {
+        "id": "DNCP-SICP-CODE-106",
+        "name": "Instituto Nacional de Desarrollo Rural y de la Tierra (INDERT)"
+    },
+    "DNCP-SICP-CODE-160": {
+        "id": "DNCP-SICP-CODE-160",
+        "name": "Municipalidad de Hohenau"
+    },
+    "DNCP-SICP-CODE-375": {
+        "id": "DNCP-SICP-CODE-375",
+        "name": "Ministerio de Tecnologías de la Información y Comunicación (MITIC)"
+    },
+    "DNCP-SICP-CODE-1019": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1344": {
+        "id": "DNCP-SICP-CODE-355",
+        "name": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)"
+    },
+    "DNCP-SICP-CODE-122": {
+        "id": "DNCP-SICP-CODE-122",
+        "name": "Municipalidad de Ypané"
+    },
+    "DNCP-SICP-CODE-83": {
+        "id": "DNCP-SICP-CODE-83",
+        "name": "Municipalidad de Santa Rosa del Mbutuy"
+    },
+    "DNCP-SICP-CODE-102": {
+        "id": "DNCP-SICP-CODE-102",
+        "name": "Municipalidad de Mariano Roque Alonso"
+    },
+    "DNCP-SICP-CODE-1677": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-39": {
+        "id": "DNCP-SICP-CODE-39",
+        "name": "Banco Central del Paraguay (BCP)"
+    },
+    "DNCP-SICP-CODE-1363": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1410": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-321": {
+        "id": "DNCP-SICP-CODE-321",
+        "name": "Municipalidad de Loma Plata"
+    },
+    "DNCP-SICP-CODE-1373": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1408": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-1011": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-47": {
+        "id": "DNCP-SICP-CODE-47",
+        "name": "Municipalidad de Santa Fé del Paraná"
+    },
+    "DNCP-SICP-CODE-235": {
+        "id": "DNCP-SICP-CODE-235",
+        "name": "Municipalidad de Naranjal"
+    },
+    "DNCP-SICP-CODE-40": {
+        "id": "DNCP-SICP-CODE-40",
+        "name": "Gobierno Departamental de Concepción (CONCEPCIÓN)"
+    },
+    "DNCP-SICP-CODE-367": {
+        "id": "DNCP-SICP-CODE-367",
+        "name": "Municipalidad de Maracaná"
+    },
+    "DNCP-SICP-CODE-301": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1033": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-336": {
+        "id": "DNCP-SICP-CODE-336",
+        "name": "Ministerio del Ambiente y Desarrollo Sostenible (MADES)"
+    },
+    "DNCP-SICP-CODE-1014": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-7": {
+        "id": "DNCP-SICP-CODE-7",
+        "name": "Municipalidad de Benjamín Aceval"
+    },
+    "DNCP-SICP-CODE-161": {
+        "id": "DNCP-SICP-CODE-161",
+        "name": "Municipalidad de Itapúa Poty"
+    },
+    "DNCP-SICP-CODE-198": {
+        "id": "DNCP-SICP-CODE-198",
+        "name": "Municipalidad de Juan León Mallorquín"
+    },
+    "DNCP-SICP-CODE-376": {
+        "id": "DNCP-SICP-CODE-376",
+        "name": "Municipalidad de Puerto Adela"
+    },
+    "DNCP-SICP-CODE-282": {
+        "id": "DNCP-SICP-CODE-282",
+        "name": "Municipalidad de San José Obrero"
+    },
+    "DNCP-SICP-CODE-1523": {
+        "id": "DNCP-SICP-CODE-21",
+        "name": "Corte Suprema de Justicia (CSJ)"
+    },
+    "DNCP-SICP-CODE-72": {
+        "id": "DNCP-SICP-CODE-72",
+        "name": "Municipalidad de R.I. 3 Corrales"
+    },
+    "DNCP-SICP-CODE-135": {
+        "id": "DNCP-SICP-CODE-135",
+        "name": "Municipalidad de Edelira"
+    },
+    "DNCP-SICP-CODE-48": {
+        "id": "DNCP-SICP-CODE-48",
+        "name": "Municipalidad de Santa Rita"
+    },
+    "DNCP-SICP-CODE-1359": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-288": {
+        "id": "DNCP-SICP-CODE-288",
+        "name": "Municipalidad de Coronel Martínez"
+    },
+    "DNCP-SICP-CODE-344": {
+        "id": "DNCP-SICP-CODE-344",
+        "name": "Municipalidad de Zanja Pyta"
+    },
+    "DNCP-SICP-CODE-1028": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-90": {
+        "id": "DNCP-SICP-CODE-90",
+        "name": "Gobierno Departamental de Canindeyú (CANINDEYÚ)"
+    },
+    "DNCP-SICP-CODE-256": {
+        "id": "DNCP-SICP-CODE-256",
+        "name": "Municipalidad de San Estanislao"
+    },
+    "DNCP-SICP-CODE-53": {
+        "id": "DNCP-SICP-CODE-53",
+        "name": "Municipalidad de Caaguazú"
+    },
+    "DNCP-SICP-CODE-231": {
+        "id": "DNCP-SICP-CODE-231",
+        "name": "Universidad Nacional de Pilar (UNP)"
+    },
+    "DNCP-SICP-CODE-118": {
+        "id": "DNCP-SICP-CODE-118",
+        "name": "Municipalidad de San Lorenzo"
+    },
+    "DNCP-SICP-CODE-141": {
+        "id": "DNCP-SICP-CODE-141",
+        "name": "Municipalidad de Fram"
+    },
+    "DNCP-SICP-CODE-113": {
+        "id": "DNCP-SICP-CODE-113",
+        "name": "Municipalidad de Tavaí"
+    },
+    "DNCP-SICP-CODE-264": {
+        "id": "DNCP-SICP-CODE-264",
+        "name": "Municipalidad de Yataity del Norte"
+    },
+    "DNCP-SICP-CODE-356": {
+        "id": "DNCP-SICP-CODE-356",
+        "name": "Municipalidad de Yby Pyta"
+    },
+    "DNCP-SICP-CODE-327": {
+        "id": "DNCP-SICP-CODE-327",
+        "name": "Municipalidad de Tebicuary"
+    },
+    "DNCP-SICP-CODE-1869": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-218": {
+        "id": "DNCP-SICP-CODE-218",
+        "name": "Municipalidad de Santiago"
+    },
+    "DNCP-SICP-CODE-1810": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-27": {
+        "id": "DNCP-SICP-CODE-27",
+        "name": "Municipalidad de Pirayú"
+    },
+    "DNCP-SICP-CODE-332": {
+        "id": "DNCP-SICP-CODE-332",
+        "name": "Jurado de Enjuiciamiento de Magistrados (JEM)"
+    },
+    "DNCP-SICP-CODE-138": {
+        "id": "DNCP-SICP-CODE-138",
+        "name": "Direccion Nacional de Transporte (DINATRAN)"
+    },
+    "DNCP-SICP-CODE-78": {
+        "id": "DNCP-SICP-CODE-78",
+        "name": "Gobierno Departamental de Paraguarí (PARAGUARÍ)"
+    },
+    "DNCP-SICP-CODE-236": {
+        "id": "DNCP-SICP-CODE-236",
+        "name": "Municipalidad de Ñacunday"
+    },
+    "DNCP-SICP-CODE-28": {
+        "id": "DNCP-SICP-CODE-28",
+        "name": "Municipalidad de Quiindy"
+    },
+    "DNCP-SICP-CODE-277": {
+        "id": "DNCP-SICP-CODE-277",
+        "name": "Municipalidad de Mbocayaty del Yhaguy"
+    },
+    "DNCP-SICP-CODE-1676": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-199": {
+        "id": "DNCP-SICP-CODE-199",
+        "name": "Municipalidad de Hernandarias"
+    },
+    "DNCP-SICP-CODE-98": {
+        "id": "DNCP-SICP-CODE-98",
+        "name": "Gobierno Departamental de Boquerón"
+    },
+    "DNCP-SICP-CODE-1029": {
+        "id": "DNCP-SICP-CODE-304",
+        "name": "Ministerio de Defensa Nacional (MDN)"
+    },
+    "DNCP-SICP-CODE-121": {
+        "id": "DNCP-SICP-CODE-121",
+        "name": "Municipalidad de Ypacarai"
+    },
+    "DNCP-SICP-CODE-45": {
+        "id": "DNCP-SICP-CODE-45",
+        "name": "Municipalidad de San Alberto"
+    },
+    "DNCP-SICP-CODE-1040": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-260": {
+        "id": "DNCP-SICP-CODE-260",
+        "name": "Municipalidad de Santa Rosa del Aguaray"
+    },
+    "DNCP-SICP-CODE-1597": {
+        "id": "DNCP-SICP-CODE-298",
+        "name": "Congreso Nacional (C.N.)"
+    },
+    "DNCP-SICP-CODE-210": {
+        "id": "DNCP-SICP-CODE-210",
+        "name": "Municipalidad de Yatytay"
+    },
+    "DNCP-SICP-CODE-1438": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-174": {
+        "id": "DNCP-SICP-CODE-174",
+        "name": "Municipalidad de Natalio"
+    },
+    "DNCP-SICP-CODE-59": {
+        "id": "DNCP-SICP-CODE-59",
+        "name": "Municipalidad de José Domingo Ocampos"
+    },
+    "DNCP-SICP-CODE-197": {
+        "id": "DNCP-SICP-CODE-197",
+        "name": "Municipalidad de Domingo Martínez de Irala"
+    },
+    "DNCP-SICP-CODE-84": {
+        "id": "DNCP-SICP-CODE-84",
+        "name": "Municipalidad de Simón Bolivar"
+    },
+    "DNCP-SICP-CODE-351": {
+        "id": "DNCP-SICP-CODE-351",
+        "name": "Municipalidad de Dr. Raul Peña"
+    },
+    "DNCP-SICP-CODE-132": {
+        "id": "DNCP-SICP-CODE-132",
+        "name": "Municipalidad de Cárlos Antonio López"
+    },
+    "DNCP-SICP-CODE-318": {
+        "id": "DNCP-SICP-CODE-318",
+        "name": "Municipalidad de Tte Irala Fernandez"
+    },
+    "DNCP-SICP-CODE-120": {
+        "id": "DNCP-SICP-CODE-120",
+        "name": "Municipalidad de Villeta"
+    },
+    "DNCP-SICP-CODE-232": {
+        "id": "DNCP-SICP-CODE-232",
+        "name": "Municipalidad de Mbaracayú"
+    },
+    "DNCP-SICP-CODE-117": {
+        "id": "DNCP-SICP-CODE-117",
+        "name": "Municipalidad de San Antonio"
+    },
+    "DNCP-SICP-CODE-3": {
+        "id": "DNCP-SICP-CODE-3",
+        "name": "Municipalidad de Villa Curuguaty"
+    },
+    "DNCP-SICP-CODE-283": {
+        "id": "DNCP-SICP-CODE-283",
+        "name": "Municipalidad de Santa Elena"
+    },
+    "DNCP-SICP-CODE-248": {
+        "id": "DNCP-SICP-CODE-248",
+        "name": "Municipalidad de Capiibary"
+    },
+    "DNCP-SICP-CODE-251": {
+        "id": "DNCP-SICP-CODE-251",
+        "name": "Municipalidad de Gral. Francisco I. Resquin"
+    },
+    "DNCP-SICP-CODE-46": {
+        "id": "DNCP-SICP-CODE-46",
+        "name": "Municipalidad de San Cristobal"
+    },
+    "DNCP-SICP-CODE-1036": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-75": {
+        "id": "DNCP-SICP-CODE-75",
+        "name": "Municipalidad de la Colmena"
+    },
+    "DNCP-SICP-CODE-226": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1445": {
+        "id": "DNCP-SICP-CODE-306",
+        "name": "Ministerio de Salud Pública y Bienestar Social (MSPBS)"
+    },
+    "DNCP-SICP-CODE-263": {
+        "id": "DNCP-SICP-CODE-263",
+        "name": "Municipalidad de Villa del Rosario"
+    },
+    "DNCP-SICP-CODE-1521": {
+        "id": "DNCP-SICP-CODE-226",
+        "name": "Universidad Nacional de Asunción (UNA)"
+    },
+    "DNCP-SICP-CODE-1782": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-64": {
+        "id": "DNCP-SICP-CODE-64",
+        "name": "Municipalidad de Aregua"
+    },
+    "DNCP-SICP-CODE-111": {
+        "id": "DNCP-SICP-CODE-111",
+        "name": "Municipalidad de Maciel"
+    },
+    "DNCP-SICP-CODE-95": {
+        "id": "DNCP-SICP-CODE-95",
+        "name": "Municipalidad de Mbuyapey"
+    },
+    "DNCP-SICP-CODE-328": {
+        "id": "DNCP-SICP-CODE-328",
+        "name": "Municipalidad de Tembiapora"
+    },
+    "DNCP-SICP-CODE-1038": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-192": {
+        "id": "DNCP-SICP-CODE-192",
+        "name": "Municipalidad de Tebicuarymi"
+    },
+    "DNCP-SICP-CODE-71": {
+        "id": "DNCP-SICP-CODE-71",
+        "name": "Municipalidad de Nueva Londres"
+    },
+    "DNCP-SICP-CODE-228": {
+        "id": "DNCP-SICP-CODE-228",
+        "name": "Municipalidad de Acahay"
+    },
+    "DNCP-SICP-CODE-103": {
+        "id": "DNCP-SICP-CODE-103",
+        "name": "Municipalidad de Alberdi"
+    },
+    "DNCP-SICP-CODE-123": {
+        "id": "DNCP-SICP-CODE-123",
+        "name": "Instituto Paraguayo del Indígena (INDI)"
+    },
+    "DNCP-SICP-CODE-278": {
+        "id": "DNCP-SICP-CODE-278",
+        "name": "Municipalidad de Nueva Colombia"
+    },
+    "DNCP-SICP-CODE-331": {
+        "id": "DNCP-SICP-CODE-331",
+        "name": "Municipalidad de Carmelo Peralta"
+    },
+    "DNCP-SICP-CODE-82": {
+        "id": "DNCP-SICP-CODE-82",
+        "name": "Gobierno Departamental de Ñeembucú (ÑEEMBUCÚ)"
+    },
+    "DNCP-SICP-CODE-8": {
+        "id": "DNCP-SICP-CODE-8",
+        "name": "Municipalidad de Nanawa"
+    },
+    "DNCP-SICP-CODE-280": {
+        "id": "DNCP-SICP-CODE-280",
+        "name": "Municipalidad de Primero de Marzo"
+    },
+    "DNCP-SICP-CODE-384": {
+        "id": "DNCP-SICP-CODE-384",
+        "name": "Municipalidad de San Jose Del Rosario"
+    },
+    "DNCP-SICP-CODE-193": {
+        "id": "DNCP-SICP-CODE-193",
+        "name": "Municipalidad de Yaguaron"
+    },
+    "DNCP-SICP-CODE-310": {
+        "id": "DNCP-SICP-CODE-310",
+        "name": "Municipalidad de San Roque González de Santa Cruz"
+    },
+    "DNCP-SICP-CODE-338": {
+        "id": "DNCP-SICP-CODE-338",
+        "name": "Dirección Nacional de Correos del Paraguay (DINACOPA)"
+    },
+    "DNCP-SICP-CODE-1926": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-119": {
+        "id": "DNCP-SICP-CODE-119",
+        "name": "Municipalidad de Villa Elisa"
+    },
+    "DNCP-SICP-CODE-158": {
+        "id": "DNCP-SICP-CODE-158",
+        "name": "Caja de Seguridad Social de Empleados y Obreros Ferroviarios (CAJ.FERROV)"
+    },
+    "DNCP-SICP-CODE-200": {
+        "id": "DNCP-SICP-CODE-200",
+        "name": "Municipalidad de Iruña"
+    },
+    "DNCP-SICP-CODE-349": {
+        "id": "DNCP-SICP-CODE-349",
+        "name": "Municipalidad de 3 de Mayo"
+    },
+    "DNCP-SICP-CODE-275": {
+        "id": "DNCP-SICP-CODE-275",
+        "name": "Municipalidad de Juan de Mena"
+    },
+    "DNCP-SICP-CODE-1046": {
+        "id": "DNCP-SICP-CODE-231",
+        "name": "Universidad Nacional de Pilar (UNP)"
+    },
+    "DNCP-SICP-CODE-1041": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-345": {
+        "id": "DNCP-SICP-CODE-345",
+        "name": "Municipalidad de Tavapy"
+    },
+    "DNCP-SICP-CODE-116": {
+        "id": "DNCP-SICP-CODE-116",
+        "name": "Municipalidad de Nueva Italia"
+    },
+    "DNCP-SICP-CODE-217": {
+        "id": "DNCP-SICP-CODE-217",
+        "name": "Municipalidad de Santa Rosa Misiones"
+    },
+    "DNCP-SICP-CODE-171": {
+        "id": "DNCP-SICP-CODE-171",
+        "name": "Municipalidad de José Leandro Oviedo"
+    },
+    "DNCP-SICP-CODE-177": {
+        "id": "DNCP-SICP-CODE-177",
+        "name": "Municipalidad de Sapucai"
+    },
+    "DNCP-SICP-CODE-97": {
+        "id": "DNCP-SICP-CODE-97",
+        "name": "Municipalidad de San Joaquín"
+    },
+    "DNCP-SICP-CODE-262": {
+        "id": "DNCP-SICP-CODE-262",
+        "name": "Municipalidad de Unión"
+    },
+    "DNCP-SICP-CODE-89": {
+        "id": "DNCP-SICP-CODE-89",
+        "name": "Municipalidad de J. Augusto Saldivar"
+    },
+    "DNCP-SICP-CODE-74": {
+        "id": "DNCP-SICP-CODE-74",
+        "name": "Municipalidad de Repatriación"
+    },
+    "DNCP-SICP-CODE-195": {
+        "id": "DNCP-SICP-CODE-195",
+        "name": "Municipalidad de Ybytimi"
+    },
+    "DNCP-SICP-CODE-17": {
+        "id": "DNCP-SICP-CODE-17",
+        "name": "Municipalidad de Mcal Jose Félix Estigarribia"
+    },
+    "DNCP-SICP-CODE-173": {
+        "id": "DNCP-SICP-CODE-173",
+        "name": "Municipalidad de Mayor Otaño"
+    },
+    "DNCP-SICP-CODE-373": {
+        "id": "DNCP-SICP-CODE-373",
+        "name": "Instituto Nacional de Educación Superior \"Dr. Raul Peña\" (INAES)"
+    },
+    "DNCP-SICP-CODE-209": {
+        "id": "DNCP-SICP-CODE-209",
+        "name": "Municipalidad de Trinidad"
+    },
+    "DNCP-SICP-CODE-244": {
+        "id": "DNCP-SICP-CODE-244",
+        "name": "Municipalidad de Carapeguá"
+    },
+    "DNCP-SICP-CODE-1710": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-292": {
+        "id": "DNCP-SICP-CODE-292",
+        "name": "Municipalidad de Independencia"
+    },
+    "DNCP-SICP-CODE-10": {
+        "id": "DNCP-SICP-CODE-10",
+        "name": "Municipalidad de Puerto Pinasco"
+    },
+    "DNCP-SICP-CODE-9": {
+        "id": "DNCP-SICP-CODE-9",
+        "name": "Municipalidad de José Falcón"
+    },
+    "DNCP-SICP-CODE-243": {
+        "id": "DNCP-SICP-CODE-243",
+        "name": "Municipalidad de Loreto"
+    },
+    "DNCP-SICP-CODE-381": {
+        "id": "DNCP-SICP-CODE-381",
+        "name": "Municipalidad de Cerro Cora"
+    },
+    "DNCP-SICP-CODE-6": {
+        "id": "DNCP-SICP-CODE-6",
+        "name": "Municipalidad de Ypejhu"
+    },
+    "DNCP-SICP-CODE-131": {
+        "id": "DNCP-SICP-CODE-131",
+        "name": "Municipalidad de Capitán Miranda"
+    },
+    "DNCP-SICP-CODE-146": {
+        "id": "DNCP-SICP-CODE-146",
+        "name": "Municipalidad de Cerrito"
+    },
+    "DNCP-SICP-CODE-346": {
+        "id": "DNCP-SICP-CODE-346",
+        "name": "Municipalidad de Nueva Toledo"
+    },
+    "DNCP-SICP-CODE-60": {
+        "id": "DNCP-SICP-CODE-60",
+        "name": "Municipalidad de la Pastora"
+    },
+    "DNCP-SICP-CODE-133": {
+        "id": "DNCP-SICP-CODE-133",
+        "name": "Municipalidad de Carmen del Paraná"
+    },
+    "DNCP-SICP-CODE-180": {
+        "id": "DNCP-SICP-CODE-180",
+        "name": "Municipalidad de Bella Vista - Amambay"
+    },
+    "DNCP-SICP-CODE-247": {
+        "id": "DNCP-SICP-CODE-247",
+        "name": "Municipalidad de Antequera"
+    },
+    "DNCP-SICP-CODE-281": {
+        "id": "DNCP-SICP-CODE-281",
+        "name": "Municipalidad de San Bernardino"
+    },
+    "DNCP-SICP-CODE-130": {
+        "id": "DNCP-SICP-CODE-130",
+        "name": "Municipalidad de Capitán Meza"
+    },
+    "DNCP-SICP-CODE-380": {
+        "id": "DNCP-SICP-CODE-380",
+        "name": "Municipalidad de Boquerón"
+    },
+    "DNCP-SICP-CODE-54": {
+        "id": "DNCP-SICP-CODE-54",
+        "name": "Municipalidad de Carayaó"
+    },
+    "DNCP-SICP-CODE-176": {
+        "id": "DNCP-SICP-CODE-176",
+        "name": "Municipalidad de Obligado"
+    },
+    "DNCP-SICP-CODE-259": {
+        "id": "DNCP-SICP-CODE-259",
+        "name": "Municipalidad de San Pedro del Ycuamandiyú"
+    },
+    "DNCP-SICP-CODE-206": {
+        "id": "DNCP-SICP-CODE-206",
+        "name": "Municipalidad de San Pedro del Paraná"
+    },
+    "DNCP-SICP-CODE-203": {
+        "id": "DNCP-SICP-CODE-203",
+        "name": "Municipalidad de Pirapó"
+    },
+    "DNCP-SICP-CODE-250": {
+        "id": "DNCP-SICP-CODE-250",
+        "name": "Municipalidad de Gral. Elizardo Aquino"
+    },
+    "DNCP-SICP-CODE-1679": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-1680": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-175": {
+        "id": "DNCP-SICP-CODE-175",
+        "name": "Municipalidad de Nueva Alborada"
+    },
+    "DNCP-SICP-CODE-114": {
+        "id": "DNCP-SICP-CODE-114",
+        "name": "Municipalidad de Fulgencio Yegros"
+    },
+    "DNCP-SICP-CODE-213": {
+        "id": "DNCP-SICP-CODE-213",
+        "name": "Municipalidad de San Juan Bautista"
+    },
+    "DNCP-SICP-CODE-354": {
+        "id": "DNCP-SICP-CODE-354",
+        "name": "Municipalidad de Paso Barreto"
+    },
+    "DNCP-SICP-CODE-265": {
+        "id": "DNCP-SICP-CODE-265",
+        "name": "Municipalidad de Yrybucuá"
+    },
+    "DNCP-SICP-CODE-339": {
+        "id": "DNCP-SICP-CODE-339",
+        "name": "Municipalidad de Gral Jose M. Bruguez"
+    },
+    "DNCP-SICP-CODE-152": {
+        "id": "DNCP-SICP-CODE-152",
+        "name": "Municipalidad de Laureles"
+    },
+    "DNCP-SICP-CODE-383": {
+        "id": "DNCP-SICP-CODE-383",
+        "name": "Municipalidad de Campo Aceval"
+    },
+    "DNCP-SICP-CODE-211": {
+        "id": "DNCP-SICP-CODE-211",
+        "name": "Municipalidad de Ayolas"
+    },
+    "DNCP-SICP-CODE-370": {
+        "id": "DNCP-SICP-CODE-370",
+        "name": "Secretaría Nacional de Inteligencia (SNI)"
+    },
+    "DNCP-SICP-CODE-125": {
+        "id": "DNCP-SICP-CODE-125",
+        "name": "Fondo Nacional de la Cultura y las Artes (FONDEC)"
+    },
+    "DNCP-SICP-CODE-254": {
+        "id": "DNCP-SICP-CODE-254",
+        "name": "Municipalidad de Lima"
+    },
+    "DNCP-SICP-CODE-127": {
+        "id": "DNCP-SICP-CODE-127",
+        "name": "Municipalidad de Alto Verá"
+    },
+    "DNCP-SICP-CODE-219": {
+        "id": "DNCP-SICP-CODE-219",
+        "name": "Municipalidad de Villa Florida"
+    },
+    "DNCP-SICP-CODE-239": {
+        "id": "DNCP-SICP-CODE-239",
+        "name": "Municipalidad de San Lázaro"
+    },
+    "DNCP-SICP-CODE-319": {
+        "id": "DNCP-SICP-CODE-319",
+        "name": "Municipalidad de Bahía Negra"
+    },
+    "DNCP-SICP-CODE-253": {
+        "id": "DNCP-SICP-CODE-253",
+        "name": "Municipalidad de Itacurubí del Rosario"
+    },
+    "DNCP-SICP-CODE-1015": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-267": {
+        "id": "DNCP-SICP-CODE-267",
+        "name": "Municipalidad de Arroyos y Esteros"
+    },
+    "DNCP-SICP-CODE-204": {
+        "id": "DNCP-SICP-CODE-204",
+        "name": "Municipalidad de San Cosme y Damián"
+    },
+    "DNCP-SICP-CODE-361": {
+        "id": "DNCP-SICP-CODE-361",
+        "name": "Municipalidad de Sargento Jóse Félix López"
+    },
+    "DNCP-SICP-CODE-1678": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-229": {
+        "id": "DNCP-SICP-CODE-229",
+        "name": "Municipalidad de Caapucú"
+    },
+    "DNCP-SICP-CODE-249": {
+        "id": "DNCP-SICP-CODE-249",
+        "name": "Municipalidad de Choré"
+    },
+    "DNCP-SICP-CODE-261": {
+        "id": "DNCP-SICP-CODE-261",
+        "name": "Municipalidad de Tacuatí"
+    },
+    "DNCP-SICP-CODE-290": {
+        "id": "DNCP-SICP-CODE-290",
+        "name": "Municipalidad de Félix Pérez Cardozo"
+    },
+    "DNCP-SICP-CODE-38": {
+        "id": "DNCP-SICP-CODE-38",
+        "name": "Municipalidad de Yataity del Guairá"
+    },
+    "DNCP-SICP-CODE-257": {
+        "id": "DNCP-SICP-CODE-257",
+        "name": "Municipalidad de Escobar"
+    },
+    "DNCP-SICP-CODE-205": {
+        "id": "DNCP-SICP-CODE-205",
+        "name": "Municipalidad de San Juan del Paraná"
+    },
+    "DNCP-SICP-CODE-126": {
+        "id": "DNCP-SICP-CODE-126",
+        "name": "Municipalidad de Yuty"
+    },
+    "DNCP-SICP-CODE-242": {
+        "id": "DNCP-SICP-CODE-242",
+        "name": "Municipalidad de Horqueta"
+    },
+    "DNCP-SICP-CODE-112": {
+        "id": "DNCP-SICP-CODE-112",
+        "name": "Municipalidad de San Juan Nepomuceno"
+    },
+    "DNCP-SICP-CODE-365": {
+        "id": "DNCP-SICP-CODE-365",
+        "name": "Municipalidad de Maria Antonia"
+    },
+    "DNCP-SICP-CODE-166": {
+        "id": "DNCP-SICP-CODE-166",
+        "name": "Municipalidad de Villa Oliva"
+    },
+    "DNCP-SICP-CODE-386": {
+        "id": "DNCP-SICP-CODE-386",
+        "name": "Instituto Nacional del Audiovisual Paraguayo (INAP)"
+    },
+    "DNCP-SICP-CODE-382": {
+        "id": "DNCP-SICP-CODE-382",
+        "name": "Municipalidad de Laurel"
+    },
+    "DNCP-SICP-CODE-369": {
+        "id": "DNCP-SICP-CODE-369",
+        "name": "Municipalidad de Arroyito"
+    },
+    "DNCP-SICP-CODE-134": {
+        "id": "DNCP-SICP-CODE-134",
+        "name": "Municipalidad de Coronel Bogado"
+    },
+    "DNCP-SICP-CODE-170": {
+        "id": "DNCP-SICP-CODE-170",
+        "name": "Municipalidad de Jesús"
+    },
+    "DNCP-SICP-CODE-79": {
+        "id": "DNCP-SICP-CODE-79",
+        "name": "Municipalidad de Itá"
+    },
+    "DNCP-SICP-CODE-35": {
+        "id": "DNCP-SICP-CODE-35",
+        "name": "Municipalidad de Paso Yobai"
+    },
+    "DNCP-SICP-CODE-293": {
+        "id": "DNCP-SICP-CODE-293",
+        "name": "Municipalidad de Itapé"
+    },
+    "DNCP-SICP-CODE-341": {
+        "id": "DNCP-SICP-CODE-341",
+        "name": "Municipalidad de Azotey"
+    },
+    "DNCP-SICP-CODE-26": {
+        "id": "DNCP-SICP-CODE-26",
+        "name": "Municipalidad de Paraguarí"
+    },
+    "DNCP-SICP-CODE-366": {
+        "id": "DNCP-SICP-CODE-366",
+        "name": "Municipalidad de San Vicente Pancholo"
+    },
+    "DNCP-SICP-CODE-289": {
+        "id": "DNCP-SICP-CODE-289",
+        "name": "Municipalidad de Dr. Bottrell"
+    },
+    "DNCP-SICP-CODE-255": {
+        "id": "DNCP-SICP-CODE-255",
+        "name": "Municipalidad de Nueva Germania"
+    },
+    "DNCP-SICP-CODE-240": {
+        "id": "DNCP-SICP-CODE-240",
+        "name": "Municipalidad de Belén"
+    },
+    "DNCP-SICP-CODE-343": {
+        "id": "DNCP-SICP-CODE-343",
+        "name": "Municipalidad de Liberacion"
+    },
+    "DNCP-SICP-CODE-329": {
+        "id": "DNCP-SICP-CODE-329",
+        "name": "Municipalidad de San Carlos del Apa"
+    },
+    "DNCP-SICP-CODE-227": {
+        "id": "DNCP-SICP-CODE-227",
+        "name": "Municipalidad de Yabebyry"
+    },
+    "DNCP-SICP-CODE-94": {
+        "id": "DNCP-SICP-CODE-94",
+        "name": "Municipalidad de Buena Vista"
+    },
+    "DNCP-SICP-CODE-143": {
+        "id": "DNCP-SICP-CODE-143",
+        "name": "Municipalidad de General Delgado"
+    },
+    "DNCP-SICP-CODE-182": {
+        "id": "DNCP-SICP-CODE-182",
+        "name": "Municipalidad de Capitán Bado"
+    },
+    "DNCP-SICP-CODE-52": {
+        "id": "DNCP-SICP-CODE-52",
+        "name": "Municipalidad de 3 de Febrero"
+    },
+    "DNCP-SICP-CODE-16": {
+        "id": "DNCP-SICP-CODE-16",
+        "name": "Municipalidad de Puerto Casado"
+    },
+    "DNCP-SICP-CODE-252": {
+        "id": "DNCP-SICP-CODE-252",
+        "name": "Municipalidad de Guajayvi"
+    },
+    "DNCP-SICP-CODE-1681": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-34": {
+        "id": "DNCP-SICP-CODE-34",
+        "name": "Municipalidad de Ñumi"
+    },
+    "DNCP-SICP-CODE-93": {
+        "id": "DNCP-SICP-CODE-93",
+        "name": "Municipalidad de Avaí"
+    },
+    "DNCP-SICP-CODE-36": {
+        "id": "DNCP-SICP-CODE-36",
+        "name": "Municipalidad de San Salvador"
+    },
+    "DNCP-SICP-CODE-110": {
+        "id": "DNCP-SICP-CODE-110",
+        "name": "Municipalidad de Gral. Higinio Morínigo"
+    },
+    "DNCP-SICP-CODE-29": {
+        "id": "DNCP-SICP-CODE-29",
+        "name": "Municipalidad de Quyquyho"
+    },
+    "DNCP-SICP-CODE-330": {
+        "id": "DNCP-SICP-CODE-330",
+        "name": "Municipalidad de Tte Esteban Martinez"
+    },
+    "DNCP-SICP-CODE-258": {
+        "id": "DNCP-SICP-CODE-258",
+        "name": "Municipalidad de San Pablo"
+    },
+    "DNCP-SICP-CODE-109": {
+        "id": "DNCP-SICP-CODE-109",
+        "name": "Municipalidad de Moisés Bertoni"
+    },
+    "DNCP-SICP-CODE-168": {
+        "id": "DNCP-SICP-CODE-168",
+        "name": "Municipalidad de Villalbín"
+    },
+    "DNCP-SICP-CODE-294": {
+        "id": "DNCP-SICP-CODE-294",
+        "name": "Municipalidad de Iturbe"
+    },
+    "DNCP-SICP-CODE-295": {
+        "id": "DNCP-SICP-CODE-295",
+        "name": "Municipalidad de José Fassardi"
+    },
+    "DNCP-SICP-CODE-291": {
+        "id": "DNCP-SICP-CODE-291",
+        "name": "Municipalidad de Gral. Eugenio A. Garay"
+    },
+    "DNCP-SICP-CODE-148": {
+        "id": "DNCP-SICP-CODE-148",
+        "name": "Municipalidad de Gral. José Eduvigis Díaz"
+    },
+    "DNCP-SICP-CODE-150": {
+        "id": "DNCP-SICP-CODE-150",
+        "name": "Municipalidad de Humaitá"
+    },
+    "DNCP-SICP-CODE-33": {
+        "id": "DNCP-SICP-CODE-33",
+        "name": "Municipalidad de Natalicio Talavera"
+    },
+    "DNCP-SICP-CODE-1832": {
+        "id": "DNCP-SICP-CODE-301",
+        "name": "Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-215": {
+        "id": "DNCP-SICP-CODE-215",
+        "name": "Municipalidad de San Patricio"
+    },
+    "DNCP-SICP-CODE-357": {
+        "id": "DNCP-SICP-CODE-357",
+        "name": "Municipalidad de San Alfredo"
+    },
+    "DNCP-SICP-CODE-147": {
+        "id": "DNCP-SICP-CODE-147",
+        "name": "Municipalidad de Desmochados"
+    },
+    "DNCP-SICP-CODE-151": {
+        "id": "DNCP-SICP-CODE-151",
+        "name": "Municipalidad de Isla Umbú"
+    },
+    "DNCP-SICP-CODE-156": {
+        "id": "DNCP-SICP-CODE-156",
+        "name": "Municipalidad de San Juan Bautista Ñeembucu"
+    },
+    "DNCP-SICP-CODE-245": {
+        "id": "DNCP-SICP-CODE-245",
+        "name": "Municipalidad de Yby Yaú"
+    },
+    "DNCP-SICP-CODE-350": {
+        "id": "DNCP-SICP-CODE-350",
+        "name": "Municipalidad de Ybyrarobana"
+    },
+    "DNCP-SICP-CODE-149": {
+        "id": "DNCP-SICP-CODE-149",
+        "name": "Municipalidad de Guazu Cuá"
+    },
+    "DNCP-SICP-CODE-153": {
+        "id": "DNCP-SICP-CODE-153",
+        "name": "Municipalidad de Mayor José D. Martinez"
+    },
+    "DNCP-SICP-CODE-222": {
+        "id": "DNCP-SICP-CODE-222",
+        "name": "Caja de Préstamos del Ministerio de Defensa Nacional (CAJA MDN)"
+    },
+    "DNCP-SICP-CODE-164": {
+        "id": "DNCP-SICP-CODE-164",
+        "name": "Municipalidad de Tacuaras"
+    },
+    "DNCP-SICP-CODE-154": {
+        "id": "DNCP-SICP-CODE-154",
+        "name": "Municipalidad de Paso de Patria"
+    },
+    "DNCP-SICP-CODE-286": {
+        "id": "DNCP-SICP-CODE-286",
+        "name": "Municipalidad de Borja"
+    },
+    "DNCP-SICP-CODE-287": {
+        "id": "DNCP-SICP-CODE-287",
+        "name": "Municipalidad de Mauricio José Troche"
+    },
+
+
+
+
+
+
+
+
+
+
+    "DNCP-SICP-CODE-1346": {
+        "id": "DNCP-SICP-CODE-1346",
+        "name": "Facultad de Ciencias Agropecuarias y Desarrollo Rural / Universidad Nacional de Pilar"
+    },
+    "DNCP-SICP-CODE-1389": {
+        "id": "DNCP-SICP-CODE-1389",
+        "name": "Comando Logistico / Ministerio de Defensa Nacional"
+    },
+    "DNCP-SICP-CODE-139": {
+        "id": "DNCP-SICP-CODE-139",
+        "name": "Secretaría de Transporte Área Metropolitana de Asuncion (SETAMA)"
+    },
+    "DNCP-SICP-CODE-1807": {
+        "id": "DNCP-SICP-CODE-1807",
+        "name": "Instituto de Trabajo Social / Universidad Nacional de Asunción"
+    },
+    "DNCP-SICP-CODE-19": {
+        "id": "DNCP-SICP-CODE-19",
+        "name": "Ferrocarriles del Paraguay S.A. (FEPASA)"
+    },
+    "DNCP-SICP-CODE-202": {
+        "id": "DNCP-SICP-CODE-202",
+        "name": "Banco Nacional de Ahorro y Prestamo para la Vivienda (BANAVI)"
+    },
+    "DNCP-SICP-CODE-334": {
+        "id": "DNCP-SICP-CODE-334",
+        "name": "Universidad Nacional de Caaguazu (UNCA)"
+    },
+    "DNCP-SICP-CODE-1522": {
+        "id": "DNCP-SICP-CODE-1522",
+        "name": "Uoc Rectorado / Universidad Nacional de Asunción"
+    },
+    "DNCP-SICP-CODE-296": {
+        "id": "DNCP-SICP-CODE-296",
+        "name": "Municipalidad de Mbocayaty del Guairá"
+    },
+    "DNCP-SICP-CODE-1283": {
+        "id": "DNCP-SICP-CODE-1283",
+        "name": "Facultad de Derecho y Ciencias Politicas / Universidad Nacional de Pilar"
+    },
+    "DNCP-SICP-CODE-1345": {
+        "id": "DNCP-SICP-CODE-1345",
+        "name": "Facultad de Ciencias Contables, Administrativas y Economicas / Universidad Nacional de Pilar"
+    },
+    "DNCP-SICP-CODE-1349": {
+        "id": "DNCP-SICP-CODE-1349",
+        "name": "Facultad de Ciencias Aplicadas / Universidad Nacional de Pilar"
+    },
+    "DNCP-SICP-CODE-1717": {
+        "id": "DNCP-SICP-CODE-1717",
+        "name": "Instituto Nacional de Alimentación y Nutrición (INAN) / Ministerio de Salud Pública y Bienestar Social"
+    },
+    "DNCP-SICP-CODE-1722": {
+        "id": "DNCP-SICP-CODE-1722",
+        "name": "Direccion General de Informacion Estrategica de Salud Digies-Sinais / Ministerio de Salud Pública y Bienestar Social"
+    },
+    "DNCP-SICP-CODE-2012": {
+        "id": "DNCP-SICP-CODE-2012",
+        "name": "Dirección Nacional de Ingresos Tributarios / Dirección Nacional de Ingresos Tributarios"
+    },
+    "DNCP-SICP-CODE-230": {
+        "id": "DNCP-SICP-CODE-230",
+        "name": "Universidad Nacional del Este (UNE)"
+    },
+    "DNCP-SICP-CODE-1007": {
+        "id": "DNCP-SICP-CODE-1007",
+        "name": "Dirección General de Estadisticas Encuestas y Censo (DGEEC) / Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1016": {
+        "id": "DNCP-SICP-CODE-1016",
+        "name": "Diben (DIBEN) / Presidencia de la República"
+    },
+    "DNCP-SICP-CODE-1348": {
+        "id": "DNCP-SICP-CODE-1348",
+        "name": "Facultad de Humanidades y Ciencias de la Educacion / Universidad Nacional de Pilar"
+    },
+    "DNCP-SICP-CODE-225": {
+        "id": "DNCP-SICP-CODE-225",
+        "name": "Fondo de Desarrollo Campesino (FDC)"
+    },
+    "DNCP-SICP-CODE-389": {
+        "id": "DNCP-SICP-CODE-389",
+        "name": "Universidad Nacional de Misiones (UNAMIS)"
+    },
+    "DNCP-SICP-CODE-391": {
+        "id": "DNCP-SICP-CODE-391",
+        "name": "Dirección Nacional de Migraciones (DNM)"
+    },
+    "DNCP-SICP-CODE-385": {
+        "id": "DNCP-SICP-CODE-385",
+        "name": "Municipalidad de Paso Horqueta"
+    },
+    "DNCP-SICP-CODE-388": {
+        "id": "DNCP-SICP-CODE-388",
+        "name": "Municipalidad de Nueva Asunción"
+    },
+    "DNCP-SICP-CODE-390": {
+        "id": "DNCP-SICP-CODE-390",
+        "name": "Dirección Nacional de Vigilancia Sanitaria  (DINAVISA)"
+    },
+    "DNCP-SICP-CODE-392": {
+        "id": "DNCP-SICP-CODE-392",
+        "name": "Dirección Nacional de Ingresos Tributarios (DNIT)"
+    },
+    "DNCP-SICP-CODE-387": {
+        "id": "DNCP-SICP-CODE-387",
+        "name": "Municipalidad de Itacua"
+    }
+}

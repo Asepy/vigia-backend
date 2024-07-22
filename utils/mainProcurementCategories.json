@@ -1,0 +1,347 @@
+[
+	{
+		"mainProcurementCategoryDetails" : "Utiles de oficina, Productos de papel y cartón e impresos",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Utensilios de cocina y comedor, Productos de Porcelana, vidrio y loza",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Textiles, vestuarios y calzados",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Servicios de ceremonial, gastronomico y funerarios",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Servicios de Limpiezas, Mantenimientos y reparaciones menores y mayores de Instalaciones, Maquinarias y Vehículos",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Servicios Técnicos",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Seguros",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Publicidad y Propaganda",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Productos quimicos",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Productos Alimenticios",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Pasajes y Transportes",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Muebles y Enseres",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Minerales",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Materiales e insumos eléctricos, metálicos y no metálicos, Plásticos, cauchos. Repuestos, herramientas, cámaras y cubiertas.",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Maquinarias, Equipos y herramientas mayores - Equipos de transporte",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Equipos, accesorios y programas computacionales, de oficina, educativos, de imprenta, de comunicación y señalamiento",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Equipos, Productos e instrumentales Médicos y de Laboratorio. Servicios asistenciales de salud",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Equipos de transporte",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Equipos Militares y de Seguridad. Servicio de Seguridad y Vigilancia",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Elementos e insumos de limpieza",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Consultorías, Asesorías e Investigaciones. Estudios y Proyectos de inversión",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Construcción, Restauración, Reconstrucción o Remodelación y Reparación de Inmuebles",
+		"mainProcurementCategory" : "works"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Combustibles y Lubricantes",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Capacitaciones y Adiestramientos",
+		"mainProcurementCategory" : "services"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Bienes e insumos agropecuario y forestal",
+		"mainProcurementCategory" : "goods"
+	},
+	{
+		"mainProcurementCategoryDetails" : "Adquisición y Locación de inmuebles. Alquiler de muebles",
+		"mainProcurementCategory" : "services"
+	},
+
+
+	
+
+
+
+
+	{
+        "mainProcurementCategoryDetails": "10000000 - Material Accesorios y Suministros de Plantas y Animales Vivos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "11000000 - Materiales de Minerales y Tejidos y de Plantas y Animales no Comestibles",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "12000000 - Productos quimicos incluyendo los bio-quimicos y gases industriales",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "13000000 - Resina y Colofonia y Caucho y Espuma y Pelicula y Materiales Elastomericos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "14000000 - Materiales y Productos de Papel",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "15000000 - Combustibles Aditivos para combustibles, Lubricantes y Materiales Anticorrosivos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "20000000 - Maquinaria de mineria y perforacion de pozos y accesorios",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "21000000 - Maquinaria y Accesorios para Agricultura Pesca, Silvicultura y Fauna.",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "22000000 - Maquinaria y Accesorios para Construccion y Edificacion",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "23000000 - Maquinaria y Accesorios de Fabricacion y Transformacion Industrial",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "24000000 - Maquinaria Accesorios y Suministros para Manejo, Acondicionamiento y Almacenamiento de Materiales",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "25000000 - Vehiculos Comerciales, Militares y Particulares - Accesorios y Componentes",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "26000000 - Maquinaria y Accesorios para Generacion y Distribucion de Energia",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "27000000 - Herramientas y Maquinaria en General",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "30000000 - Componentes y Suministros de Fabricacion Estructuras, Obras y Construcciones",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "31000000 - Componentes y Suministros de Fabricacion",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "32000000 - Componentes y Suministros Electronicos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "39000000 - Suministros componentes y accesorios electricos y de iluminacion",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "40000000 - Sistemas Equipos y Componentes de Distribucion y Acondicionamiento",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "41000000 - Equipo de Laboratorio Medida, Observacion y Comprobacion",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "42000000 - Equipos Accesorios y Suministros Medicos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "43000000 - Tecnologias de Informacion, Telecomunicaciones y Radiodifusiones",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "44000000 - Equipos Accesorios y Suministros de Oficina",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "45000000 - Equipos y Suministros de Imprenta Fotograficos y Audiovisuales",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "46000000 - Equipos y Suministros de Defensa Orden Publico, Proteccion y Seguridad",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "47000000 - Equipos y Suministros de limpieza",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "48000000 - Maquinaria Equipo y Suministros para la Industria de Servicios",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "49000000 - Equipos suministros y accesorios deportivos y recreativos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "50000000 - Alimentos Bebidas y Tabaco",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "51000000 - Medicamentos y Productos Farmaceuticos",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "52000000 - Muebles Accesorios, Electrodomesticos y Productos Electronicos de Consumo",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "53000000 - Ropas, Maletas y Productos de Aseo Personal",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "54000000 - Productos para Relojeria, Joyeria y Gemas",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "55000000 - Productos Publicados",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "56000000 - Muebles y mobiliario",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "57000000 - Inmuebles",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "60000000 - Materiales didacticos profesionales, Instrumentos musicales juegos, juguetes, artesania y equipamiento, material, accesorios y suministr",
+        "mainProcurementCategory": "goods"
+    },
+    {
+        "mainProcurementCategoryDetails": "70000000 - Servicios de Contratacion Agricola Pesquera, Forestal y de Fauna",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "71000000 - Servicios de Perforacion de Mineria Petroleo y Gas",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "72000000 - Servicios de Construccion y Mantenimiento",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "73000000 - Servicios de Produccion, Fabricacion Industrial y Mantenimientos de maquinarias",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "76000000 - Servicios de Limpieza Industrial",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "77000000 - Servicios Medioambientales",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "78000000 - Servicios de Transporte Almacenaje y Correo",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "80000000 - Servicios de Gestion Profesionales de Empresa y Administrativos",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "81000000 - Servicios basados en ingenieria investigacion y tecnologia",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "82000000 - Servicios Editoriales, DiseÃ±os, Graficos y de Bellas Artes",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "83000000 - Servicios Publicos y Servicios Relacionados con el Sector Publico",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "84000000 - Servicios Financieros y de Seguros",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "85000000 - Servicios Sanitarios",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "86000000 - Servicios Educativos y de Formacion",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "90000000 - Servicios de Viajes, Alimentacion, Alojamiento y Entretenimiento",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "91000000 - Servicios Personales y Domesticos",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "92000000 - Servicios de Defensa Nacional Orden Publico y Seguridad",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "93000000 - Servicios Politicos y de Asuntos Civicos",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "94000000 - Organizaciones y Clubes",
+        "mainProcurementCategory": "services"
+    },
+    {
+        "mainProcurementCategoryDetails": "95000000 - Terrenos, Edificios, Estructuras y Vías",
+        "mainProcurementCategory": "works"
+    }
+
+
+
+]
+
+
+

@@ -2,7 +2,27 @@ const { Pool, Client } = require('pg');
 const globals = require('./globals');
 var api_url='https://www.contrataciones.gov.py/datos/api/v3/doc';
 const axios = require('axios');
+const axiosRetry = require('axios-retry').default;
+axiosRetry(axios, { 
+  retries: 10,
+  retryDelay: (retryCount) => {
+      return retryCount * 500;
+  },
+  retryCondition: (error) => {
+              
+      return ([502,503,504,500].includes(error?.response?.status) || 
+      GLOBAL.getString(error?.message).includes('ETIMEDOUT')|| 
+      GLOBAL.getString(error?.message).includes('ECONNRESET')|| 
+      GLOBAL.getString(error?.message).includes('ECONNREFUSED')|| 
+      GLOBAL.getString(error?.message).includes('EAI_AGAIN'));
+  } 
+});
+
+const {getProcessData} = require('../scrapping/scrapping');
+
+
 const {getUserData} = require('./users');
+
 exports.getProcessDNCP = async (event) => {
     const payload=JSON.parse(event.body);
 
@@ -14,6 +34,36 @@ exports.getProcessDNCP = async (event) => {
         input:event
         },404);
     }
+
+
+
+
+    try{
+      let process= await getProcessData(payload.id)
+      if(process){
+        return globals.sendResponse( process)
+      }else{
+        return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+      }
+
+      
+    }catch(e){
+
+      return globals.sendResponse({
+        message: e.message,
+        error:true,
+        input:event
+      },404);
+    }
+
+
+
+
+
 
     let access_token=''
     
@@ -96,7 +146,7 @@ exports.getProcessDNCP = async (event) => {
     
   };
   
-  exports.getProcessDNCPOCID = async (event) => {
+exports.getProcessDNCPOCID = async (event) => {
     const payload=JSON.parse(event.body);
     let checkParams=globals.validateParams(["ocid"],payload);
     if(checkParams.error){
@@ -106,6 +156,34 @@ exports.getProcessDNCP = async (event) => {
         input:event
         },404);
     }
+
+    try{
+      let process= await getProcessData(globals.getString(payload.ocid).replace('ocds-03ad3f-','').split('-')[0])
+      if(process){
+        return globals.sendResponse(process)
+      }else{
+        return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+      }
+
+      
+    }catch(e){
+
+      return globals.sendResponse({
+        message: e.message,
+        error:true,
+        input:event
+      },404);
+    }
+
+
+
+
+
+
     let access_token=''
     
     try{
@@ -1043,3 +1121,9 @@ exports.checkProcessMIPYME = async (event) => {
 
   return globals.sendResponse(response);
 };
+
+function getProcessScrapper(){
+
+}
+
+
