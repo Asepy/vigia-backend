@@ -80,7 +80,6 @@ async function getProcessData(call){
      // ,"_etapa_licitacion":"INC"
 
   delete (responseCSV);
-  let call = processesCSV[0];
   if(processesCSV[0]){
     return await getProcessJSON(processData,1)
     }
