@@ -35,6 +35,8 @@ const buyers = require('../utils/buyers.json');
 const mainProcurementCategories = require('../utils/mainProcurementCategories.json');
 const procuringEntities =  require('../utils/procuringEntities.json').list//[];
 
+var SITE_URL=process.env?.SITE_URL?process.env.SITE_URL:'https://www.contrataciones.gov.py';
+
 async function getProcessData(call){
     
   let params ={
@@ -81,7 +83,7 @@ async function getProcessData(call){
 
   delete (responseCSV);
   if(processesCSV[0]){
-    return await getProcessJSON(processData,1)
+    return await getProcessJSON(processesCSV[0],1)
     }
     return null;
   }
@@ -520,6 +522,7 @@ async function getProcessJSON(processData,executionId){
      
   }
   catch(e){
+    console.dir(e)
       //await db.log(executionId,'Error en la Etapa 2 - Error al obtener la informacion de un proceso','2_GET_DATA','error',{proceso:processData,url:getProcessPageURL(processData),error:e.message});
 
   }

@@ -24,7 +24,8 @@ const {getProcessData} = require('../scrapping/scrapping');
 const {getUserData} = require('./users');
 
 exports.getProcessDNCP = async (event) => {
-    const payload=JSON.parse(event.body);
+     console.dir(event)
+    const payload=event;//JSON.parse(event.body);
 
     let checkParams=globals.validateParams(["id"],payload);
     if(checkParams.error){
