@@ -409,24 +409,15 @@ exports.getProcessDNCPOCID = async (event) => {
       const client = new Client();
       await client.connect();
       result = await client.query(`
-      with ocds_data as(
-      SELECT o.data::json from scrapper.ocds o 
+    
+      SELECT o.data from scrapper.ocds o 
       WHERE TRUE
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')}
       ORDER BY o.creacion DESC
         LIMIT $1
-        OFFSET $2
-      )
-
-      SELECT (SELECT COUNT(*) from scrapper.ocds WHERE TRUE
-      ${filterArray.map((filter)=>{
-        return filter.query;
-      }).join('\n')} 
-      ) as total,
-       (SELECT json_agg(d.*) from ocds_data
-       as d) as records;
+        OFFSET $2;
 
       `,[
           ...[
@@ -436,14 +427,29 @@ exports.getProcessDNCPOCID = async (event) => {
           ...filterArray.map((filter)=>{
             return filter.variable;
           })
-       
     ]);
+    total_result = await client.query(`
+      SELECT COUNT(*) as total,$1,$2 from scrapper.ocds WHERE TRUE
+      ${filterArray.map((filter)=>{
+        return filter.query;
+      }).join('\n')};`,[
+          ...[
+            pagination.pageSize,
+            (pagination.pageSize*(pagination.page-1)),
+          ],
+          ...filterArray.map((filter)=>{
+            return filter.variable;
+          })
+        ]);
       await client.end();
-      return globals.sendResponse(
-        {...result.rows[0],
 
-        ...{total_items: result.rows[0]?.total, total_pages: Math.ceil(result.rows[0]?.total/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize}
-      }
+      return globals.sendResponse(
+        {...{records:result.rows.map((data)=>{
+          return data?.data;
+        })},
+
+        ...{total_items: total_result.rows[0]?.total, total_pages: Math.ceil(total_result.rows[0]?.total/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize}
+        }
       );
 
       }
