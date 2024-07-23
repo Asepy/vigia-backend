@@ -410,7 +410,7 @@ exports.getProcessDNCPOCID = async (event) => {
       await client.connect();
       result = await client.query(`
     
-      SELECT o.data from scrapper.ocds o 
+      SELECT o.data from scrapper.ocds as o 
       WHERE TRUE
       ${filterArray.map((filter)=>{
         return filter.query;
@@ -429,7 +429,7 @@ exports.getProcessDNCPOCID = async (event) => {
           })
     ]);
     total_result = await client.query(`
-      SELECT COUNT(*) as total,$1,$2 from scrapper.ocds WHERE TRUE
+      SELECT COUNT(*) as total,$1,$2 from scrapper.ocds as o WHERE TRUE
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')};`,[
