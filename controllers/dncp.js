@@ -35,6 +35,34 @@ exports.getProcessDNCP = async (event) => {
         },404);
     }
 
+    try{
+      
+      const client = new Client();
+      await client.connect();
+      const result = await client.query(`
+    
+      SELECT o.data from scrapper.ocds as o 
+      WHERE o.llamado = $1
+      ORDER BY o.llamado_publicacion DESC
+      LIMIT 1
+
+      `,[
+          globals.getString(payload.id)
+      ]);
+      await client.end();
+      if(result?.rows?.length){
+        return globals.sendResponse(result.rows[0]?.data);
+      }
+
+      }
+      catch(e){
+      } 
+
+
+
+
+
+
 
 
 
@@ -147,7 +175,7 @@ exports.getProcessDNCP = async (event) => {
   };
   
 exports.getProcessDNCPOCID = async (event) => {
-    const payload=JSON.parse(event.body);
+    const payload=(event?.body)?JSON.parse(event.body):event;
     let checkParams=globals.validateParams(["ocid"],payload);
     if(checkParams.error){
       return globals.sendResponse({
@@ -156,6 +184,30 @@ exports.getProcessDNCPOCID = async (event) => {
         input:event
         },404);
     }
+
+
+    try{
+      
+      const client = new Client();
+      await client.connect();
+      const result = await client.query(`
+    
+      SELECT o.data from scrapper.ocds as o 
+      WHERE o.ocid = $1
+      ORDER BY o.llamado_publicacion DESC
+      LIMIT 1
+
+      `,[
+          globals.getString(payload.ocid)
+      ]);
+      await client.end();
+      if(result?.rows?.length){
+        return globals.sendResponse(result.rows[0]?.data);
+      }
+
+      }
+      catch(e){
+      } 
 
     try{
       let process= await getProcessData(globals.getString(payload.ocid).replace('ocds-03ad3f-','').split('-')[0])
@@ -238,8 +290,8 @@ exports.getProcessDNCPOCID = async (event) => {
     return globals.sendResponse(response);
   };
 
-  exports.checkProcessDNCP = async (event) => {
-    const payload=JSON.parse(event.body);
+exports.checkProcessDNCP = async (event) => {
+    const payload=(event?.body)?JSON.parse(event.body):event;
     let checkParams=globals.validateParams(["id"],payload);
     if(checkParams.error){
       return globals.sendResponse({
@@ -248,6 +300,62 @@ exports.getProcessDNCPOCID = async (event) => {
         input:event
         },404);
     }
+
+    try{
+      
+      const client = new Client();
+      await client.connect();
+      const result = await client.query(`
+    
+      SELECT 1 from scrapper.ocds as o 
+      WHERE o.llamado = $1
+      ORDER BY o.llamado_publicacion DESC
+      LIMIT 1
+      `,[
+          globals.getString(payload.id)
+      ]);
+      await client.end();
+      if(result?.rows?.length){
+        return globals.sendResponse( {ok:1});
+      }
+
+      }
+      catch(e){
+      } 
+
+
+
+
+
+
+
+
+
+    try{
+      let process= await getProcessData(payload.id,true);
+      if(process){
+        return globals.sendResponse( {ok:1})
+      }else{
+        return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+      }
+
+      
+    }catch(e){
+
+      return globals.sendResponse({
+        message: e.message,
+        error:true,
+        input:event
+      },404);
+    }
+
+
+
+    return;
     let access_token=''
     
     try{
@@ -415,7 +523,7 @@ exports.getProcessDNCPOCID = async (event) => {
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')}
-      ORDER BY o.creacion DESC
+      ORDER BY o.llamado_publicacion DESC
         LIMIT $1
         OFFSET $2;
 

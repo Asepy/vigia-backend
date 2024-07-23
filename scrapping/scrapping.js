@@ -37,7 +37,7 @@ const procuringEntities =  require('../utils/procuringEntities.json').list//[];
 
 var SITE_URL=process.env?.SITE_URL?process.env.SITE_URL:'https://www.contrataciones.gov.py';
 
-async function getProcessData(call){
+async function getProcessData(call,check){
     
   let params ={
 
@@ -82,8 +82,12 @@ async function getProcessData(call){
      // ,"_etapa_licitacion":"INC"
 
   delete (responseCSV);
-  if(processesCSV[0]){
-    return await getProcessJSON(processesCSV[0],1)
+    if(processesCSV[0]){
+
+    if(check){
+        return true;
+    }
+    return await getProcessJSON(processesCSV[0],1);
     }
     return null;
   }
