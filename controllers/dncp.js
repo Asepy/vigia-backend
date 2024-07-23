@@ -442,13 +442,19 @@ exports.getProcessDNCPOCID = async (event) => {
           })
         ]);
       await client.end();
-
+      if(!result?.rows?.length){
+        return globals.sendResponse( {
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+      }
       return globals.sendResponse(
         {...{records:result.rows.map((data)=>{
           return data?.data;
         })},
 
-        ...{total_items: total_result.rows[0]?.total, total_pages: Math.ceil(total_result.rows[0]?.total/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize}
+        ...{total_items: globals.getNumber(total_result.rows[0]?.total), total_pages: Math.ceil(globals.getNumber(total_result.rows[0]?.total)/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize}
         }
       );
 
