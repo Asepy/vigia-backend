@@ -366,8 +366,96 @@ exports.getProcessDNCPOCID = async (event) => {
   };
 
   exports.searchProcessDNCP = async (event) => {
-    const payload=JSON.parse(event.body);
-    
+    const payload=(event?.body)?JSON.parse(event.body):event;
+    let filterArray=[];
+  
+    for (const filter of Object.keys(payload)){
+      if(globals.validateString(payload[filter])){
+        switch(filter){
+          case 'search':
+            filterArray.push({query:`AND (lower(o.titulo) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
+            break;
+          case 'entity':
+            filterArray.push({query:`AND (lower(o.convocante) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
+            break;
+          case 'entity_id':
+            filterArray.push({query:`AND (lower(o.convocante_id) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
+            break;
+          case 'category':
+            filterArray.push({query:`AND (lower(o.categoria_detalle) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
+            break;
+          case 'method':
+            filterArray.push({query:`AND (lower(o.procedimiento) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
+            break;
+          default:
+        }
+      }
+    }
+    filterArray=filterArray.map(
+      (filter,index)=>{
+        return {query:filter.query.replace(/XVARIABLEX/g,`$${(index+3)}`), variable : filter.variable};
+      }
+    )
+
+    pagination={
+      page:globals.getNumber(payload.page)?globals.getNumber(payload.page):1,
+      pageSize:globals.getNumber(payload.pageSize)?globals.getNumber(payload.pageSize):5,
+    }
+
+   
+
+    try{
+      
+      const client = new Client();
+      await client.connect();
+      result = await client.query(`
+      with ocds_data as(
+      SELECT o.data::json from scrapper.ocds o 
+      WHERE TRUE
+      ${filterArray.map((filter)=>{
+        return filter.query;
+      }).join('\n')}
+      ORDER BY o.creacion DESC
+        LIMIT $1
+        OFFSET $2
+      )
+
+      SELECT (SELECT COUNT(*) from scrapper.ocds WHERE TRUE
+      ${filterArray.map((filter)=>{
+        return filter.query;
+      }).join('\n')} 
+      ) as total,
+       (SELECT json_agg(d.*) from ocds_data
+       as d) as records;
+
+      `,[
+          ...[
+            pagination.pageSize,
+            (pagination.pageSize*(pagination.page-1)),
+          ],
+          ...filterArray.map((filter)=>{
+            return filter.variable;
+          })
+       
+    ]);
+      await client.end();
+      return globals.sendResponse(
+        {...result.rows[0],
+
+        ...{total_items: result.rows[0]?.total, total_pages: Math.ceil(result.rows[0]?.total/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize}
+      }
+      );
+
+      }
+      catch(e){
+        return globals.sendResponse( {
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+      } 
+
+    return 
     let access_token='';
     let filters={
 
