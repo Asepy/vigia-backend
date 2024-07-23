@@ -454,7 +454,11 @@ exports.getProcessDNCPOCID = async (event) => {
           return data?.data;
         })},
 
-        ...{total_items: globals.getNumber(total_result.rows[0]?.total), total_pages: Math.ceil(globals.getNumber(total_result.rows[0]?.total)/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize}
+        ...{
+          pagination:{
+            total_items: globals.getNumber(total_result.rows[0]?.total), total_pages: Math.ceil(globals.getNumber(total_result.rows[0]?.total)/pagination.pageSize), current_page: pagination.page, items_per_page: pagination.pageSize, total_in_page: pagination.pageSize
+          }
+        }
         }
       );
 
