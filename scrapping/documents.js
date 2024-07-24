@@ -3,7 +3,7 @@ const axiosRetry = require('axios-retry').default;
 axiosRetry(axios, { 
     retries: 10,
     retryDelay: (retryCount) => {
-        return retryCount * 500;
+        return retryCount * 250;
     },
     retryCondition: (error) => {
                 

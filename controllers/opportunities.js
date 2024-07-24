@@ -184,7 +184,7 @@ module.exports.addOpportunitiesConfig =async (event) => {
         result = await client.query(`
         with opportunities_all_results as (
             select distinct on (rec.ocid) rec.data
-            from ocds.data rec
+            from ${false?'ocds.data':'scrapper.ocds'} rec
             inner join ocds.procurement pro on (pro.ocid = rec.ocid)
             inner join ocds.tender_items ten on (ten.ocid = pro.ocid)
             inner join ocds.planning_items plan on (plan.ocid = pro.ocid)

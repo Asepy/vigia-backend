@@ -6,7 +6,7 @@ const axiosRetry = require('axios-retry').default;
 axiosRetry(axios, { 
   retries: 10,
   retryDelay: (retryCount) => {
-      return retryCount * 500;
+      return retryCount * 250;
   },
   retryCondition: (error) => {
               
@@ -316,7 +316,7 @@ exports.checkProcessDNCP = async (event) => {
       ]);
       await client.end();
       if(result?.rows?.length){
-        return globals.sendResponse( {ok:1});
+        return globals.sendResponse( {ok:1, type:"local"});
       }
 
       }
@@ -334,7 +334,7 @@ exports.checkProcessDNCP = async (event) => {
     try{
       let process= await getProcessData(payload.id,true);
       if(process){
-        return globals.sendResponse( {ok:1})
+        return globals.sendResponse( {ok:1, type:"dncp"})
       }else{
         return globals.sendResponse({
           message: e.message,
