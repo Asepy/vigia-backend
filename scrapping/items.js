@@ -11,9 +11,11 @@ axiosRetry(axios, {
         GLOBAL.getString(error?.message).includes('ETIMEDOUT')|| 
         GLOBAL.getString(error?.message).includes('ECONNRESET')|| 
         GLOBAL.getString(error?.message).includes('ECONNREFUSED')|| 
-        GLOBAL.getString(error?.message).includes('EAI_AGAIN'));
+        GLOBAL.getString(error?.message).includes('EAI_AGAIN')||
+        GLOBAL.getString(error?.message).includes('socket hang up'));
     } 
 });
+const Sentry = require("@sentry/node");
 //const moment = require('moment-timezone');
 const csv=require('csvtojson');
 const GLOBAL = require('./global');
@@ -51,6 +53,7 @@ async function getItems(processData,executionId){
         );
     }
     catch(e){
+        Sentry?.captureException(e);
         //await db.log(executionId,'Error en la Etapa 2 - Error al consultar el csv de los Items','2_GET_DATA','error',{proceso:processData,url:getProcessPageURL(processData),url_items_csv:url,error:e.message});
         return items;
     }

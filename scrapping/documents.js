@@ -11,7 +11,8 @@ axiosRetry(axios, {
         GLOBAL.getString(error?.message).includes('ETIMEDOUT')|| 
         GLOBAL.getString(error?.message).includes('ECONNRESET')|| 
         GLOBAL.getString(error?.message).includes('ECONNREFUSED')|| 
-        GLOBAL.getString(error?.message).includes('EAI_AGAIN'));
+        GLOBAL.getString(error?.message).includes('EAI_AGAIN')||
+        GLOBAL.getString(error?.message).includes('socket hang up'));
     } 
 });
 const moment = require('moment-timezone');

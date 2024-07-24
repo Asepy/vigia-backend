@@ -11,7 +11,8 @@ axiosRetry(axios, {
         GLOBAL.getString(error?.message).includes('ETIMEDOUT')|| 
         GLOBAL.getString(error?.message).includes('ECONNRESET')|| 
         GLOBAL.getString(error?.message).includes('ECONNREFUSED')|| 
-        GLOBAL.getString(error?.message).includes('EAI_AGAIN'));
+        GLOBAL.getString(error?.message).includes('EAI_AGAIN')||
+        GLOBAL.getString(error?.message).includes('socket hang up'));
     } 
 });
 const moment = require('moment-timezone');
@@ -37,6 +38,8 @@ const procuringEntities =  require('../utils/procuringEntities.json').list//[];
 
 var SITE_URL=process.env?.SITE_URL?process.env.SITE_URL:'https://www.contrataciones.gov.py';
 
+const Sentry = require("@sentry/node");
+
 async function getProcessData(call,check){
     
   let params ={
@@ -58,38 +61,43 @@ async function getProcessData(call,check){
       
   };
 
-
+try{
+    let responseCSV= await axios(
+        {
+          method: 'get',
+          url: `https://www.contrataciones.gov.py/buscador/licitaciones.csv`,
+          headers: { 
+            'Content-Type': 'application/json'
+          },
+          params:params
+        }
+       );
+    //console.dir(params)
+    //console.dir(responseCSV.request.path)
   
-  let responseCSV= await axios(
-      {
-        method: 'get',
-        url: `https://www.contrataciones.gov.py/buscador/licitaciones.csv`,
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        params:params
+    let processesCSV = await csv({
+        delimiter:";",
+        noheader:false,
+        output: "json"
+        }).fromString(responseCSV.data);
+  
+       // ,"_etapa_licitacion":"INC"
+  
+    delete (responseCSV);
+      if(processesCSV[0]){
+  
+      if(check){
+          return true;
       }
-     );
-  //console.dir(params)
-  //console.dir(responseCSV.request.path)
-
-  let processesCSV = await csv({
-      delimiter:";",
-      noheader:false,
-      output: "json"
-      }).fromString(responseCSV.data);
-
-     // ,"_etapa_licitacion":"INC"
-
-  delete (responseCSV);
-    if(processesCSV[0]){
-
-    if(check){
-        return true;
-    }
-    return await getProcessJSON(processesCSV[0],1);
-    }
-    return null;
+      return await getProcessJSON(processesCSV[0],1);
+      }
+      return null;
+}catch(e){
+    console.dir(e)
+    Sentry?.captureException(e);
+}
+  
+  
   }
   
 
@@ -527,6 +535,7 @@ async function getProcessJSON(processData,executionId){
   }
   catch(e){
     console.dir(e)
+    Sentry?.captureException(e);
       //await db.log(executionId,'Error en la Etapa 2 - Error al obtener la informacion de un proceso','2_GET_DATA','error',{proceso:processData,url:getProcessPageURL(processData),error:e.message});
 
   }

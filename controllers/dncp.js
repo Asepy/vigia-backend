@@ -14,7 +14,8 @@ axiosRetry(axios, {
       GLOBAL.getString(error?.message).includes('ETIMEDOUT')|| 
       GLOBAL.getString(error?.message).includes('ECONNRESET')|| 
       GLOBAL.getString(error?.message).includes('ECONNREFUSED')|| 
-      GLOBAL.getString(error?.message).includes('EAI_AGAIN'));
+      GLOBAL.getString(error?.message).includes('EAI_AGAIN')||
+      GLOBAL.getString(error?.message).includes('socket hang up'));
   } 
 });
 
@@ -72,7 +73,7 @@ exports.getProcessDNCP = async (event) => {
         return globals.sendResponse( process)
       }else{
         return globals.sendResponse({
-          message: e.message,
+          message: 'no se encontro el llamado en la dncp',
           error:true,
           input:event
         },404);
