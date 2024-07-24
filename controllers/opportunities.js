@@ -188,12 +188,13 @@ module.exports.addOpportunitiesConfig =async (event) => {
             inner join ocds.procurement pro on (pro.ocid = rec.ocid)
             left join ocds.tender_items ten on (ten.ocid = pro.ocid)
             left join ocds.planning_items plan on (plan.ocid = pro.ocid)
-            where pro.tender_title ~* $1
+            where (pro.tender_title ~* $1
             or ten.description ~* $1
             or ten.classification_description ~* $1
             or plan.description ~* $1
             or plan.classification_description ~* $1
-            or ten.classification_id ~ $2
+            or ten.classification_id ~ $2)
+            and (pro.tender_tenderperiod_end_date)::TIMESTAMP <= (current_timestamp AT TIME ZONE 'America/Asuncion')
             order by rec.ocid, rec.id desc
           )
        
