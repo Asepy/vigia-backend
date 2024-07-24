@@ -4,9 +4,22 @@ var api_url='https://www.contrataciones.gov.py/datos/api/v3/doc';
 var queriesDir=`${globals.getString(process.env.LAMBDA_TASK_ROOT )?process.env.LAMBDA_TASK_ROOT:".."}/queries/`;
 //var queriesDir=`${__dirname}/queries/`;
 const axios = require('axios');
-const axiosRetry = require('axios-retry');
-axiosRetry(axios, {
-  retries: 5
+const axiosRetry = require('axios-retry').default;
+const GLOBAL = require('../scrapping/global');
+axiosRetry(axios, { 
+  retries: 10,
+  retryDelay: (retryCount) => {
+      return retryCount * 250;
+  },
+  retryCondition: (error) => {
+              
+      return ([502,503,504,500].includes(error?.response?.status) || 
+      GLOBAL.getString(error?.message).includes('ETIMEDOUT')|| 
+      GLOBAL.getString(error?.message).includes('ECONNRESET')|| 
+      GLOBAL.getString(error?.message).includes('ECONNREFUSED')|| 
+      GLOBAL.getString(error?.message).includes('EAI_AGAIN')||
+      GLOBAL.getString(error?.message).includes('socket hang up'));
+  } 
 });
 const path = require('path');
 const fs = require('fs');
