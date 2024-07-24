@@ -3,6 +3,7 @@ const globals = require('./globals');
 var api_url='https://www.contrataciones.gov.py/datos/api/v3/doc';
 const axios = require('axios');
 const axiosRetry = require('axios-retry').default;
+const GLOBAL = require('../scrapping/global');
 axiosRetry(axios, { 
   retries: 10,
   retryDelay: (retryCount) => {
