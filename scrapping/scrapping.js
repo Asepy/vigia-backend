@@ -44,7 +44,7 @@ async function getProcessData(call,check){
     
   let params ={
 
-      "nro_nombre_licitacion": call,
+      "nro_nombre_licitacion": call/*,
       "fecha_desde": "",
       "fecha_hasta": "",
       "tipo_fecha": "",
@@ -57,7 +57,7 @@ async function getProcessData(call,check){
       "convocante_codigos": "",
       "convocante_tipo_codigo": "",
       "unidad_contratacion_codigo": "",
-      "catalogo[codigos_catalogo_n4_label]": ""
+      "catalogo[codigos_catalogo_n4_label]": ""*/
       
   };
 
