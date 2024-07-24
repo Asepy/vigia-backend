@@ -186,8 +186,8 @@ module.exports.addOpportunitiesConfig =async (event) => {
             select distinct on (rec.ocid) rec.data
             from ${false?'ocds.data':'scrapper.ocds'} rec
             inner join ocds.procurement pro on (pro.ocid = rec.ocid)
-            inner join ocds.tender_items ten on (ten.ocid = pro.ocid)
-            inner join ocds.planning_items plan on (plan.ocid = pro.ocid)
+            left join ocds.tender_items ten on (ten.ocid = pro.ocid)
+            left join ocds.planning_items plan on (plan.ocid = pro.ocid)
             where pro.tender_title ~* $1
             or ten.description ~* $1
             or ten.classification_description ~* $1
