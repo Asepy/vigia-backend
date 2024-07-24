@@ -483,7 +483,7 @@ exports.checkProcessDNCP = async (event) => {
       if(globals.validateString(payload[filter])){
         switch(filter){
           case 'search':
-            filterArray.push({query:`AND (lower(o.titulo) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
+            filterArray.push({query:`AND ((lower(o.titulo) LIKE lower(XVARIABLEX)) OR (lower(o.llamado) LIKE lower(XVARIABLEX)) ) `,variable:`%${payload[filter]}%`});
             break;
           case 'entity':
             filterArray.push({query:`AND (lower(o.convocante) LIKE lower(XVARIABLEX)) `,variable:`%${payload[filter]}%`});
