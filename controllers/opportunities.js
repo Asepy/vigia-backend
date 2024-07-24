@@ -194,7 +194,7 @@ module.exports.addOpportunitiesConfig =async (event) => {
             or plan.description ~* $1
             or plan.classification_description ~* $1
             or ten.classification_id ~ $2)
-            and (pro.tender_tenderperiod_end_date)::TIMESTAMP <= (current_timestamp AT TIME ZONE 'America/Asuncion')
+            and (pro.tender_tenderperiod_end_date)::TIMESTAMP >= (current_timestamp AT TIME ZONE 'America/Asuncion')
             order by rec.ocid, rec.id desc
           )
        
