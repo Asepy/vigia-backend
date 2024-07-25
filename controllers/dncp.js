@@ -525,7 +525,7 @@ exports.checkProcessDNCP = async (event) => {
       ${filterArray.map((filter)=>{
         return filter.query;
       }).join('\n')}
-      ORDER BY o.llamado_publicacion DESC
+      ORDER BY o.llamado_fecha_fin DESC
         LIMIT $1
         OFFSET $2;
 
