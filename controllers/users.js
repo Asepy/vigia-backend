@@ -20,8 +20,8 @@ exports.signUpUser = async (event, context, callback) => {
       await client.connect();
       
       const res = await client.query(`INSERT INTO public.usuarios
-      (nombres, apellidos, correo, usuario, contrasena, confirmacion, fecha_confirmacion, estado, fecha_modificacion, fecha_creacion)
-      VALUES($1, $2, $3, $4, $5, FALSE, NULL, 1, NULL, NOW());`,[usuario.nombres,usuario.apellidos,usuario.correo,usuario.usuario,usuario.contrasena]);
+      (nombres, apellidos, correo, usuario, contrasena, confirmacion, fecha_confirmacion, estado, fecha_modificacion, fecha_creacion,notificaciones)
+      VALUES($1, $2, $3, $4, $5, FALSE, NULL, 1, NULL, NOW(),'SI');`,[usuario.nombres,usuario.apellidos,usuario.correo,usuario.usuario,usuario.contrasena]);
       await client.end();
       
       callback(null, event);

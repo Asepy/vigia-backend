@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS public.usuarios
     estado character varying(255) NOT NULL DEFAULT 0,
     fecha_modificacion timestamptz,
     fecha_creacion timestamptz NOT NULL,
+    notificaciones character varying(255) NULL DEFAULT 'SI',
     CONSTRAINT usuarios_pk PRIMARY KEY (id),
     CONSTRAINT correo UNIQUE (correo),
     CONSTRAINT usuario UNIQUE (usuario)
