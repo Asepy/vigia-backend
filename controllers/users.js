@@ -99,6 +99,41 @@ exports.signUpUser = async (event, context, callback) => {
     };
 
 
+    exports.getUser = async (event) => {
+      let payload={};
+      try{
+        payload=JSON.parse(event.body);
+      }catch(e){
+          return globals.sendResponse({
+              message: e.message,
+              error:true,
+              input:event
+              },404);
+      }
+  
+  
+      try{
+        event['user']=await exports.getUserData(event);
+        if(event?.user?.error){
+          return globals.sendResponse(event?.user,404);
+        }
+  
+        
+        return globals.sendResponse(event.user.attributes);
+  
+      }catch (e){
+        return {
+            error:true,
+            token:"Fallo al obtener los roles",
+            message:e.message
+          }
+        
+      }
+  
+      
+  };
+
+
 
   
 exports.getUserData=async (event,checkRoles)=>{
@@ -176,6 +211,7 @@ exports.getUserData=async (event,checkRoles)=>{
       try{
         userDB=result.rows[0];
         userData['attributes']['id']=userDB.id;
+        userData['attributes']['notifications']=userDB.notificaciones;
         if(
           (userDB.nombres != userData?.attributes?.given_name) ||
           (userDB.apellidos != userData?.attributes?.family_name) ||
@@ -212,6 +248,7 @@ exports.getUserData=async (event,checkRoles)=>{
       VALUES($1, $2, $3, $4, NULL, TRUE, NOW(), 1, NULL, NOW()) RETURNING id;`,[userData?.attributes?.given_name,userData?.attributes?.family_name,userData?.attributes?.email,userData?.attributes?.sub]);
       await clientInsert.end();
       userData['attributes']['id']=resultInsert?.rows?.[0]?.id;
+      userData['attributes']['notifications']="SI";
       console.log(userData?.attributes?.id);
       }
       catch(e){
@@ -678,4 +715,54 @@ module.exports.setLogout =async (event) => {
   
  
   return globals.sendResponse({ok:true,result:result.rows});
+};
+
+
+
+module.exports.setNotifications =async (event) => {
+  let payload={};
+  let consulta={};
+  event['user']=await exports.getUserData(event);
+  if(event?.user?.error){
+    return globals.sendResponse({
+      message: event?.user?.message,
+      error:true
+      },404);
+  }
+
+  try{
+    payload=JSON.parse(event.body);
+    consulta={
+      usuario:(event?.user?.attributes?.id)?(event?.user?.attributes?.id):null,
+      notificaciones:(event?.notification)?(event?.notification):"SI",
+    };
+  }catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+        },404);
+  } 
+  
+  let result={};
+    try{
+      const client = new Client();
+      await client.connect();
+      result = await client.query(`
+      UPDATE public.usuarios
+      SET notificationes=$2
+      WHERE id=$1
+      RETURNING id;`,[consulta.usuario,consulta.notificaciones]);
+      await client.end();
+      }
+      catch(e){
+      return globals.sendResponse({
+          message: e.message,
+          error:true,
+          input:event
+          },404);
+    } 
+  
+ 
+  return globals.sendResponse({id:result.rows[0].id});
 };

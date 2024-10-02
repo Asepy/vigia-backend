@@ -20,10 +20,12 @@ module.exports.signUpUser = users.signUpUser;
 module.exports.signUpUserConfirm = users.signUpUserConfirm;
 module.exports.getUserRoles = users.getUserRoles;
 module.exports.getUsers = users.getUsers;
+module.exports.getUser = users.getUser;
 module.exports.updateRoles = users.updateRoles;
 module.exports.getRoles = users.getRoles;
 module.exports.setLogin = users.setLogin;
 module.exports.setLogout = users.setLogout;
+module.exports.setNotifications=users.setNotifications;
 /**Reclamos */
 module.exports.getClaimsExtraFields = claims.getClaimsExtraFields;
 module.exports.addClaim = claims.addClaim;

@@ -435,6 +435,17 @@ functions:
           cors:
             origin: "*"
             headers: "*"
+  getUser:
+    handler: handler.getUser
+    events:
+      - http:
+          method: post
+          path: /getUser
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
   getProcuringEntitiesRequests:
     handler: handler.getProcuringEntitiesRequests
     events:
@@ -597,6 +608,17 @@ functions:
         - http:
             method: post
             path: /setLogin
+            #requiere uso de la API KEY
+            private: true
+            cors:
+              origin: "*"
+              headers: "*"
+  setNotifications:
+      handler: handler.setNotifications
+      events:
+        - http:
+            method: post
+            path: /setNotifications
             #requiere uso de la API KEY
             private: true
             cors:
