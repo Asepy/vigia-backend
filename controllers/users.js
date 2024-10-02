@@ -750,7 +750,7 @@ module.exports.setNotifications =async (event) => {
       await client.connect();
       result = await client.query(`
       UPDATE public.usuarios
-      SET notificationes=$2
+      SET notificaciones=$2
       WHERE id=$1
       RETURNING id;`,[consulta.usuario,consulta.notificaciones]);
       await client.end();
