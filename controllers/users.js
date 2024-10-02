@@ -734,7 +734,7 @@ module.exports.setNotifications =async (event) => {
     payload=JSON.parse(event.body);
     consulta={
       usuario:(event?.user?.attributes?.id)?(event?.user?.attributes?.id):null,
-      notificaciones:(event?.notification)?(event?.notification):"SI",
+      notificaciones:(payload?.notification)?(payload?.notification):"SI",
     };
   }catch(e){
       return globals.sendResponse({
