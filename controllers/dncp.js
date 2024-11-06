@@ -36,6 +36,7 @@ exports.getProcessDNCP = async (event) => {
         input:event
         },404);
     }
+    /*
 
     try{
       
@@ -88,7 +89,7 @@ exports.getProcessDNCP = async (event) => {
         error:true,
         input:event
       },404);
-    }
+    }*/
 
 
 
@@ -187,7 +188,7 @@ exports.getProcessDNCPOCID = async (event) => {
         },404);
     }
 
-
+/*
     try{
       
       const client = new Client();
@@ -231,7 +232,7 @@ exports.getProcessDNCPOCID = async (event) => {
         error:true,
         input:event
       },404);
-    }
+    }*/
 
 
 
@@ -302,7 +303,7 @@ exports.checkProcessDNCP = async (event) => {
         input:event
         },404);
     }
-
+/*
     try{
       
       const client = new Client();
@@ -357,7 +358,7 @@ exports.checkProcessDNCP = async (event) => {
 
 
 
-    return;
+    return;*/
     let access_token=''
     
     try{
@@ -477,7 +478,7 @@ exports.checkProcessDNCP = async (event) => {
 
   exports.searchProcessDNCP = async (event) => {
     const payload=(event?.body)?JSON.parse(event.body):event;
-    let filterArray=[];
+    /*let filterArray=[];
   
     for (const filter of Object.keys(payload)){
       if(globals.validateString(payload[filter])){
@@ -581,7 +582,7 @@ exports.checkProcessDNCP = async (event) => {
           },404);
       } 
 
-    return 
+    return */
     let access_token='';
     let filters={
 
