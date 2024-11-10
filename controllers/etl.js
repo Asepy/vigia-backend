@@ -44,7 +44,7 @@ try{
 
 module.exports.ETLValidProcesses =async (event) => {
     let insertions=[];
-    return insertions;
+    //return insertions;
     try{
 
       /*let etlTransaction = Sentry.startTransaction({
