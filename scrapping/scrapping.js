@@ -100,7 +100,7 @@ try{
   
   }
 
-  async function getProcessDataBasic(call){
+async function getProcessDataBasic(call){
     
     let params ={
   
@@ -708,4 +708,4 @@ async function getProcuringEntity(name) {
     
 };
 
-module.exports = { getProcessData};
+module.exports = { getProcessData,getProcessDataBasic};
