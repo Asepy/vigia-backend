@@ -99,6 +99,44 @@ try{
   
   
   }
+
+  async function getProcessDataBasic(call){
+    
+    let params ={
+  
+        "nro_nombre_licitacion": call
+    };
+  
+  try{
+      let responseCSV= await axios(
+          {
+            method: 'get',
+            url: `https://www.contrataciones.gov.py/buscador/licitaciones.csv`,
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            params:params
+          }
+         );
+         
+    
+      let processesCSV = await csv({
+          delimiter:";",
+          noheader:false,
+          output: "json"
+          }).fromString(responseCSV.data);
+    
+         // ,"_etapa_licitacion":"INC"
+    
+      delete (responseCSV);
+      return processesCSV?.[0] ?? null;
+  }catch(e){
+      console.dir(e)
+      Sentry?.captureException(e);
+  }
+    
+    
+    }
   
 
 

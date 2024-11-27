@@ -71,6 +71,17 @@ functions:
           cors:
             origin: "*"
             headers: "*"
+  getSlugDNCP:
+    handler: handler.getSlugDNCP
+    events:
+      - http:
+          method: post
+          path: /getSlugDNCP
+          #requiere uso de la API KEY
+          private: true
+          cors:
+            origin: "*"
+            headers: "*"
   getProcessDNCPOCID:
     handler: handler.getProcessDNCPOCID
     events:

@@ -20,11 +20,43 @@ axiosRetry(axios, {
   } 
 });
 
-const {getProcessData} = require('../scrapping/scrapping');
+const {getProcessData,getProcessDataBasic} = require('../scrapping/scrapping');
 
 
 const {getUserData} = require('./users');
 
+exports.getSlugDNCP = async (event) => {
+  const payload= (event?.body)?JSON.parse(event.body):event;
+
+  let checkParams=globals.validateParams(["id"],payload);
+  if(checkParams.error){
+    return globals.sendResponse({
+      message: checkParams.message,
+      error:true,
+      input:event
+      },404);
+  }
+  try{
+    let process= await getProcessDataBasic(payload.id)
+    if(process){
+      return globals.sendResponse(process)
+    }else{
+      return globals.sendResponse({
+        message: 'no se encontro el llamado en la dncp',
+        error:true,
+        input:event
+      },404);
+    }
+    
+  }catch(e){
+    return globals.sendResponse({
+      message: e.message,
+      error:true,
+      input:event
+    },404);
+  }
+  
+};
 exports.getProcessDNCP = async (event) => {
     const payload= (event?.body)?JSON.parse(event.body):event;
 

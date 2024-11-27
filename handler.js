@@ -52,6 +52,7 @@ module.exports.getOpportunities = opportunities.getOpportunities;
 module.exports.saveSearchOpportunities = opportunities.saveSearchOpportunities;
 /*DNCP */
 module.exports.getProcessDNCP = dncp.getProcessDNCP;
+module.exports.getSlugDNCP= dncp.getSlugDNCP;
 module.exports.getProcessDNCPOCID = dncp.getProcessDNCPOCID;
 module.exports.checkProcessDNCP = dncp.checkProcessDNCP;
 module.exports.getProcuringEntities = dncp.getProcuringEntities;
