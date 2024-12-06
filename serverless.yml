@@ -56,6 +56,13 @@ functions:
       - schedule:
           rate: rate(1 hour)
           enabled: true
+  ETLLambda:
+    handler: handler.ETLLambda
+    timeout: 900
+    events:
+      - schedule:
+          rate: rate(1 hour)
+          enabled: true
   signUpUser:
     handler: handler.signUpUser
   signUpUserConfirm:

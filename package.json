@@ -17,10 +17,13 @@
     "axios-retry": "^4.4.2",
     "csvtojson": "^2.0.10",
     "dotenv": "^16.0.3",
+    "fs-extra": "^11.2.0",
     "jsdom": "^24.1.1",
+    "jsum": "^2.0.0-alpha.4",
     "moment-timezone": "^0.5.45",
     "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
+    "stream-json": "^1.9.1",
     "twitter-api-v2": "^1.13.0"
   },
   "devDependencies": {

@@ -181,7 +181,35 @@ module.exports.addOpportunitiesConfig =async (event) => {
       try{
         const client = new Client();
         await client.connect();
-        result = await client.query(`
+        result = await client.query(
+          `
+        with opportunities_all_results as (
+            select op."data"
+            from ocds.opportunities op
+           
+            where (
+            op.titulo ~* $1
+            or (op."data"-> 'tender' -> 'items' -> 'classification' ->> 'id') ~ $2
+			)
+            and (op.llamado_fecha_fin)::TIMESTAMP >= (current_timestamp AT TIME ZONE 'America/Asuncion')
+            --order by rec.ocid desc
+          )
+       
+        SELECT
+        (SELECT COUNT(*) 
+        FROM  opportunities_all_results
+        ) as total,
+        
+         (
+        select json_agg(op."data")
+        FROM
+        (select * from opportunities_all_results
+        limit $3
+        offset $4) AS op
+        ) AS data;
+       
+       `/*
+          `
         with opportunities_all_results as (
             select distinct on (rec.ocid) rec.data
             from ${true?'ocds.data':'scrapper.ocds'} rec
@@ -209,7 +237,7 @@ module.exports.addOpportunitiesConfig =async (event) => {
         limit $3
         offset $4) AS opp
         ) AS data;
-        `,[
+        `*/,[
             ...[keywords.map((text)=>{return globals.getTextKeyword(text);}).join("|"),`^(${categories_lvl1.join("|")})`,pagination.pageSize,(pagination.pageSize*(pagination.page-1))]
          
       ]);

@@ -14,6 +14,8 @@ const admin = require("./controllers/admin");
 const mails = require("./controllers/mails");
 const stats=require("./controllers/stats")
 
+const etlLambda= require("./controllers/etlLambda");
+
 
 /**Usuarios */
 module.exports.signUpUser = users.signUpUser;
@@ -97,6 +99,8 @@ module.exports.sendDirectMail = mails.sendDirectMail;
 
 /*Stats*/
 module.exports.getCountData = stats.getCountData;
+
+module.exports.ETLLambda = etlLambda.ETLLambda
 
 
 /*TEST*/
