@@ -190,9 +190,9 @@ module.exports.addOpportunitiesConfig =async (event) => {
            
             where (
             op.titulo ~* $1
-            or (item->'classification'->>'id' ~) ~ $2
+            or (item->'classification'->>'id') ~ $2
             --or (op."data"-> 'tender' -> 'items' ->> 'description') ~* $1
-			)
+            )
             and (op.llamado_fecha_fin)::TIMESTAMP >= (current_timestamp AT TIME ZONE 'America/Asuncion')
             order by op.ocid desc
           )
