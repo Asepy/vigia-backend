@@ -55,7 +55,7 @@ functions:
     events:
       - schedule:
           rate: rate(1 hour)
-          enabled: true
+          enabled: false
   ETLLambda:
     handler: handler.ETLLambda
     timeout: 900

@@ -11,16 +11,14 @@ const moment = require('moment-timezone');
 const {parser: jsonlParser} = require('stream-json/jsonl/Parser');
 const JSum = require('jsum')
 
-const dateFrom = moment(new Date()).format('YYYY-MM-DD')
-console.dir(dateFrom)
-
-
+const dateFrom = moment(new Date(), "America/Asuncion").format('YYYY-MM-DD');
+//moment.tz(new Date(), "America/Asuncion").format();
 const pool = new Pool({
     idleTimeoutMillis: 0,
     connectionTimeoutMillis: 0,
     max: 50
 }
-    );
+);
 
 axiosRetry(axios, { 
   retries: 10,
@@ -49,10 +47,15 @@ var pagination={
 };
 var accessToken='';
 
+const executionId = new Date().getTime();
+
 module.exports.ETLLambda = async (event)=>{
+    await log(executionId,'Etapa 0 - Inicio de ejecucion del scrapper','0_START','info',null);
+    await createLogsTable()
     await createOpportunitiesTable()
     await createOpportunitiesPreTable();
-    await getValidProceses()
+    await getValidProceses();
+    await log(executionId,'Etapa 0 - Fin de ejecucion del scrapper','0_START','info',null);
 }
 
 async function getValidProceses(){
@@ -75,13 +78,17 @@ async function getValidProceses(){
     }
     catch(e){
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 0 - Obtencion de access token','0_START','error',{error:e?.message});
     }
-    log(`extrayendo accces token ${accessToken}`)
+    
 
+    await log(executionId,'Etapa 0 - Obtencion de access token','0_START','info',{token:accessToken});
+
+    await log(executionId,'Inicio de Etapa 1 - Obtencion ocids','1_OCIDS','info',null);
    
     try{
         fs.ensureDirSync(`${filesPath}etl_lambda`);
-        fs.writeFileSync(`${filesPath}etl_lambda/ocids.jsonl`,'',{ encoding: "utf8", flag: "w" });
+        fs.writeFileSync(`${filesPath}etl_lambda/ocids.jsonl`,'');
         for(let i =0; i < pagination.total_pages;i++){
             pagination.current_page = i + 1;
             
@@ -91,11 +98,11 @@ async function getValidProceses(){
 
     }catch(e){
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 1 - Obtencion ocids','1_OCIDS','error',{error:e?.message});
     }
     
 
-
-    log('Termino de Generar jsonl de ocids')
+    await log(executionId,'Fin de Etapa 1 - Obtencion ocids','1_OCIDS','info',null);
 
     await readOCIDS();
 
@@ -121,36 +128,48 @@ async function getProcessGroup(){
                 tipo_fecha:"entrega_ofertas",
                 items_per_page:pagination.items_per_page,
                 //"tender.statusDetails":"morgan freeman",
-                //"tender.statusDetails":"En Convocatoria (Abierta)",
+                "tender.statusDetails":"En Convocatoria (Abierta)",
                 order:"tender.tenderPeriod.endDate desc"
               }
             }
             }
           );
+
+          if(pagination.current_page == 1){
+            await log(executionId,'Etapa 1 - Obtencion ocids','1_OCIDS','info',{
+                pagination:response.data.pagination
+            });
+          }
+
+          
+         
           
           pagination=response.data.pagination;
           const ocids = response.data.records.map((record)=>{
             return record.ocid;
           });
     
-          fs.appendFileSync(`${filesPath}etl_lambda/ocids.jsonl`,JSON.stringify(ocids)+'\n', { encoding: "utf8", flag: "w" });
+          fs.appendFileSync(`${filesPath}etl_lambda/ocids.jsonl`,JSON.stringify(ocids)+'\n');
     
     }
     catch(e){
         console.dir(e)
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 1 - Obtencion ocids','1_OCIDS','error',{error:e?.message});
     }
 
       
 }
 
 async function readOCIDS(){
+    await log(executionId,'Inicio de Etapa 2 - Lectura de ocids','2_READ_OCIDS','info',null);
     try{
         if(!fs.existsSync(`${filesPath}etl_lambda/ocids.jsonl`)){
+            await log(executionId,'Error en la Etapa 2 - Lectura de ocids','2_READ_OCIDS','error',{error:'No existe el archivo.jsonl'});
             return;
          }
-         log(`obteniendo full data`)
-         fs.writeFileSync(`${filesPath}etl_lambda/compiledReleases.jsonl`,'',{ encoding: "utf8", flag: "w" });
+         
+         fs.writeFileSync(`${filesPath}etl_lambda/compiledReleases.jsonl`,'');
     
          const pipeline = fs.createReadStream(`${filesPath}etl_lambda/ocids.jsonl`).pipe(jsonlParser());
          await new Promise(resolve => {
@@ -177,19 +196,23 @@ async function readOCIDS(){
         });
     }catch(e){
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 2 - Lectura de ocids','2_READ_OCIDS','error',{error:e?.message});
     }
-    
-    log(`finalizado full data`)
 
+    await log(executionId,'Fin de Etapa 2 - Lectura de ocids','2_READ_OCIDS','info',null);
+    
+    
+    
     await readCompiledReleases();
 }
 
 async function readCompiledReleases(){
+    await log(executionId,'Inicio de Etapa 5 - Lectura de compiledReleases','5_READ_COMPILED','info',null);
     try{
         if(!fs.existsSync(`${filesPath}etl_lambda/compiledReleases.jsonl`)){
             return;
          }
-         log(`leyendo full data`)
+         
     
          const pipeline = fs.createReadStream(`${filesPath}etl_lambda/compiledReleases.jsonl`).pipe(jsonlParser());
          await new Promise(resolve => {
@@ -216,10 +239,11 @@ async function readCompiledReleases(){
         });
     }catch(e){
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 5 - Lectura de ocids','5_READ_COMPILED','error',{error:e?.message});
     }
+    await log(executionId,'Fin de Etapa 5 - Lectura de compiledReleases','5_READ_COMPILED','info',null);
     
-    log(`finalizado insertar data`)
-    insertOpportunities();
+    await insertOpportunities();
 }
 
 
@@ -227,22 +251,15 @@ async function getProcessesFullData(ocids){
     let fullRecordsPromise=ocids.map(getProcessFullData);
     const responses =await Promise.all(fullRecordsPromise);
     try{
-        fs.appendFileSync(`${filesPath}etl_lambda/compiledReleases.jsonl`,responses.filter((record)=>{return record?.ocid;}).map((record)=>{return JSON.stringify(record);}).join('\n')+'\n', 
-        { encoding: "utf8", flag: "w" });
+        fs.appendFileSync(`${filesPath}etl_lambda/compiledReleases.jsonl`,responses.filter((record)=>{return record?.ocid;}).map((record)=>{return JSON.stringify(record);}).join('\n')+'\n');
 
     }catch(e){
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 4 - Escritura de  compiled Releases','4_WRITE_COMPILED','error',{error:e?.message});
     }
     
 }
 
-
-
-//fullRecords=[...fullRecords,...await Promise.all(fullRecordsPromise)];
-//getProcessesTransaction?.finish();
-
-
-//let insertProcessesTransaction = transaction?.startChild({ op:"insert_processes_group",description: `Insertar lote de procesos de ${pagination.items_per_page} : #${1}` }); 
 
 
 
@@ -268,19 +285,14 @@ async function getProcessFullData(ocid){
         }
         catch(e){
             Sentry?.captureException(e);
+            await log(executionId,'Error en la Etapa 3 - Obtencion de compiledReleases','3_GET_COMPILED','error',{error:e?.message});
         }
       return response;
 }
 
 
 
-function log(message){
-    const date = moment.tz(new Date(), "America/Asuncion").format();
-    console.dir(`*********`)
-    console.dir(`${date}`)
-    console.dir(message)
-    console.dir(`*********`)
-}
+
 
 
 async function createOpportunitiesPreTable(){
@@ -307,7 +319,7 @@ async function createOpportunitiesPreTable(){
         return true;
         }
     catch(e){
-        log('Error Creacion de tabla ocds');
+        
         Sentry?.captureException(e);
     } 
     return false;
@@ -340,7 +352,7 @@ async function createOpportunitiesTable(){
         return true;
         }
     catch(e){
-        log('Error Creacion de tabla ocds oportunities');
+        
         Sentry?.captureException(e);
     } 
     return false;
@@ -364,24 +376,26 @@ async function insertRecord(record){
         record?.tender?.datePublished, //llamado_publicacion
         checksum,
         record,
+
+        ]);
+        
 /*
 clasificacion_items,clasificacion_items_array,description_items_array
         record?.tender?.items?.map((item)=>{return item?.classification?.id})?.join('|') ?? null,
         record?.tender?.items?.map((item)=>{return item?.classification?.id}) ?? null,
         record?.tender?.items?.map((item)=>{return item?.description}) ?? null*/
-
-        ]);
-        
     }
     catch(e){
-        log('Error Insercion de record temporal');
+        
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 5 - Insercion de pre registros','6_INSERT_PRE','error',{error:e?.message});
         //console.dir(e)
     }
 }
 
 async function insertOpportunities(){
-    log(`unicio insertar y actualizar oportunidades`)
+    
+    await log(executionId,'Inicio de Etapa 7 - Insercion de oportunidades','7_INSERT_OPP','info',null);
     try{
         
         await pool.query(`
@@ -399,11 +413,11 @@ async function insertOpportunities(){
             SELECT d.llamado, d.ocid,d.llamado_estado, d.llamado_publicacion,
             
             (d."data"::json->'tender'->>'mainProcurementCategory')::text as categoria,
-            (d."data"::json->'tender'->>'mainProcurementCategoryDetails')::text as categoria_detalle,
-            (d."data"::json->'tender'->'procuringEntity'->>'name')::text as convocante,
+            lower((d."data"::json->'tender'->>'mainProcurementCategoryDetails')::text) as categoria_detalle,
+            lower((d."data"::json->'tender'->'procuringEntity'->>'name')::text) as convocante,
             (d."data"::json->'tender'->'procuringEntity'->>'id')::text as convocante_id,
             (d."data"::json->'tender'->>'procurementMethodDetails')::text as procedimiento,
-            (d."data"::json->'tender'->>'title')::text as titulo,
+            lower((d."data"::json->'tender'->>'title')::text) as titulo,
             (d."data"::json->'tender'->'tenderPeriod'->>'endDate')::timestamp as llamado_fecha_fin,
             d.checksum, d.data, d.modificacion, d.creacion from ocds.opportunities_extraction as d 
 
@@ -431,9 +445,77 @@ async function insertOpportunities(){
         
     }
     catch(e){
-        log('Error Insercion de oportunidadaes');
+        
         Sentry?.captureException(e);
+        await log(executionId,'Error en la Etapa 7 -Insercion de oportunidades','7_INSERT_OPP','error',{error:e?.message});
         //console.dir(e)
     }
-    log(`finalizado insertar y actualizar oportunidades`)
+
+    await log(executionId,'Fin de Etapa 7 - Insercion de oportunidades','7_INSERT_OPP','info',null);
+    
+}
+
+
+async function createLogsTable(){
+    try{
+        //const client = new Client({ max: 50});
+        //await client.connect();
+        await pool.query(`CREATE TABLE IF NOT EXISTS ocds.opportunities_logs(
+            id          BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 CACHE 1 ),
+           
+            
+            ejecucion        TEXT NULL,
+            etapa     TEXT NULL,
+            mensaje     TEXT NULL,
+            tipo        TEXT NULL,
+            data        JSONB NULL,
+            fecha timestamptz NOT NULL,
+            CONSTRAINT ocds_opportunities_logs_pk PRIMARY KEY (id)
+        );`,[]);
+        ///await client.end();
+        return true;
+        }
+    catch(e){
+        log(executionId,'Error en la Etapa 0 - Creacion de tabla de logs','0_START','error',{error:e?.message});
+        console.dir(e)
+    } 
+    return false;
+}
+async function log(executionId,message,stage,type,data){
+    const date = moment.tz(new Date(), "America/Asuncion").format();
+    try{
+        /*let client = {};
+        if(pool){
+            client=pool;
+        }else{
+            client = new Client({ max: 50});
+            client.connect();
+        }*/
+        await pool.query(`
+            INSERT INTO ocds.opportunities_logs
+            (
+                ejecucion,etapa,mensaje,tipo,data,fecha
+            )
+            VALUES($1, $2, $3, $4, $5, $6);`,
+        [
+            executionId,
+            stage,
+            message,
+            type,
+            data,
+            date
+        ]);
+        /*if(!pool){
+            await client.end();
+        }*/
+        
+    }
+    catch(e){
+        Sentry?.captureException(e);
+    }
+
+    console.dir(`------------------------------------`)
+    console.dir(`${message} - ${date}`)
+    console.dir(`${executionId}`)
+    
 }
