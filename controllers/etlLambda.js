@@ -38,6 +38,8 @@ axiosRetry(axios, {
   } 
 });
 
+const filesPath = process.env.LAMBDA_TEMP_DIRECTORY ?? "";
+
 var pagination={
     "total_items": 0,
     "total_pages": 1,
@@ -78,8 +80,8 @@ async function getValidProceses(){
 
    
     try{
-        fs.ensureDirSync(`etl_lambda`);
-        fs.writeFileSync(`etl_lambda/ocids.jsonl`,'',{ encoding: "utf8", flag: "w" });
+        fs.ensureDirSync(`${filesPath}etl_lambda`);
+        fs.writeFileSync(`${filesPath}etl_lambda/ocids.jsonl`,'',{ encoding: "utf8", flag: "w" });
         for(let i =0; i < pagination.total_pages;i++){
             pagination.current_page = i + 1;
             
@@ -131,7 +133,7 @@ async function getProcessGroup(){
             return record.ocid;
           });
     
-          fs.appendFileSync(`etl_lambda/ocids.jsonl`,JSON.stringify(ocids)+'\n', { encoding: "utf8", flag: "w" });
+          fs.appendFileSync(`${filesPath}etl_lambda/ocids.jsonl`,JSON.stringify(ocids)+'\n', { encoding: "utf8", flag: "w" });
     
     }
     catch(e){
@@ -144,13 +146,13 @@ async function getProcessGroup(){
 
 async function readOCIDS(){
     try{
-        if(!fs.existsSync(`etl_lambda/ocids.jsonl`)){
+        if(!fs.existsSync(`${filesPath}etl_lambda/ocids.jsonl`)){
             return;
          }
          log(`obteniendo full data`)
-         fs.writeFileSync(`etl_lambda/compiledReleases.jsonl`,'',{ encoding: "utf8", flag: "w" });
+         fs.writeFileSync(`${filesPath}etl_lambda/compiledReleases.jsonl`,'',{ encoding: "utf8", flag: "w" });
     
-         const pipeline = fs.createReadStream(`etl_lambda/ocids.jsonl`).pipe(jsonlParser());
+         const pipeline = fs.createReadStream(`${filesPath}etl_lambda/ocids.jsonl`).pipe(jsonlParser());
          await new Promise(resolve => {
             pipeline.on("data", async (data) => {
                    try{
@@ -184,12 +186,12 @@ async function readOCIDS(){
 
 async function readCompiledReleases(){
     try{
-        if(!fs.existsSync(`etl_lambda/compiledReleases.jsonl`)){
+        if(!fs.existsSync(`${filesPath}etl_lambda/compiledReleases.jsonl`)){
             return;
          }
          log(`leyendo full data`)
     
-         const pipeline = fs.createReadStream(`etl_lambda/compiledReleases.jsonl`).pipe(jsonlParser());
+         const pipeline = fs.createReadStream(`${filesPath}etl_lambda/compiledReleases.jsonl`).pipe(jsonlParser());
          await new Promise(resolve => {
             pipeline.on("data", async (data) => {
                    try{
@@ -225,7 +227,7 @@ async function getProcessesFullData(ocids){
     let fullRecordsPromise=ocids.map(getProcessFullData);
     const responses =await Promise.all(fullRecordsPromise);
     try{
-        fs.appendFileSync(`etl_lambda/compiledReleases.jsonl`,responses.filter((record)=>{return record?.ocid;}).map((record)=>{return JSON.stringify(record);}).join('\n')+'\n', 
+        fs.appendFileSync(`${filesPath}etl_lambda/compiledReleases.jsonl`,responses.filter((record)=>{return record?.ocid;}).map((record)=>{return JSON.stringify(record);}).join('\n')+'\n', 
         { encoding: "utf8", flag: "w" });
 
     }catch(e){
