@@ -77,16 +77,20 @@ async function getValidProceses(){
     log(`extrayendo accces token ${accessToken}`)
 
    
+    try{
+        fs.ensureDirSync(`etl_lambda`);
+        fs.writeFileSync(`etl_lambda/ocids.jsonl`,'',{ encoding: "utf8", flag: "w" });
+        for(let i =0; i < pagination.total_pages;i++){
+            pagination.current_page = i + 1;
+            
+            await getProcessGroup(accessToken,pagination);
+            
+        }
 
-    fs.ensureDirSync(`etl_lambda`);
-    fs.writeFileSync(`etl_lambda/ocids.jsonl`,'');
-    for(let i =0; i < pagination.total_pages;i++){
-        pagination.current_page = i + 1;
-        
-        await getProcessGroup(accessToken,pagination);
-        
+    }catch(e){
+        Sentry?.captureException(e);
     }
-
+    
 
 
     log('Termino de Generar jsonl de ocids')
@@ -127,81 +131,91 @@ async function getProcessGroup(){
             return record.ocid;
           });
     
-          fs.appendFileSync(`etl_lambda/ocids.jsonl`,JSON.stringify(ocids)+'\n', (e) => {if (e){Sentry?.captureException(e);} });
+          fs.appendFileSync(`etl_lambda/ocids.jsonl`,JSON.stringify(ocids)+'\n', { encoding: "utf8", flag: "w" });
     
     }
     catch(e){
         console.dir(e)
-        //Sentry?.captureException(e);
+        Sentry?.captureException(e);
     }
 
       
 }
 
 async function readOCIDS(){
-    if(!fs.existsSync(`etl_lambda/ocids.jsonl`)){
-        return;
-     }
-     log(`obteniendo full data`)
-     fs.writeFileSync(`etl_lambda/compiledReleases.jsonl`,'');
-
-     const pipeline = fs.createReadStream(`etl_lambda/ocids.jsonl`).pipe(jsonlParser());
-     await new Promise(resolve => {
-        pipeline.on("data", async (data) => {
-               try{
-                pipeline.pause();
-                //fila data.key
-                await getProcessesFullData(data?.value ?? [])
-                //await sendRecord(data?.value,data.key,executionId);
-               }
-               catch(e){
-                console.dir(e)
-               }
-               
-               pipeline.resume();
-               
-            })
-            .on("end", () => {
-                resolve(true);
-            })
-            .on("error", async (e) => {
-                Sentry?.captureException(e);
-            });
-    });
+    try{
+        if(!fs.existsSync(`etl_lambda/ocids.jsonl`)){
+            return;
+         }
+         log(`obteniendo full data`)
+         fs.writeFileSync(`etl_lambda/compiledReleases.jsonl`,'',{ encoding: "utf8", flag: "w" });
+    
+         const pipeline = fs.createReadStream(`etl_lambda/ocids.jsonl`).pipe(jsonlParser());
+         await new Promise(resolve => {
+            pipeline.on("data", async (data) => {
+                   try{
+                    pipeline.pause();
+                    //fila data.key
+                    await getProcessesFullData(data?.value ?? [])
+                    //await sendRecord(data?.value,data.key,executionId);
+                   }
+                   catch(e){
+                    console.dir(e)
+                   }
+                   
+                   pipeline.resume();
+                   
+                })
+                .on("end", () => {
+                    resolve(true);
+                })
+                .on("error", async (e) => {
+                    Sentry?.captureException(e);
+                });
+        });
+    }catch(e){
+        Sentry?.captureException(e);
+    }
+    
     log(`finalizado full data`)
 
     await readCompiledReleases();
 }
 
 async function readCompiledReleases(){
-    if(!fs.existsSync(`etl_lambda/compiledReleases.jsonl`)){
-        return;
-     }
-     log(`leyendo full data`)
-
-     const pipeline = fs.createReadStream(`etl_lambda/compiledReleases.jsonl`).pipe(jsonlParser());
-     await new Promise(resolve => {
-        pipeline.on("data", async (data) => {
-               try{
-                pipeline.pause();
-                //fila data.key
-                await insertRecord(data?.value)
-                //await sendRecord(data?.value,data.key,executionId);
-               }
-               catch(e){
-                console.dir(e)
-               }
-               
-               pipeline.resume();
-               
-            })
-            .on("end", () => {
-                resolve(true);
-            })
-            .on("error", async (e) => {
-                Sentry?.captureException(e);
-            });
-    });
+    try{
+        if(!fs.existsSync(`etl_lambda/compiledReleases.jsonl`)){
+            return;
+         }
+         log(`leyendo full data`)
+    
+         const pipeline = fs.createReadStream(`etl_lambda/compiledReleases.jsonl`).pipe(jsonlParser());
+         await new Promise(resolve => {
+            pipeline.on("data", async (data) => {
+                   try{
+                    pipeline.pause();
+                    //fila data.key
+                    await insertRecord(data?.value)
+                    //await sendRecord(data?.value,data.key,executionId);
+                   }
+                   catch(e){
+                    console.dir(e)
+                   }
+                   
+                   pipeline.resume();
+                   
+                })
+                .on("end", () => {
+                    resolve(true);
+                })
+                .on("error", async (e) => {
+                    Sentry?.captureException(e);
+                });
+        });
+    }catch(e){
+        Sentry?.captureException(e);
+    }
+    
     log(`finalizado insertar data`)
     insertOpportunities();
 }
@@ -210,8 +224,14 @@ async function readCompiledReleases(){
 async function getProcessesFullData(ocids){
     let fullRecordsPromise=ocids.map(getProcessFullData);
     const responses =await Promise.all(fullRecordsPromise);
-    fs.appendFileSync(`etl_lambda/compiledReleases.jsonl`,responses.filter((record)=>{return record?.ocid;}).map((record)=>{return JSON.stringify(record);}).join('\n')+'\n', (e) => {if (e){Sentry?.captureException(e);} });
+    try{
+        fs.appendFileSync(`etl_lambda/compiledReleases.jsonl`,responses.filter((record)=>{return record?.ocid;}).map((record)=>{return JSON.stringify(record);}).join('\n')+'\n', 
+        { encoding: "utf8", flag: "w" });
 
+    }catch(e){
+        Sentry?.captureException(e);
+    }
+    
 }
 
 
