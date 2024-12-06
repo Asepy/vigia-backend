@@ -184,16 +184,17 @@ module.exports.addOpportunitiesConfig =async (event) => {
         result = await client.query(
           `
         with opportunities_all_results as (
-            select op."data"
-            from ocds.opportunities op
+           select distinct op.ocid
+            from ocds.opportunities op,
+            jsonb_array_elements(op.data->'tender'->'items') AS item
            
             where (
             op.titulo ~* $1
-            or (op."data"-> 'tender' -> 'items' -> 'classification' ->> 'id') ~ $2
+            or (item->'classification'->>'id' ~) ~ $2
             --or (op."data"-> 'tender' -> 'items' ->> 'description') ~* $1
 			)
             and (op.llamado_fecha_fin)::TIMESTAMP >= (current_timestamp AT TIME ZONE 'America/Asuncion')
-            --order by rec.ocid desc
+            order by op.ocid desc
           )
        
         SELECT
@@ -204,9 +205,10 @@ module.exports.addOpportunitiesConfig =async (event) => {
          (
         select json_agg(op."data")
         FROM
-        (select * from opportunities_all_results
-        limit $3
-        offset $4) AS op
+        (select o."data" as "data" from opportunities_all_results
+        left join ocds.opportunities o on opportunities_all_results.ocid = o.ocid 
+        limit 5
+        offset 0) AS op
         ) AS data;
        
        `/*
