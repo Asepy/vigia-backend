@@ -207,8 +207,8 @@ module.exports.addOpportunitiesConfig =async (event) => {
         FROM
         (select o."data" as "data" from opportunities_all_results
         left join ocds.opportunities o on opportunities_all_results.ocid = o.ocid 
-        limit 5
-        offset 0) AS op
+        limit $3
+        offset $4) AS op
         ) AS data;
        
        `/*
